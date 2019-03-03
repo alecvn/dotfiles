@@ -19,6 +19,12 @@ Latest desktop environment configuration
 ## 3. Install emacs
 
 ## 4. Clone dotfiles repo and symlink
+Any dotfiles copied from another machine needs the following command executed within the folder:
+    
+    find . -type f -print0 | xargs -0 chmod 400
+
+Symlink the config files
+
     ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
     ln -s ~/dotfiles/emacs ~/.emacs.d/init.el
     ln -s ~/dotfiles/i3_config ~/.config/i3/config
