@@ -1,0 +1,275 @@
+(setq *alec-site-lisp* "/home/alec/site-lisp/")
+
+(require 'ido)
+(ido-mode t)
+;; vertical list
+(setq ido-separator "\n")
+
+;; use spaces for indent
+(setq-default indent-tabs-mode nil)
+
+;; find file/directory by wildcard
+(global-set-key (kbd "C-c f w") 'find-name-dired)
+
+
+;;;###autoload
+(defun copy-buffer-file-path-as-kill()
+  "Copy the buffer-file-path to the kill-ring"
+  (interactive)
+  (setq relative-path (cadr (split-string buffer-file-name (projectile-project-root))))
+  (kill-new relative-path)
+  )
+
+;;;###autoload
+(defun buffer-name-formatted-to-upcase-initials-as-kill()
+  "Format the buffer-file-name to upcase-initials and copy to the kill-ring"
+  (interactive)
+  (setq formatted-relative-path (string-join (mapcar 'upcase-initials (split-string (car (split-string (file-name-nondirectory buffer-file-name) "\\.")) "_"))))
+  (kill-new formatted-relative-path)
+)
+
+(global-set-key (kbd "C-x a p") 'copy-buffer-file-path-as-kill)
+(global-set-key (kbd "C-x a u") 'buffer-name-formatted-to-upcase-initials-as-kill)
+
+;; macro to revert buffer
+(fset 'alec-revert-buffer
+      [?\M-x ?r ?e ?v ?e ?r ?t ?- ?b ?u ?f ?f ?e ?r return ?y ?e ?s return])
+(global-set-key (kbd "C-x , rev") 'alec-revert-buffer )
+(global-set-key [f6] 'alec-revert-buffer )
+
+;; melpa - list packages
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+  (add-to-list 'package-archives (cons "melpa" url) t))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
+;; CSS color values colored by themselves
+;; http://xahlee.org/emacs/emacs_html.html
+(defvar hexcolour-keywords
+  '(("#[abcdef[:digit:]]\\{6\\}"
+     (0 (put-text-property
+	 (match-beginning 0)
+	 (match-end 0)
+	 'face (list :background 
+		     (match-string-no-properties 0)))))))
+
+(defun hexcolour-add-to-font-lock ()
+  (font-lock-add-keywords nil hexcolour-keywords))
+
+(add-hook 'css-mode-hook 'hexcolour-add-to-font-lock)
+
+;; org mode
+(add-to-list 'load-path (concat *alec-site-lisp* "orgmode/lisp/"))
+(add-to-list 'load-path (concat *alec-site-lisp* "orgmode/contrib/lisp/"))
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.org_archive\\'" . org-mode))
+(add-to-list 'load-path (concat *alec-site-lisp* "htmlize"))
+(setq org-remember-clock-out-on-exit t)
+(setq org-remember-default-headline "Tasks")
+(setq org-agenda-include-diary nil)
+(add-to-list 'load-path "/home/alec/site-lisp/orgmode-6/lisp")
+(require 'org-exp-blocks)
+(require 'org-install)
+(require 'org-icalendar)
+
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+;; GPG key to use for encryption
+;; Either the Key ID or set to nil to use symmetric encryption.
+(setq org-crypt-key nil)
+
+(require 'org-agenda)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-c\C-x\C-j" 'org-clock-goto)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(case-fold-search t)
+ '(custom-enabled-themes (quote (calmer-forest)))
+ '(custom-safe-themes
+   (quote
+    ("2affb26fb9a1b9325f05f4233d08ccbba7ec6e0c99c64681895219f964aac7af" default)))
+ '(grep-command "grep -nHir -e ")
+ '(org-agenda-files
+   (quote
+    ("~/gtd/id-pemas.org" "~/gtd/id-imptime.org" "~/gtd/id-cliffcentral.org" "~/gtd/id-tastemakersafrica.org" "~/gtd/id-malcolm.org" "~/gtd/id-sparrow.org" "~/gtd/id-admin.org" "~/gtd/id-youverify.org" "~/gtd/id-hungrylion.org" "~/gtd/id-orca.org" "~/gtd/id-bunchcut.org" "~/gtd/id-fonk-fieldmate.org" "~/gtd/id-fonk-ing.org" "~/gtd/id-charlottetilbury.org" "~/gtd/id-quindici.org" "~/gtd/id-1address.org" "~/gtd/id-7days.org" "~/gtd/id-evolabs.org" "~/gtd/id-csir.org" "~/gtd/id-coin-it.org" "~/gtd/id-fonk.org" "~/gtd/id-unionswiss.org" "~/gtd/id-koen-hfm.org" "~/gtd/id-impact-spii.org" "~/gtd/id-tusk.org" "~/gtd/id-vumela.org")))
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-id org-info org-jsinfo org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
+ '(split-width-threshold 900)
+ '(sql-sqlite-program "sqlite3")
+ '(tool-bar-mode nil))
+
+
+(require 'python)
+(add-to-list 'load-path *alec-site-lisp*)
+
+;; move between buffers
+(global-set-key [(meta left)] 'windmove-left)
+(global-set-key [(meta right)] 'windmove-right)
+(global-set-key [(meta up)] 'windmove-up)
+(global-set-key [(meta down)] 'windmove-down)
+
+;; my shortcuts
+(fset 'pdb
+   "import pdb; pdb.set_trace()")
+(global-set-key (kbd "C-x , p") 'pdb )
+
+(fset 'alec-del-region
+      [?\M-x ?d ?e ?l ?e ?t ?e ?- ?r ?e ?g ?i ?o ?n])
+(global-set-key [C-backspace] 'alec-del-region)
+
+;; magit
+;; (add-to-list 'load-path (concat *alec-site-lisp* "magit"))
+;;    (require 'magit)
+;;    (global-set-key (kbd "C-x , -") 'magit-status)
+;;    (eval-after-load 'magit
+;;      '(progn
+;;         (set-face-foreground 'magit-diff-add "green3")
+;;         (set-face-foreground 'magit-diff-del "red3")
+;;         (when (not window-system)
+;;           (set-face-background 'magit-item-highlight "black"))))
+
+(global-set-key (kbd "C-x g") 'magit-status)
+
+
+;;; ediff
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(put 'erase-buffer 'disabled nil)
+
+;;;mogit blame
+(add-to-list 'load-path (concat *alec-site-lisp* "mo-git-blame"))
+(autoload 'mo-git-blame-file "mo-git-blame" nil t)
+(autoload 'mo-git-blame-current "mo-git-blame" nil t)
+(put 'upcase-region 'disabled nil)
+
+;;; bongo
+(add-to-list 'load-path (concat *alec-site-lisp* "bongo"))
+(autoload 'bongo "bongo"
+  "Start Bongo by switching to a Bongo buffer." t)
+
+(add-to-list 'load-path (concat *alec-site-lisp* "volume-el-master"))
+(autoload 'volume "volume"
+  "Tweak you soundcard volume." t)
+
+
+
+;; themes
+
+;(add-to-list 'load-path (concat *alec-site-lisp* "emacs-goodies-el/color-theme.el"))
+;(load (concat *alec-site-lisp* "emacs-goodies-el/color-theme.el"))
+
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-calmer-forest)))
+
+;;(ecb-activate)
+;; theme (causes flicker during startup)
+
+;;(color-theme-calmer-forest)
+;;(load-theme 'calmer-forest-theme t)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+
+;; Workaround the annoying warnings:
+;; Warning (mumamo-per-buffer-local-vars):
+;; Already 'permanent-local t: buffer-file-name
+(when (and (>= emacs-major-version 24)
+	   (>= emacs-minor-version 2))
+  (eval-after-load "mumamo"
+    '(setq mumamo-per-buffer-local-vars
+	   (delq 'buffer-file-name mumamo-per-buffer-local-vars)))) 
+
+;; flymake
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+     ; Make sure it's not a remote buffer or flymake would not work
+     (when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
+      (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                         'flymake-create-temp-inplace))
+             (local-file (file-relative-name
+                          temp-file
+                          (file-name-directory buffer-file-name))))
+        (list "pyflakes" (list local-file)))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+(put 'downcase-region 'disabled nil)
+
+;; reactjs
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss.erb\\'" . web-mode))
+(setq web-mode-markup-indent-offset 4
+      web-mode-css-indent-offset 4
+      web-mode-code-indent-offset 4)
+(setq js-indent-level 4)
+(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+
+(require 'ng2-mode)
+(c-set-offset 'case-label '+)
+
+
+;; helm
+(require 'helm)
+(require 'tramp)
+(require 'helm-config)
+
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+
+(helm-mode 1)
+
+;; projectile
+(projectile-rails-global-mode)
+
+(require 'projectile)
+(require 'helm-projectile)
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+
+(helm-projectile-on)
+(setq projectile-switch-project-action 'helm-projectile)
+
+
+(eval-after-load "dired-aux"
+   '(add-to-list 'dired-compress-file-suffixes 
+                 '("\\.zip\\'" ".zip" "unzip")))
+
+
+
+
+(defun dabbrev-complation-at-point ()
+  (dabbrev--reset-global-variables)
+  (let* ((abbrev (dabbrev--abbrev-at-point))
+         (candidates (dabbrev--find-all-expansions abbrev t))
+         (bnd (bounds-of-thing-at-point 'symbol)))
+    (list (car bnd) (cdr bnd) candidates)))
+(add-to-list 'completion-at-point-functions 'dabbrev-complation-at-point)
+
+
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+;; GPG key to use for encryption
+;; Either the Key ID or set to nil to use symmetric encryption.
+(setq org-crypt-key nil)

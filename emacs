@@ -16,8 +16,21 @@
 ;; (global-set-key [f6] 'alec-revert-buffer )
 
 ;; projectile
+(projectile-global-mode)
+(projectile-rails-global-mode)
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+;; ivy
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+
+;; ido
+(require 'ido)
+(ido-mode t)
+(setq ido-separator "\n")
+
 
 ;; ;; Flycheck
 ;; ;; (require 'flycheck)
@@ -166,16 +179,18 @@
 ;; (projectile-global-mode)
 ;; (setq projectile-completion-system 'helm)
 ;; (helm-projectile-on)
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (calmer-forest)))
+ '(custom-safe-themes
+   (quote
+    ("8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" default)))
  '(package-selected-packages
    (quote
-    (magit projectile omnisharp solarized-theme color-theme))))
+    (git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

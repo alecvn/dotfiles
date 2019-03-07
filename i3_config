@@ -8,8 +8,8 @@ smart_gaps on
 
 # Assign workspaces to screens
 #  On E560, eDP-1 is the first display, while DP-2 is VGA output
-workspace 1 output HDMI-1
-workspace 2 output eDP-1
+# workspace 1 output HDMI-1
+# workspace 2 output eDP-1
 
 # Assign applications to workspaces
 #  xprop | grep "CLASS"
