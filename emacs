@@ -3,7 +3,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-;; look
+;; opacity
 (set-frame-parameter (selected-frame) 'alpha '(90 . 80))
 (add-to-list 'default-frame-alist '(alpha . (90 . 80)))
 
@@ -11,15 +11,17 @@
 (global-linum-mode t)
 
 ;; macro to revert buffer
-;; (fset 'alec-revert-buffer
-;;     [?\M-x ?r ?e ?v ?e ?r ?t ?- ?b ?u ?f ?f ?e ?r return ?y ?e ?s return])
-;; (global-set-key [f6] 'alec-revert-buffer )
+(fset 'alec-revert-buffer
+    [?\M-x ?r ?e ?v ?e ?r ?t ?- ?b ?u ?f ?f ?e ?r return ?y ?e ?s return])
+(global-set-key [f6] 'alec-revert-buffer )
 
 ;; projectile
 (projectile-global-mode)
 (projectile-rails-global-mode)
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(setq projectile-completion-system 'ivy)
+;(setq projectile-switch-project-action 'magit-status)
 
 ;; ivy
 (ivy-mode 1)
@@ -30,7 +32,7 @@
 (require 'ido)
 (ido-mode t)
 (setq ido-separator "\n")
-
+(setq ido-use-filename-at-point 'guess)
 
 ;; ;; Flycheck
 ;; ;; (require 'flycheck)
@@ -60,12 +62,15 @@
 
 
 
-;; ;; Web mode
+;; Web mode
 
-;; ;; (use-package web-mode
-;; ;;   :ensure t
-;; ;;   :defer t
-;; ;;   :mode (("\\.ios\\.js$" . web-mode)
+(use-package web-mode
+	     :init (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)))
+
+;;             :ensure t
+;;	     :defer t
+;;	     :mode (("\\.ios\\.js$" . web-mode)
+;;	     :mode (("\\.ios\\.js$" . web-mode)
 ;; ;;          ("\\.android\\.js$" . web-mode)
 ;; ;;          ("\\.react\\.js$" . web-mode)
 ;; ;;          ("\\.js$" . web-mode))
@@ -188,12 +193,19 @@
  '(custom-safe-themes
    (quote
     ("8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" default)))
+ '(org-agenda-files (quote ("~/gtd/id-unionswiss.org")))
  '(package-selected-packages
    (quote
     (git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme))))
 (custom-set-faces
+ (set-face-attribute 'default (selected-frame) :height 100)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; remove all the unnecessary bars
+(menu-bar-mode -1) 
+(toggle-scroll-bar -1) 
+(tool-bar-mode -1) 
