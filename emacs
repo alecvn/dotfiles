@@ -21,7 +21,17 @@
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (setq projectile-completion-system 'ivy)
-;(setq projectile-switch-project-action 'magit-status)
+
+(setq projectile-switch-project-action 'projectile-commander)
+(setq projectile-rails-vanilla-command "bin/rails")
+(require 'projectile)
+(def-projectile-commander-method ?s
+  "Open a *shell* buffer for the project."
+  (projectile-run-shell))
+(def-projectile-commander-method ?d
+  "Open project root in dired."
+  (projectile-dired))
+
 
 ;; ivy
 (ivy-mode 1)
@@ -33,6 +43,10 @@
 (ido-mode t)
 (setq ido-separator "\n")
 (setq ido-use-filename-at-point 'guess)
+
+
+
+
 
 ;; ;; Flycheck
 ;; ;; (require 'flycheck)
