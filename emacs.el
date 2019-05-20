@@ -3,6 +3,21 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
+;; common
+(menu-bar-mode -1) 
+(toggle-scroll-bar -1) 
+(tool-bar-mode -1)
+(setq x-select-enable-clipboard t) ;; Enable copy/past-ing from clipboard
+;;(prefer-coding-system ‘utf-8) ;; Prefer UTF-8 encoding
+;;(fset 'yes-or-no-p ‘y-or-n-p) ;; Answer with y and n instead of yes and no
+;;(setq confirm-kill-emacs ‘yes-or-no-p) ;; Ask for confirmation before closing emacs
+(global-auto-revert-mode 1) ;; Always reload the file if it changed on disk
+(show-paren-mode 1) ;; Highlight matching parens
+(global-subword-mode 1) ;; correctly jump between words in CamelCase
+
+;; org-mode
+(setq org-src-fontify-natively t)
+
 ;; opacity
 (set-frame-parameter (selected-frame) 'alpha '(90 . 80))
 (add-to-list 'default-frame-alist '(alpha . (90 . 80)))
@@ -13,7 +28,11 @@
 ;; macro to revert buffer
 (fset 'alec-revert-buffer
     [?\M-x ?r ?e ?v ?e ?r ?t ?- ?b ?u ?f ?f ?e ?r return ?y ?e ?s return])
-(global-set-key [f6] 'alec-revert-buffer )
+(global-set-key [f6] 'alec-revert-buffer)
+
+;; rbenv
+(global-rbenv-mode)
+(rbenv-use-global)
 
 ;; projectile
 (projectile-global-mode)
@@ -24,6 +43,7 @@
 
 (setq projectile-switch-project-action 'projectile-commander)
 (setq projectile-rails-vanilla-command "bin/rails")
+(setq projectile-rails-spring-command "bin/rails")
 (require 'projectile)
 (def-projectile-commander-method ?s
   "Open a *shell* buffer for the project."
@@ -31,6 +51,8 @@
 (def-projectile-commander-method ?d
   "Open project root in dired."
   (projectile-dired))
+(require 'inf-ruby)
+(add-hook 'after-init-hook 'inf-ruby-switch-setup) ;; hit C-x C-q when breakpoint is hit
 
 
 ;; ivy
@@ -43,9 +65,7 @@
 (ido-mode t)
 (setq ido-separator "\n")
 (setq ido-use-filename-at-point 'guess)
-
-
-
+(global-set-key (kbd "M-i") 'imenu)
 
 
 ;; ;; Flycheck
@@ -205,7 +225,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (use-package web-mode ivy magit projectile omnisharp calm-forest color-theme))))
+    (omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -213,7 +233,4 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; remove all the unnecessary bars
-(menu-bar-mode -1) 
-(toggle-scroll-bar -1) 
-(tool-bar-mode -1) 
+(set-face-attribute 'default (selected-frame) :height 100)
