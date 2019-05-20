@@ -203,16 +203,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (calmer-forest)))
- '(custom-safe-themes
-   (quote
-    ("8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" default)))
- '(org-agenda-files (quote ("~/gtd/id-unionswiss.org")))
  '(package-selected-packages
    (quote
-    (git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme))))
+    (use-package web-mode ivy magit projectile omnisharp calm-forest color-theme))))
 (custom-set-faces
- (set-face-attribute 'default (selected-frame) :height 100)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
