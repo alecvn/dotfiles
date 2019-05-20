@@ -25,6 +25,9 @@
 ;; line number frame
 (global-linum-mode t)
 
+(require 'misc)
+(global-set-key (kbd "M-f") 'forward-to-word)
+
 ;; macro to revert buffer
 (fset 'alec-revert-buffer
     [?\M-x ?r ?e ?v ?e ?r ?t ?- ?b ?u ?f ?f ?e ?r return ?y ?e ?s return])
@@ -123,7 +126,7 @@
 
 ;; (add-hook 'web-mode-hook
 ;; 	  (lambda ()
-;; 	    (if (equal web-mode-content-type "javascript")
+;; 	    (If (equal web-mode-content-type "javascript")
 ;; 		(web-mode-set-content-type "jsx"))))
 ;; (setq-local web-mode-enable-auto-quoting nil)
 
