@@ -25,8 +25,16 @@
 ;; line number frame
 (global-linum-mode t)
 
-(require 'misc)
-(global-set-key (kbd "M-f") 'forward-to-word)
+;; (defun forward-to-subword (arg)
+;;   "Move forward until encountering the beginning of a word.
+;; With argument, do this that many times."
+;;   (interactive "^p")
+;;   (or (re-search-forward (if (> arg 0) "\\W\\b" "\\b\\W") nil t arg)
+;;       (goto-char (if (> arg 0) (point-max) (point-min)))))
+;; (global-set-key (kbd "M-h") 'forward-to-subword)
+
+;; (Require 'misc)
+;; (global-set-key (kbd "M-f") 'forward-to-word)
 
 ;; macro to revert buffer
 (fset 'alec-revert-buffer
