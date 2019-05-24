@@ -17,6 +17,7 @@
 
 ;; org-mode
 (setq org-src-fontify-natively t)
+(setq org-agenda-files '("~/gtd"))
 
 ;; opacity
 (set-frame-parameter (selected-frame) 'alpha '(90 . 80))
@@ -220,9 +221,9 @@
 
 
 ;; ;; Python debugger
-;; (fset 'pdb
-;;    "import pdb; pdb.set_trace()")
-;; (global-set-key (kbd "C-x , p") 'pdb )
+(fset 'pdb
+   "import pdb; pdb.set_trace()")
+(global-set-key (kbd "C-x , p") 'pdb )
 
 
 ;; ;; This has something to do with screen splitting ie. C-x 2 etc
