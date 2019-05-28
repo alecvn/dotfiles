@@ -14,6 +14,7 @@
 (global-auto-revert-mode 1) ;; Always reload the file if it changed on disk
 (show-paren-mode 1) ;; Highlight matching parens
 (global-subword-mode 1) ;; correctly jump between words in CamelCase
+(global-visual-line-mode 1)
 
 ;; org-mode
 (setq org-src-fontify-natively t)
@@ -26,8 +27,8 @@
 ;; line number frame
 (global-linum-mode t)
 
-(require 'misc)
-(global-set-key (kbd "M-f") 'forward-to-word)
+;; (require 'misc)
+;; (global-set-key (kbd "M-f") 'forward-to-word)
 
 ;; macro to revert buffer
 (fset 'alec-revert-buffer
