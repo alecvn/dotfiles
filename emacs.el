@@ -118,6 +118,13 @@
   )
 (setq company-idle-delay 0)
 
+;; yasnippet
+(require 'yasnippet)
+(setq yas-snippet-dirs
+      '("/home/alec/.emacs.d/elpa/yasnippet-snippets-20190513.1049/snippets"))
+(yas-global-mode 1)
+
+
 ;; ;; tide
 ;; (require 'tide)
 ;; (defun setup-tide-mode ()
@@ -265,10 +272,9 @@
  '(custom-safe-themes
    (quote
     ("8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" default)))
- '(org-agenda-files (quote ("~/gtd/id-unionswiss.org")))
  '(package-selected-packages
    (quote
-    (omnisharp bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme))))
+    (yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
