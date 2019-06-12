@@ -26,7 +26,7 @@ Any dotfiles copied from another machine needs the following command executed wi
 Symlink the config files
 
     ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
-    ln -s ~/dotfiles/emacs ~/.emacs.d/init.el
+    ln -s ~/dotfiles/emacs.el ~/.emacs.d/init.el
     ln -s ~/dotfiles/i3_config ~/.config/i3/config
 
 ## 5. Install lastfm scrobbler

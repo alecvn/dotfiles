@@ -14,9 +14,11 @@
 (global-auto-revert-mode 1) ;; Always reload the file if it changed on disk
 (show-paren-mode 1) ;; Highlight matching parens
 (global-subword-mode 1) ;; correctly jump between words in CamelCase
+(global-visual-line-mode 1)
 
 ;; org-mode
 (setq org-src-fontify-natively t)
+(setq org-agenda-files '("~/gtd"))
 
 ;; opacity
 (set-frame-parameter (selected-frame) 'alpha '(90 . 80))
@@ -33,7 +35,7 @@
 ;;       (goto-char (if (> arg 0) (point-max) (point-min)))))
 ;; (global-set-key (kbd "M-h") 'forward-to-subword)
 
-;; (Require 'misc)
+;; (require 'misc)
 ;; (global-set-key (kbd "M-f") 'forward-to-word)
 
 ;; macro to revert buffer
@@ -235,9 +237,9 @@
 
 
 ;; ;; Python debugger
-;; (fset 'pdb
-;;    "import pdb; pdb.set_trace()")
-;; (global-set-key (kbd "C-x , p") 'pdb )
+(fset 'pdb
+   "import pdb; pdb.set_trace()")
+(global-set-key (kbd "C-x , p") 'pdb )
 
 
 ;; ;; This has something to do with screen splitting ie. C-x 2 etc
