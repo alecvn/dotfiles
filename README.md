@@ -28,9 +28,11 @@ Symlink the config files
     ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
     ln -s ~/dotfiles/emacs.el ~/.emacs.d/init.el
     ln -s ~/dotfiles/i3_config ~/.config/i3/config
+    ln -s ~/dotfiles/config ~/.emacs.d/config
 
 ## 5. Install lastfm scrobbler
    https://github.com/lastfm/lastfm-desktop
 
 ## 6. Install Mellow Player
    https://colinduquesnoy.gitlab.io/MellowPlayer/
+
