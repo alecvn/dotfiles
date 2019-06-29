@@ -1,18 +1,43 @@
-;; Works best with Emacs 26.2
+;; Working on Emacs 26.2
+
+;; Remove window ui elements
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+
+;; Enable copy/past-ing from clipboard
+(setq x-select-enable-clipboard t)
+
+;; Always reload the file if it changed on disk, see also: auto-revert-tail-mode
+(global-auto-revert-mode 1)
+
+;; Auto update dired when files change
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
+;; Text wraps around buffer edges - still not convinced about this
+(global-visual-line-mode 1)
+
+;; Line number frame
+(global-linum-mode t)
+
+;; Opacity
+(set-frame-parameter (selected-frame) 'alpha '(90 . 80))
+(add-to-list 'default-frame-alist '(alpha . (90 . 80)))
 
 ;; Install use-package if necessary
 (require 'package)
 ;; This stops package-initialize from being called
-;; twice during start-up decreasing start-up time
+;; twice during start-up, decreasing start-up time
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-;; Bootstrap `use-package'
+;; Bootstrap use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Allows hiding modes in the modeline
 (use-package diminish :ensure t)
 
 ;; Inherits environment variables from the shell
@@ -20,6 +45,7 @@
   :ensure t
   :config (exec-path-from-shell-initialize))
 
+(require 'use-package)
 (load-file "~/.emacs.d/config/init-org.el")
 
 (load-file "~/.emacs.d/config/init-face.el")

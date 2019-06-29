@@ -1,16 +1,25 @@
-;; macro to revert buffer
-;; (fset 'alec-revert-buffer
-;;    [?\M-x ?r ?e ?v ?e ?r ?t ?- ?b ?u ?f ?f ?e ?r return ?y ?e ?s return])
-;; (global-set-key [f6] 'alec-revert-buffer)
+;; Macro to revert buffer
+;; (global-set-key [f6] 'revert-buffer)
 
+;; Provides class and method overview
 (global-set-key (kbd "M-i") 'imenu)
 
-;; desktop
-(global-set-key (kbd "<C-f1>") 'desktop-save)
-(global-set-key (kbd "<C-f2>") 'desktop-read)
-(global-set-key (kbd "<C-f3>") 'desktop-clear)
+;; Silversearcher
+(use-package ag :ensure t)
 
-;; ivy
+;; Git version control
+(use-package magit :ensure t)
+
+;; Provides versions of common Emacs commands which use Ivy
+(use-package counsel :ensure t)
+
+;; iSearcher with an overview
+(use-package swiper
+  :ensure t
+  :config
+  (global-set-key "\C-s" 'swiper))
+
+;; Completion mechanism
 (use-package ivy
   :ensure t
   :config
@@ -18,8 +27,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t))
 
-
-;; projectile
+;; Project viewer
 (use-package projectile
   :ensure t
   :config
@@ -36,18 +44,13 @@
     (projectile-dired))
 )
 
+;; Projects on Rails
 (use-package projectile-rails
   :ensure t
   :config
   (projectile-rails-global-mode)
   (setq projectile-rails-vanilla-command "bin/rails")
   (setq projectile-rails-spring-command "bin/rails"))
-
-(use-package inf-ruby
-  :ensure t
-  :config
-  (add-hook 'after-init-hook 'inf-ruby-switch-setup) ;; hit C-x C-q when breakpoint is hit
-)
 
 ;; ido
 (use-package ido
@@ -62,12 +65,12 @@
   :ensure t
   :config
   (add-hook 'after-init-hook 'global-company-mode)
-
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-tern)
     (global-set-key (kbd "M-SPC") 'company-complete)
     )
-  (setq company-idle-delay 0))
+  (setq company-idle-delay 0)
+)
 
 ;; yasnippet
 (use-package yasnippet
