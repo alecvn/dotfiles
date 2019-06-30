@@ -1,4 +1,4 @@
-# desktop-environment
+# Desktop Environment
 Latest desktop environment configuration
 
 ## 1. Install Kubuntu 18.04
