@@ -26,6 +26,7 @@
 
 ;; Line number frame
 (global-linum-mode t)
+(setq column-number-mode t)
 
 ;; Opacity
 (set-frame-parameter (selected-frame) 'alpha '(90 . 80))
@@ -38,14 +39,28 @@
 
 (use-package markdown-mode :ensure t)
 
-(use-package flycheck :ensure t)
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  :ensure-system-package (black . "pip3 install pylint")
+  )
+
 (use-package calmer-forest-theme :ensure t)
+
 (use-package shader-mode :ensure t)
+
 (use-package blacken :ensure t)
 
 ;; Requirements for dashboard
-(use-package all-the-icons :ensure t)
+(use-package all-the-icons
+  :ensure t
+  :config
+  (when (not (member "all-the-icons" (font-family-list)))
+    (all-the-icons-install-fonts t))
+  )
+
 (use-package page-break-lines :ensure t)
+
 (use-package dashboard
   :ensure t
   :config
@@ -53,8 +68,8 @@
   ;; Neither working - but I'd like them to
   ;; (setq dashboard-set-navigator t)
   ;; (setq show-week-agenda-p t)
-  (setq dashboard-center-content t)
   (setq dashboard-set-heading-icons t)
+  (setq dashboard-center-content t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-footer nil)
   (setq dashboard-items '((agenda . 5)

@@ -4,10 +4,10 @@ Latest desktop environment configuration
 ## 1. Install Kubuntu 18.04
 
 ## 2. Install i3-gaps
- https://github.com/Airblader/i3
+https://github.com/Airblader/i3
 
 ## 3. Follow guide to configure i3-gaps sitting on top of Plasma
-   https://github.com/avivace/dotfiles
+https://github.com/avivace/dotfiles
  - Copy i3 config
  - Copy plasma-workspace bash file
  - install compton
@@ -17,6 +17,9 @@ Latest desktop environment configuration
  - install feh and put a background image at ~/Pictures/wallpaper.jpg (or change this in the i3 config)
 
 ## 3. Install emacs
+Great source for shell-mode scripts:
+https://wikemacs.org/wiki/Shell
+https://www.emacswiki.org/emacs/ShellMode
 
 ## 4. Clone dotfiles repo and symlink
 Any dotfiles copied from another machine needs the following command executed within the folder:
