@@ -61,6 +61,36 @@
 
 (use-package page-break-lines :ensure t)
 
+;; Test writing a dashboard widget
+(require 'dashboard-widgets)
+
+(defun list-of-packages-to-update()
+  ;; (let* ((commands (loop for s being the symbols
+  ;; 			 when (commandp s) collect s))
+  ;; 	 (command (nth (random (length commands)) commands)))
+  ;;   (insert
+  ;;    (format "** Tip of the day: ** \nCommand: %s\n\n%s\n\nInvoke with:\n\n"
+  ;; 	     (symbol-value 'command)
+  ;; 	     (documentation command))
+  ;;    )
+  ;;   (where-is command t))
+  (dashboard-insert-section
+   "Packages:"
+   (dashboard-subseq (auto-package-update-now)
+                     0 list-size)
+   list-size
+   "p"
+   `(lambda (&rest ignore) (find-file-existing ,el))
+   (abbreviate-file-name el)))
+
+;; (defun dashboard-insert-list-of-packages-to-update (list-size)
+;;   (list-of-packages-to-update))
+;; (add-to-list 'dashboard-item-generators '(list-of-packages-to-update . dashboard-insert-list-of-packages-to-update))
+;; (add-to-list 'dashboard-items '(list-of-packages-to-update . 1) t)
+
+;; This doesn't work right now I'm afraid
+(require 'dashboard-hackernews)
+
 (use-package dashboard
   :ensure t
   :config
@@ -75,6 +105,7 @@
   (setq dashboard-items '((agenda . 5)
                         (projects . 5)
 			(recents  . 5)
+			;; (list-of-packages-to-update . 10)
                         (bookmarks . 5)))
 )
 
