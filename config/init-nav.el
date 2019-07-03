@@ -48,6 +48,7 @@
   :ensure t
   :config
   (projectile-rails-global-mode)
+  (add-hook 'projectile-rails-mode-hook 'compilation-shell-minor-mode)
   (setq projectile-rails-vanilla-command "bin/rails")
   (setq projectile-rails-spring-command "bin/rails"))
 
@@ -71,7 +72,7 @@
   (setq company-idle-delay 0)
 )
 
-;; yasnippet
+;; Yasnippet
 (use-package yasnippet
   :ensure t
   :config

@@ -1,10 +1,10 @@
 ;; Remove window ui elements
-(menu-bar-mode -1) 
-(toggle-scroll-bar -1) 
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
 ;; Enable copy/past-ing from clipboard
-(setq x-select-enable-clipboard t)
+(setq select-enable-clipboard t)
 
 ;; Prefer UTF-8 encoding
 ;; (prefer-coding-system 'UTF-8)
@@ -56,30 +56,15 @@
   (when (not (member "all-the-icons" (font-family-list)))
     (all-the-icons-install-fonts t))
   )
-
-(use-package page-break-lines :ensure t)
-
-;; Test writing a dashboard widget
-(require 'dashboard-widgets)
-
-(defun list-of-packages-to-update(list-size)
-  (dashboard-insert-section
-   "Packages:"
-   (dashboard-subseq (auto-package-update-now)
-		     0 list-size)
-   list-size
-   "s"
-   `(lambda (&rest ignore) (describe-package ,el))
-   )
+(use-package all-the-icons-dired
+  :ensure t
+  :config
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+  :after all-the-icons
   )
 
-(defun dashboard-insert-list-of-packages-to-update (list-size)
-  (list-of-packages-to-update list-size))
-(add-to-list 'dashboard-item-generators '(list-of-packages-to-update . dashboard-insert-list-of-packages-to-update))
-(add-to-list 'dashboard-items '(list-of-packages-to-update . 1) t)
 
-;; This doesn't work right now I'm afraid
-(require 'dashboard-hackernews)
+(use-package page-break-lines :ensure t)
 
 (use-package dashboard
   :ensure t
@@ -87,17 +72,44 @@
   (dashboard-setup-startup-hook)
   ;; Neither working - but I'd like them to
   ;; (setq dashboard-set-navigator t)
-  ;; (setq show-week-agenda-p t)
+  (setq show-week-agenda-p t)
   (setq dashboard-set-heading-icons t)
+  (setq dashboard-banner-logo-title "This is my Emacs. There are many like it, but this one is mine. My Emacs is my best friend. It is my life. I must master it as I master my life. My Emacs, without me, is useless. Without my Emacs, I am useless.")
   (setq dashboard-center-content t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-footer nil)
   (setq dashboard-items '((agenda . 5)
-                        (projects . 5)
-			(recents  . 5)
-			(list-of-packages-to-update . 10)
-                        (bookmarks . 5)))
-)
+			  (projects . 5)
+			  (recents  . 5)
+			  (list-of-packages-to-update . 5)
+			  (bookmarks . 5)))
+  (dashboard-modify-heading-icons '((list-of-packages-to-update . "package")))
+  )
+
+;; Test writing a dashboard widget
+(require 'dashboard-widgets)
+
+;; refresh content asyncronously
+;; (package-refresh-contents t)
+
+(defun dashboard-insert-list-of-packages-to-update(list-size)
+  (dashboard-insert-section
+   "Packages:"
+   '("org" "tramp" "python" "dired" "timeclock")
+   list-size
+   "u"
+   `(lambda (&rest ignore) (describe-package (intern ,el)))
+   (format "%s" el)))
+
+;;(defun dashboard-insert-list-of-packages-to-update (list-size)
+;;  (list-of-packages-to-update list-size))
+(add-to-list 'dashboard-item-generators '(list-of-packages-to-update . dashboard-insert-list-of-packages-to-update))
+;;(add-to-list 'dashboard-items '(list-of-packages-to-update . 5) t)
+
+;; This doesn't work right now I'm afraid
+;; (require 'dashboard-hackernews)
+
+
 
 ;; Remove trailing whitespace after save when in programming mode
 (use-package ws-butler

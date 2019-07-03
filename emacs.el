@@ -27,8 +27,8 @@
 ;; Provides the ability to ensure system package dependencies are met
 (use-package use-package-ensure-system-package :ensure t)
 
-(add-to-list 'load-path "~/dev/auto-package-update.el")
-(require 'auto-package-update)
+;; (add-to-list 'load-path "~/dev/auto-package-update.el")
+;; (require 'auto-package-update)
 
 (load-file "~/.emacs.d/config/init-org.el")
 
@@ -53,7 +53,7 @@
     ("8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" default)))
  '(package-selected-packages
    (quote
-    (dashboard-hackernews use-package-ensure-system-package blacken yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme))))
+    (all-the-icons-dired use-package-ensure-system-package blacken yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

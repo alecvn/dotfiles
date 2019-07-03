@@ -1,3 +1,7 @@
+(use-package blacken
+  :ensure t
+  :ensure-system-package (black . "pip3 install black")
+)
 (use-package python
   :ensure t
   :init
@@ -7,7 +11,3 @@
          ("C-x , p" . pdb))
   )
 
-(use-package blacken
-  :ensure t
-  :ensure-system-package (black . "pip3 install black")
-)
