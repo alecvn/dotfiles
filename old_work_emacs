@@ -16,6 +16,7 @@
 (global-subword-mode 1) ;; correctly jump between words in CamelCase
 (global-visual-line-mode 1)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; org-mode
 (setq org-src-fontify-natively t)

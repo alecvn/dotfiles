@@ -1,0 +1,13 @@
+* emacs
+  http://cachestocaches.com/series/emacs-productivity/
+  http://emacslife.com/how-to-read-emacs-lisp.html
+  https://lupan.pl/dotemacs/
+  
+
+** org
+   https://orgmode.org/worg/orgcard.html
+   https://www.reddit.com/r/emacs/comments/c6bsop/ros_my_yet_another_orgmode_screenshot/
+
+
+** face
+   https://github.com/tonsky/FiraCode
