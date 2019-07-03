@@ -42,14 +42,12 @@
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode)
-  :ensure-system-package (black . "pip3 install pylint")
+  :ensure-system-package (pylint . "pip3 install pylint")
   )
 
 (use-package calmer-forest-theme :ensure t)
 
 (use-package shader-mode :ensure t)
-
-(use-package blacken :ensure t)
 
 ;; Requirements for dashboard
 (use-package all-the-icons
@@ -64,29 +62,21 @@
 ;; Test writing a dashboard widget
 (require 'dashboard-widgets)
 
-(defun list-of-packages-to-update()
-  ;; (let* ((commands (loop for s being the symbols
-  ;; 			 when (commandp s) collect s))
-  ;; 	 (command (nth (random (length commands)) commands)))
-  ;;   (insert
-  ;;    (format "** Tip of the day: ** \nCommand: %s\n\n%s\n\nInvoke with:\n\n"
-  ;; 	     (symbol-value 'command)
-  ;; 	     (documentation command))
-  ;;    )
-  ;;   (where-is command t))
+(defun list-of-packages-to-update(list-size)
   (dashboard-insert-section
    "Packages:"
    (dashboard-subseq (auto-package-update-now)
-                     0 list-size)
+		     0 list-size)
    list-size
-   "p"
-   `(lambda (&rest ignore) (find-file-existing ,el))
-   (abbreviate-file-name el)))
+   "s"
+   `(lambda (&rest ignore) (describe-package ,el))
+   )
+  )
 
-;; (defun dashboard-insert-list-of-packages-to-update (list-size)
-;;   (list-of-packages-to-update))
-;; (add-to-list 'dashboard-item-generators '(list-of-packages-to-update . dashboard-insert-list-of-packages-to-update))
-;; (add-to-list 'dashboard-items '(list-of-packages-to-update . 1) t)
+(defun dashboard-insert-list-of-packages-to-update (list-size)
+  (list-of-packages-to-update list-size))
+(add-to-list 'dashboard-item-generators '(list-of-packages-to-update . dashboard-insert-list-of-packages-to-update))
+(add-to-list 'dashboard-items '(list-of-packages-to-update . 1) t)
 
 ;; This doesn't work right now I'm afraid
 (require 'dashboard-hackernews)
@@ -105,7 +95,7 @@
   (setq dashboard-items '((agenda . 5)
                         (projects . 5)
 			(recents  . 5)
-			;; (list-of-packages-to-update . 10)
+			(list-of-packages-to-update . 10)
                         (bookmarks . 5)))
 )
 
