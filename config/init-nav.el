@@ -64,6 +64,7 @@
 (use-package company
   :ensure t
   :config
+  (use-package company-tern :ensure t)
   (add-hook 'after-init-hook 'global-company-mode)
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-tern)

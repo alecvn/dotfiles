@@ -52,71 +52,59 @@
 ;; Requirements for dashboard
 (use-package all-the-icons
   :ensure t
+  :init
+  (use-package all-the-icons-dired
+    :ensure t
+    :config
+    (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+    :after all-the-icons
+    )
   :config
   (when (not (member "all-the-icons" (font-family-list)))
     (all-the-icons-install-fonts t))
   )
-(use-package all-the-icons-dired
-  :ensure t
-  :config
-  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-  :after all-the-icons
-  )
-
-
-(use-package page-break-lines :ensure t)
 
 (use-package dashboard
   :ensure t
+  :init
+  (use-package page-break-lines :ensure t)
+  ;; (use-package dashboard-hackernews :ensure t)
+  :custom
+  (show-week-agenda-p t)
+  (dashboard-set-heading-icons t)
+  (dashboard-banner-logo-title "This is my Emacs. There are many like it, but this one is mine. My Emacs is my best friend. It is my life. I must master it as I master my life. My Emacs, without me, is useless. Without my Emacs, I am useless.")
+  (dashboard-center-content t)
+  (dashboard-set-file-icons t)
+  (dashboard-set-footer nil)
   :config
-  (dashboard-setup-startup-hook)
-  ;; Neither working - but I'd like them to
-  ;; (setq dashboard-set-navigator t)
-  (setq show-week-agenda-p t)
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-banner-logo-title "This is my Emacs. There are many like it, but this one is mine. My Emacs is my best friend. It is my life. I must master it as I master my life. My Emacs, without me, is useless. Without my Emacs, I am useless.")
-  (setq dashboard-center-content t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-set-footer nil)
+  (require 'dashboard-widgets)
+  ;; refresh content asyncronously
+  ;; (package-refresh-contents t)
+  ;; (add-hook 'post-command-hook #'dashboard-refresh-buffer)
+
+  (load-file  "~/.emacs.d/config/update-package.el")
+  (require 'update-package)
+
+  (defun dashboard-insert-list-of-packages-to-update(list-size)
+    (insert (all-the-icons-faicon "upload" :height 1.2 :v-adjust 0.0 :face 'dashboard-heading))
+    (dashboard-insert-section
+     "Package upgrades available:"
+     (my-packages-to-install)
+     list-size
+     "u"
+     `(lambda (&rest ignore)
+    	(package-install-from-archive (cadr (assoc ',el package-archive-contents)))
+    	(dashboard-refresh-buffer))
+     (format "%s" el)))
+
+    (add-to-list 'dashboard-item-generators '(list-of-packages-to-update . dashboard-insert-list-of-packages-to-update))
+
   (setq dashboard-items '((agenda . 5)
 			  (projects . 5)
 			  (recents  . 5)
-			  (list-of-packages-to-update . 20)
-			  (bookmarks . 5)))
-  (dashboard-modify-heading-icons '((list-of-packages-to-update . "package")))
-  )
+			  (list-of-packages-to-update . 20)))
+  (dashboard-setup-startup-hook))
 
-;; Test writing a dashboard widget
-(require 'dashboard-widgets)
-
-;; refresh content asyncronously
-;; (package-refresh-contents t)
-;; (add-hook 'post-command-hook #'dashboard-refresh-buffer)
-
-
-(load-file  "~/id/auto-package-update.el/auto-package-update.el")
-(require 'auto-package-update)
-;; ("org" "tramp" "python" "dired" "timeclock")
-(defun dashboard-insert-list-of-packages-to-update(list-size)
-  (dashboard-insert-section
-   "Package upgrades available:"
-   (auto-package-update-now)
-   list-size
-   "u"
-   `(lambda (&rest ignore)
-      (package-install-from-archive (cadr (assoc (intern ,el) package-archive-contents)))
-      (dashboard-refresh-buffer))
-      ;; (package-delete (car (cdr (assoc (intern ,el) package-alist))))
-      ;; (package-install (intern ,el)))
-   (format "%s" el)))
-
-;;(defun dashboard-insert-list-of-packages-to-update (list-size)
-;;  (list-of-packages-to-update list-size))
-(add-to-list 'dashboard-item-generators '(list-of-packages-to-update . dashboard-insert-list-of-packages-to-update))
-;;(add-to-list 'dashboard-items '(list-of-packages-to-update . 5) t)
-
-;; This doesn't work right now I'm afraid
-;; (require 'dashboard-hackernews)
 
 
 

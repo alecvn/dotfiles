@@ -127,3 +127,51 @@
 ;; (projectile-global-mode)
 ;; (setq projectile-completion-system 'helm)
 ;; (helm-projectile-on)
+
+
+
+
+(concat (all-the-icons-octicon "package" :height 1.1 :v-adjust 0.01)
+
+
+(defmacro dashboard-insert-my-section(list action &rest rest)
+    (message "%S" `list)
+    (message "%S" `action)
+    (message "%S" `@rest)
+    `(when (car ,list)
+       (mapc
+	(lambda (el)
+	  (let ((tag ,@rest))
+	    (insert "\n    ")
+
+	    (setq tag (concat icon " " ,@rest))))
+
+	(widget-create 'item
+		       :tag tag
+		       :action ,action
+		       :mouse-face 'highlight
+		       :button-prefix ""
+		       :button-suffix ""
+		       :format "%[%t%]")))
+    ,list)
+
+  (defun dashboard-insert-list-of-packages-to-update(list-size)
+    (insert (all-the-icons-faicon "upload" :height 1.2 :v-adjust 0.0 :face 'dashboard-heading))
+    (insert " Package upgrades available:")
+    (dashboard-insert-my-section
+     (dashboard-subseq ,(auto-package-update-now) 0 ,list-size)
+     (lambda (&rest ignore)
+       (package-install-from-archive (cadr (assoc (intern ,el) package-archive-contents)))
+       (dashboard-refresh-buffer))
+     (concat (all-the-icons-octicon "package" :height 1.1 :v-adjust 0.01 :face 'dashboard-heading) (format "%s" el)))
+
+    ;; (dashboard-insert-section
+    ;;  "Package upgrades available:"
+    ;;  (auto-package-update-now)
+    ;;  list-size
+    ;;  "u"
+    ;;  `(lambda (&rest ignore)
+    ;; 	(package-install-from-archive (cadr (assoc (intern ,el) package-archive-contents)))
+    ;; 	(dashboard-refresh-buffer))
+    ;;  (concat (all-the-icons-octicon "package" :height 1.1 :v-adjust 0.01 :face 'dashboard-heading) (format "%s" el)))
+    )
