@@ -1,6 +1,6 @@
 (use-package blacken
   :ensure t
-  :ensure-system-package (black . "pip3 install black")
+  ;;:ensure-system-package (black . "pip3 install black")
 )
 (use-package python
   :ensure t

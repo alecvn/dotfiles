@@ -42,7 +42,7 @@
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode)
-  :ensure-system-package (pylint . "pip3 install pylint")
+  ;;:ensure-system-package (pylint . "pip3 install pylint")
   )
 
 (use-package calmer-forest-theme :ensure t)
@@ -81,7 +81,7 @@
   (setq dashboard-items '((agenda . 5)
 			  (projects . 5)
 			  (recents  . 5)
-			  (list-of-packages-to-update . 5)
+			  (list-of-packages-to-update . 20)
 			  (bookmarks . 5)))
   (dashboard-modify-heading-icons '((list-of-packages-to-update . "package")))
   )
@@ -91,14 +91,23 @@
 
 ;; refresh content asyncronously
 ;; (package-refresh-contents t)
+;; (add-hook 'post-command-hook #'dashboard-refresh-buffer)
 
+
+(load-file  "~/id/auto-package-update.el/auto-package-update.el")
+(require 'auto-package-update)
+;; ("org" "tramp" "python" "dired" "timeclock")
 (defun dashboard-insert-list-of-packages-to-update(list-size)
   (dashboard-insert-section
-   "Packages:"
-   '("org" "tramp" "python" "dired" "timeclock")
+   "Package upgrades available:"
+   (auto-package-update-now)
    list-size
    "u"
-   `(lambda (&rest ignore) (describe-package (intern ,el)))
+   `(lambda (&rest ignore)
+      (package-install-from-archive (cadr (assoc (intern ,el) package-archive-contents)))
+      (dashboard-refresh-buffer))
+      ;; (package-delete (car (cdr (assoc (intern ,el) package-alist))))
+      ;; (package-install (intern ,el)))
    (format "%s" el)))
 
 ;;(defun dashboard-insert-list-of-packages-to-update (list-size)
