@@ -64,11 +64,19 @@
     (all-the-icons-install-fonts t))
   )
 
+(use-package auto-package-update :ensure t)
+
+;; refresh content asyncronously
+;; (package-refresh-contents t)
+;; (add-hook 'post-command-hook #'dashboard-refresh-buffer)
 (use-package dashboard
   :ensure t
   :init
   (use-package page-break-lines :ensure t)
   ;; (use-package dashboard-hackernews :ensure t)
+  :demand
+  :bind (:map dashboard-mode-map
+	      ("C-c r" . auto-package-update-now))
   :custom
   (show-week-agenda-p t)
   (dashboard-set-heading-icons t)
@@ -76,12 +84,17 @@
   (dashboard-center-content t)
   (dashboard-set-file-icons t)
   (dashboard-set-footer nil)
+  (dashboard-set-navigator t)
+  (dashboard-navigator-buttons
+   `(
+     ((,(and (display-graphic-p)
+	     (all-the-icons-faicon "upload" :height 1.2 :v-adjust 0.0))
+       "Update"
+       "Update emacs"
+       (lambda (&rest _) (auto-package-update-now)))
+      )))
   :config
   (require 'dashboard-widgets)
-  ;; refresh content asyncronously
-  ;; (package-refresh-contents t)
-  ;; (add-hook 'post-command-hook #'dashboard-refresh-buffer)
-
   (load-file  "~/.emacs.d/config/update-package.el")
   (require 'update-package)
 
