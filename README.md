@@ -3,12 +3,12 @@ Latest desktop environment configuration
 
 ## Installation
 
-### 1. Install Kubuntu 18.04
+#### 1. Install Kubuntu 18.04
 
-### 2. Install i3-gaps
+#### 2. Install i3-gaps
 https://github.com/Airblader/i3
 
-### 3. Follow guide to configure i3-gaps sitting on top of Plasma
+#### 3. Follow guide to configure i3-gaps sitting on top of Plasma
 https://github.com/avivace/dotfiles
 - Copy i3 config
 - Copy plasma-workspace bash file
@@ -108,8 +108,4 @@ You need the `update-package.el` file inside the `config` directory for per pack
 
 
 ## Additional software
-Install lastfm scrobbler
-https://github.com/lastfm/lastfm-desktop
-
-Install Mellow Player
 https://colinduquesnoy.gitlab.io/MellowPlayer/
