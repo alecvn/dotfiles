@@ -36,7 +36,7 @@ Symlink the config files
 	
 ### Configuring emacs-dashboard
 
-This is my customized version of [emacs-dashboard]: https://github.com/emacs-dashboard/emacs-dashboard and includes a section for displaying outdated packages.  Navigation options like section shortcuts are available.
+This is my customized version of [emacs-dashboard](https://github.com/emacs-dashboard/emacs-dashboard) and includes a section for displaying outdated packages.  Navigation options like section shortcuts are available.
 
 To interact with the package update manager, your options are:
 
