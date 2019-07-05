@@ -36,8 +36,15 @@ Symlink the config files
 	
 ### Configuring emacs-dashboard
 
-You need the `update-package.el` file inside the `config` folder for the package updating to work.
+This is my customized version of [emacs-dashboard]: https://github.com/emacs-dashboard/emacs-dashboard and includes a section for displaying outdated packages.  Navigation options like section shortcuts are available.
 
+To interact with the package update manager, your options are:
+
+- `C-c r` or click/`Enter` on the `Refresh` button to have your package archive refreshed asynchonously.
+- `C-c u` or click/`Enter` on the `Update` button to upgrade all your packages.
+- go to the "Package upgrades available:" section with shortcut `u` and `Enter` on a package to upgrade.
+
+You need the `update-package.el` file inside the `config` directory for per package updating to work.  If you place it somewhere other than `~/.emacs.d/config` you will need to update the `load-file` line that sources it accordingly.
 
 	(use-package dashboard
 	  :ensure t
@@ -50,7 +57,6 @@ You need the `update-package.el` file inside the `config` folder for the package
 		  (all-the-icons-install-fonts t)))
 	  (use-package auto-package-update :ensure t)
 	  (use-package page-break-lines :ensure t)
-	  ;; (use-package dashboard-hackernews :ensure t)
 	  :demand
 	  :bind (:map dashboard-mode-map
 			  ("C-c r" . (lambda () (interactive) (package-refresh-contents t)))
