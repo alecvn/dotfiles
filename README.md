@@ -33,6 +33,8 @@ Symlink the config files
     ln -s ~/dotfiles/emacs.el ~/.emacs.d/init.el
     ln -s ~/dotfiles/i3_config ~/.config/i3/config
     ln -s ~/dotfiles/config ~/.emacs.d/config
+	ln -s ~/dotfiles/org-templates ~/.emacs.d/org-templates
+
 	
 ### Configuring emacs-dashboard
 
