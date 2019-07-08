@@ -7,8 +7,12 @@
 ;; Silversearcher
 (use-package ag :ensure t)
 
+
 ;; Git version control
-(use-package magit :ensure t)
+(use-package magit
+  :ensure t
+  :init
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 ;; Provides versions of common Emacs commands which use Ivy
 (use-package counsel :ensure t)
