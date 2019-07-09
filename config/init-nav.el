@@ -7,6 +7,8 @@
 ;; Silversearcher
 (use-package ag :ensure t)
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; Git version control
 (use-package magit :ensure t)
 
