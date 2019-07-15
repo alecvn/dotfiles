@@ -57,23 +57,25 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (rear-nonsticky t display
-			 (raise -0.288)
-			 font-lock-face
-			 (:family "Material Icons" :height 1.44)
-			 face
-			 (:family "Material Icons" :height 1.44)))
+	 (face
+	  (:family "Material Icons" :height 1.44)
+	  font-lock-face
+	  (:family "Material Icons" :height 1.44)
+	  display
+	  (raise -0.288)
+	  rear-nonsticky t))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (rear-nonsticky t display
-			 (raise 0.0)
-			 font-lock-face
-			 (:family "FontAwesome" :height 1.44)
-			 face
-			 (:family "FontAwesome" :height 1.44)))
+	 (face
+	  (:family "FontAwesome" :height 1.44)
+	  font-lock-face
+	  (:family "FontAwesome" :height 1.44)
+	  display
+	  (raise 0.0)
+	  rear-nonsticky t))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -82,7 +84,6 @@
  '(dashboard-set-footer nil)
  '(dashboard-set-heading-icons t)
  '(dashboard-set-navigator t)
- '(org-agenda-files nil)
  '(package-selected-packages
    (quote
     (dashboard-hackernews company-tern all-the-icons-dired use-package-ensure-system-package blacken yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme)))

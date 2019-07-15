@@ -44,3 +44,7 @@
 	  ("l" "Today I Learned"
 	   entry (file+datetree org-default-notes-file "TIL")
 	   (file "~/.emacs.d/org-templates/til.orgcaptmpl")  :empty-lines 1))))
+
+(use-package org-crypt
+  :init
+  (global-set-key [C-f5] (lambda() (interactive) (epa-decrypt-region (region-beginning) (region-end)))))
