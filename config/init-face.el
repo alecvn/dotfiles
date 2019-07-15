@@ -32,7 +32,7 @@
 (set-frame-parameter (selected-frame) 'alpha '(90 . 80))
 (add-to-list 'default-frame-alist '(alpha . (90 . 80)))
 
-;; Emacs session state management
+;; Emacs session management
 (global-set-key (kbd "<C-f1>") 'desktop-save)
 (global-set-key (kbd "<C-f2>") 'desktop-read)
 (global-set-key (kbd "<C-f3>") 'desktop-clear)

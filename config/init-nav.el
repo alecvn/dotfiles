@@ -4,8 +4,13 @@
 ;; Provides class and method overview
 (global-set-key (kbd "M-i") 'imenu)
 
+
 ;; Silversearcher
-(use-package ag :ensure t)
+(use-package ag
+  :ensure t
+  :config
+  (setq ag-highlight-search t)
+  (add-hook 'ag-mode-hook 'toggle-truncate-lines))
 
 ;; Git version control
 (use-package magit
@@ -34,17 +39,21 @@
   :ensure t
   :config
   (projectile-global-mode)
-  (projectile-mode +1)
+  (projectile-mode +1))
+
+(use-package counsel-projectile
+  :ensure t
+  :config
+  (counsel-projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (setq projectile-completion-system 'ivy)
-  (setq projectile-switch-project-action 'projectile-commander)
+  (setq counsel-projectile-switch-project 'projectile-commander)
   (def-projectile-commander-method ?s
     "Open a *shell* buffer for the project."
     (projectile-run-shell))
   (def-projectile-commander-method ?d
     "Open project root in dired."
-    (projectile-dired))
-)
+    (projectile-dired)))
 
 ;; Projects on Rails
 (use-package projectile-rails
