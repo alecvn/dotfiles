@@ -30,7 +30,8 @@
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
 	'(("c" "Item to Current Clocked Task"
-	   item (clock) "%i%?" :empty-lines 1)
+	   item (clock)
+	   "%i%?" :empty-lines 1)
 	  ("a" "Append"
 	   checkitem (file+function org-default-notes-file org-ask-location)
 	   "[ ] Additionally %?\n %u\n  %a" :empty-lines 1)
@@ -40,6 +41,6 @@
 	  ("j" "Journal entry"
 	   entry (file+datetree "~/org/journal.org")
 	   (file "~/.emacs.d/org-templates/journal.orgcaptmpl") :empty-lines 1)
-	  ("b" "Titbit: quote, zinger, one-liner, textlet, code snippet"
-	   entry (file+headline org-default-notes-file "Titbits")
-	   (file "~/.emacs.d/org-templates/titbit.orgcaptmpl")  :empty-lines 1))))
+	  ("l" "Today I Learned"
+	   entry (file+datetree org-default-notes-file "TIL")
+	   (file "~/.emacs.d/org-templates/til.orgcaptmpl")  :empty-lines 1))))
