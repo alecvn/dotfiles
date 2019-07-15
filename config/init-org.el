@@ -6,19 +6,43 @@
   (setq org-src-fontify-natively t)
   (setq org-agenda-files '("~/org")))
 
+
+
+
+(defun org-ask-location ()
+  (let* ((org-refile-targets '((nil :maxlevel . 9)))
+         (hd (condition-case nil
+                 (car (org-refile-get-location "Headline" nil t))
+               (error (car org-refile-history)))))
+    (goto-char (point-min))
+    (outline-next-heading)
+    (if (re-search-forward
+         (format org-complex-heading-regexp-format (regexp-quote hd))
+         nil t)
+        (goto-char (point-at-bol))
+      (goto-char (point-max))
+      (or (bolp) (insert "\n"))
+      (insert "* " hd "\n")))
+    (end-of-line))
+
 (use-package org-capture
   :init
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
-	'(("t" "Task"
+	'(("c" "Item to Current Clocked Task"
+	   item (clock) "%i%?" :empty-lines 1)
+	  ("a" "Append"
+	   checkitem (file+function org-default-notes-file org-ask-location)
+	   "[ ] Additionally %?\n %u\n  %a" :empty-lines 1)
+	  ("t" "Task"
 	   entry (file+headline org-default-notes-file "Tasks")
-	   "* TODO %?\n  %t\n  %a")
+	   "* TODO %?\n  %u\n  %a" :empty-lines 1)
 	  ("j" "Journal entry"
 	   entry (file+datetree "~/org/journal.org")
-	   (file "~/.emacs.d/org-templates/journal.orgcaptmpl"))
+	   (file "~/.emacs.d/org-templates/journal.orgcaptmpl") :empty-lines 1)
 	  ("b" "Titbit: quote, zinger, one-liner, textlet, code snippet"
 	   entry (file+headline org-default-notes-file "Titbits")
-	   (file "~/.emacs.d/org-templates/titbit.orgcaptmpl")))))
+	   (file "~/.emacs.d/org-templates/titbit.orgcaptmpl")  :empty-lines 1))))
 
 (use-package org-crypt
   :init
