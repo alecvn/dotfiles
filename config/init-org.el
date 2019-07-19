@@ -4,9 +4,8 @@
   (setq org-return-follows-link t)
   :config
   (setq org-src-fontify-natively t)
-  (setq org-agenda-files '("~/org")))
-
-
+  (setq org-refile-targets
+	'((org-agenda-files . (:maxlevel . 3)))))
 
 
 (defun org-ask-location ()

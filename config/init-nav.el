@@ -43,6 +43,11 @@
 
 (use-package counsel-projectile
   :ensure t
+  :init
+  (setq counsel-projectile-org-capture-templates
+	'(("t" "Task"
+	   entry (file+olp "~/org/gtd/id-${name}.org" "DEVELOPMENT")
+	   "* TODO %?\n  %u\n  %a" :empty-lines 1)))
   :config
   (counsel-projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
