@@ -51,8 +51,13 @@
   (def-projectile-commander-method ?g
     "Run magit-status on project."
     (magit-status))
-  (use-package counsel-projectile :ensure t)
-)
+  (use-package counsel-projectile
+    :ensure t
+    :init
+    (setq counsel-projectile-org-capture-templates
+	'(("w" "Work task"
+	   entry (file+olp "~/org/gtd/id-${name}.org" "DEVELOPMENT")
+	   "* TODO %?\n  %u\n  %a" :empty-lines 1)))))
 
 ;; Projects on Rails
 (use-package projectile-rails
