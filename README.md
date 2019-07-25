@@ -110,6 +110,9 @@ You need the `update-package.el` file inside the `config` directory for per pack
 	  (dashboard-setup-startup-hook))
 
 
+### Org-capture
+TBC
+
 
 ## Additional software
 https://colinduquesnoy.gitlab.io/MellowPlayer/
