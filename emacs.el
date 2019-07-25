@@ -33,8 +33,9 @@
 (load-file "~/.emacs.d/config/init-org.el")
 
 (load-file "~/.emacs.d/config/init-face.el")
+(load-file "~/.emacs.d/config/init-completion.el")
 (load-file "~/.emacs.d/config/init-nav.el")
-
+(load-file "~/.emacs.d/config/init-git.el")
 (load-file "~/.emacs.d/config/init-shell.el")
 
 (load-file "~/.emacs.d/config/init-ruby.el")

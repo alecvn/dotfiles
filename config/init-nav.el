@@ -4,7 +4,6 @@
 ;; Provides class and method overview
 (global-set-key (kbd "M-i") 'imenu)
 
-
 ;; Silversearcher
 (use-package ag
   :ensure t
@@ -12,53 +11,53 @@
   (setq ag-highlight-search t)
   (add-hook 'ag-mode-hook 'toggle-truncate-lines))
 
-;; Git version control
-(use-package magit
+;; Provides versions of common Emacs commands which use Ivy
+(use-package counsel
   :ensure t
   :init
-  (global-set-key (kbd "C-x g") 'magit-status))
-
-;; Provides versions of common Emacs commands which use Ivy
-(use-package counsel :ensure t)
+  (global-set-key (kbd "M-y") 'counsel-yank-pop))
 
 ;; iSearcher with an overview
 (use-package swiper
   :ensure t
   :bind (("C-s" . swiper)))
-
-;; Completion mechanism
-(use-package ivy
-  :ensure t
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t))
+(global-set-key (kbd "C-s") (lambda () (interactive)
+			      (swiper (format "%s" (let ((sym (thing-at-point 'symbol))) (if sym sym ""))))))
 
 ;; Project viewer
 (use-package projectile
   :ensure t
-  :config
-  (projectile-global-mode)
-  (projectile-mode +1))
-
-(use-package counsel-projectile
-  :ensure t
   :init
-  (setq counsel-projectile-org-capture-templates
-	'(("t" "Task"
-	   entry (file+olp "~/org/gtd/id-${name}.org" "DEVELOPMENT" "sprint2714 Inbox")
-	   "* TODO %?\n  %u\n  %a" :empty-lines 1)))
-  :config
-  (counsel-projectile-mode)
+  (projectile-global-mode)
+  (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p s") 'counsel-projectile-ag)
+  (define-key projectile-mode-map (kbd "C-c p x") 'projectile-compile-project)
+  (define-key projectile-mode-map (kbd "C-c p c") 'counsel-projectile-org-capture)
   (setq projectile-completion-system 'ivy)
-  (setq counsel-projectile-switch-project 'projectile-commander)
+  (setq projectile-switch-project-action 'projectile-commander)
   (def-projectile-commander-method ?s
-    "Open a *shell* buffer for the project."
-    (projectile-run-shell))
+    "Open a *eshell* buffer for the project."
+    (projectile-run-eshell))
+  (def-projectile-commander-method ?x
+    "Run `compile' in the project."
+    (projectile-compile-project nil))
   (def-projectile-commander-method ?d
     "Open project root in dired."
-    (projectile-dired)))
+    (projectile-dired))
+  (def-projectile-commander-method ?a
+    "Run ag on project."
+    (counsel-projectile-ag))
+  (def-projectile-commander-method ?g
+    "Run magit-status on project."
+    (magit-status))
+  (use-package counsel-projectile
+    :ensure t
+    :init
+    (setq counsel-projectile-org-capture-templates
+	  '(("w" "Task"
+	     entry (file+olp "~/org/gtd/id-${name}.org" "DEVELOPMENT" "sprint2714 Inbox")
+	     "* TODO %?\n  %u\n  %a" :empty-lines 1)))))
 
 ;; Projects on Rails
 (use-package projectile-rails
@@ -68,32 +67,3 @@
   (add-hook 'projectile-rails-mode-hook 'compilation-shell-minor-mode)
   (setq projectile-rails-vanilla-command "bin/rails")
   (setq projectile-rails-spring-command "bin/rails"))
-
-;; ido
-(use-package ido
-  :ensure t
-  :config
-  (ido-mode t)
-  (setq ido-separator "\n")
-  (setq ido-use-filename-at-point 'guess))
-
-;; Company
-(use-package company
-  :ensure t
-  :config
-  (use-package company-tern :ensure t)
-  (add-hook 'after-init-hook 'global-company-mode)
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-tern)
-    (global-set-key (kbd "M-SPC") 'company-complete)
-    )
-  (setq company-idle-delay 0)
-)
-
-;; Yasnippet
-(use-package yasnippet
-  :ensure t
-  :config
-  (setq yas-snippet-dirs
-	'("/home/alec/.emacs.d/elpa/yasnippet-snippets-20190513.1049/snippets"))
-  (yas-global-mode 1))
