@@ -46,7 +46,7 @@
   :init
   (setq counsel-projectile-org-capture-templates
 	'(("t" "Task"
-	   entry (file+olp "~/org/gtd/id-${name}.org" "DEVELOPMENT")
+	   entry (file+olp "~/org/gtd/id-${name}.org" "DEVELOPMENT" "sprint2714 Inbox")
 	   "* TODO %?\n  %u\n  %a" :empty-lines 1)))
   :config
   (counsel-projectile-mode)

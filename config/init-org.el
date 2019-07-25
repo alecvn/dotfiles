@@ -2,6 +2,7 @@
   :init
   (setq org-export-coding-system 'utf-8)
   (setq org-return-follows-link t)
+  (setq org-agenda-files (list "~/org/gtd/" "~/org/"))
   :config
   (setq org-src-fontify-natively t)
   (setq org-refile-targets
@@ -36,6 +37,9 @@
 	   "[ ] Additionally %?\n %u\n  %a" :empty-lines 1)
 	  ("t" "Task"
 	   entry (file+headline org-default-notes-file "Tasks")
+	   "* TODO %?\n  %u\n  %a" :empty-lines 1)
+	  ("m" "Music"
+	   entry (file+headline org-default-notes-file "Music")
 	   "* TODO %?\n  %u\n  %a" :empty-lines 1)
 	  ("j" "Journal entry"
 	   entry (file+datetree "~/org/journal.org")
