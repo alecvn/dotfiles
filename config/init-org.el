@@ -1,5 +1,6 @@
 (use-package org
   :init
+  (global-set-key (kbd "C-c a") 'org-agenda)
   (setq org-export-coding-system 'utf-8)
   (setq org-return-follows-link t)
   :config
@@ -34,7 +35,7 @@
 	   "%i%?" :empty-lines 1)
 	  ("a" "Append"
 	   checkitem (file+function org-default-notes-file org-ask-location)
-	   "[ ] Additionally %?\n %u\n  %a" :empty-lines 1)
+	   "[ ] Additionally %?\n %u\n  %a")
 	  ("t" "Task"
 	   entry (file+headline org-default-notes-file "Tasks")
 	   "* TODO %?\n  %u\n  %a" :empty-lines 1)
