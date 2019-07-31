@@ -21,8 +21,8 @@
 (use-package swiper
   :ensure t
   :bind (("C-s" . swiper)))
-(global-set-key (kbd "C-s") (lambda () (interactive)
-			      (swiper (format "%s" (let ((sym (thing-at-point 'symbol))) (if sym sym ""))))))
+;;(global-set-key (kbd "C-s") (lambda () (interactive)
+;;			      (swiper (format "%s" (let ((sym (thing-at-point 'symbol))) (if sym sym ""))))))
 
 ;; Project viewer
 (use-package projectile
