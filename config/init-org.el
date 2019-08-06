@@ -6,8 +6,17 @@
   :config
   (setq org-src-fontify-natively t)
   (setq org-refile-targets
-	'((org-agenda-files . (:maxlevel . 3)))))
-
+	'((org-agenda-files . (:maxlevel . 3))))
+  (setq mytimer (run-with-timer 3000 3000 'invert-face 'mode-line))
+  (add-hook 'org-mode-hook (lambda ()
+			     (defadvice org-clock-in (after org-clock-in-after activate)
+			       (cancel-timer mytimer)
+			       (setq mytimer nil)
+			       (setq mytimer (run-with-timer 3000 3000 'invert-face 'mode-line)))
+			     (defadvice org-clock-out (after org-clock-out-after activate)
+			       (cancel-timer mytimer)
+			       (setq mytimer nil)
+			       (setq mytimer (run-with-timer 3000 3000 'invert-face 'mode-line))))))
 
 (defun org-ask-location ()
   (let* ((org-refile-targets '((nil :maxlevel . 9)))
