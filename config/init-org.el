@@ -1,22 +1,31 @@
+(defun start-my-timer ()
+  (interactive)
+  (setq mytimer (run-with-timer 0 3000 'org-capture)))
+
+(defun cancel-my-timer ()
+  (interactive)
+  (cancel-timer mytimer)
+  (setq mytimer nil))
+
 (use-package org
   :init
   (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c t") 'start-my-timer)
+  (global-set-key (kbd "C-c s") 'cancel-my-timer)
+
   (setq org-export-coding-system 'utf-8)
   (setq org-return-follows-link t)
   :config
   (setq org-src-fontify-natively t)
   (setq org-refile-targets
 	'((org-agenda-files . (:maxlevel . 3))))
-  (setq mytimer (run-with-timer 3000 3000 'invert-face 'mode-line))
   (add-hook 'org-mode-hook (lambda ()
 			     (defadvice org-clock-in (after org-clock-in-after activate)
-			       (cancel-timer mytimer)
-			       (setq mytimer nil)
-			       (setq mytimer (run-with-timer 3000 3000 'invert-face 'mode-line)))
+			       (cancel-my-timer)
+			       (start-my-timer))
 			     (defadvice org-clock-out (after org-clock-out-after activate)
-			       (cancel-timer mytimer)
-			       (setq mytimer nil)
-			       (setq mytimer (run-with-timer 3000 3000 'invert-face 'mode-line))))))
+			       (cancel-my-timer)
+			       (start-my-timer)))))
 
 (defun org-ask-location ()
   (let* ((org-refile-targets '((nil :maxlevel . 9)))
@@ -42,16 +51,16 @@
 	   item (clock)
 	   "%i%?" :empty-lines 1)
 	  ("a" "Append"
-	   checkitem (file+function org-default-notes-file org-ask-location)
+	   checkitem (file+function "~/org/todo.org" org-ask-location)
 	   "[ ] Additionally %?\n %u\n  %a")
 	  ("t" "Task"
-	   entry (file+headline org-default-notes-file "Tasks")
+	   entry (file+headline "~/org/todo.org" "Tasks")
 	   "* TODO %?\n  %u\n  %a" :empty-lines 1)
 	  ("j" "Journal entry"
 	   entry (file+datetree "~/org/journal.org")
 	   (file "~/.emacs.d/org-templates/journal.orgcaptmpl") :empty-lines 1)
 	  ("l" "Today I Learned"
-	   entry (file+datetree org-default-notes-file "TIL")
+	   entry (file+datetree "~/org/til.org" "TIL")
 	   (file "~/.emacs.d/org-templates/til.orgcaptmpl")  :empty-lines 1))))
 
 (use-package org-crypt
