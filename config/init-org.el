@@ -46,7 +46,7 @@
 	   entry (file+datetree "~/org/journal.org")
 	   (file "~/.emacs.d/org-templates/journal.orgcaptmpl") :empty-lines 1)
 	  ("l" "Today I Learned"
-	   entry (file+datetree org-default-notes-file "TIL")
+	   entry (file+datetree "~/org/til.org" "TIL")
 	   (file "~/.emacs.d/org-templates/til.orgcaptmpl")  :empty-lines 1))))
 
 (use-package org-crypt

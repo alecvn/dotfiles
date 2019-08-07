@@ -30,6 +30,10 @@
 ;; (add-to-list 'load-path "~/dev/auto-package-update.el")
 ;; (require 'auto-package-update)
 
+;;(server-start)
+;;(use-package org-protocol
+;;  :ensure t)
+
 (load-file "~/.emacs.d/config/init-org.el")
 
 (load-file "~/.emacs.d/config/init-face.el")

@@ -4,6 +4,8 @@
 ;; Provides class and method overview
 (global-set-key (kbd "M-i") 'imenu)
 
+(setq mouse-yank-at-point t)
+
 ;; Silversearcher
 (use-package ag
   :ensure t
