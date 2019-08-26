@@ -19,6 +19,8 @@
   :init
   (global-set-key (kbd "M-y") 'counsel-yank-pop))
 
+(use-package wgrep :ensure t)
+
 ;; iSearcher with an overview
 (use-package swiper
   :ensure t
@@ -34,13 +36,14 @@
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p s") 'counsel-projectile-ag)
+  (define-key projectile-mode-map (kbd "C-c p e") 'projectile-run-shell)
   (define-key projectile-mode-map (kbd "C-c p x") 'projectile-compile-project)
   (define-key projectile-mode-map (kbd "C-c p c") 'counsel-projectile-org-capture)
   (setq projectile-completion-system 'ivy)
   (setq projectile-switch-project-action 'projectile-commander)
   (def-projectile-commander-method ?s
     "Open a *eshell* buffer for the project."
-    (projectile-run-eshell))
+    (projectile-run-shell))
   (def-projectile-commander-method ?x
     "Run `compile' in the project."
     (projectile-compile-project nil))

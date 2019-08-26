@@ -1,11 +1,12 @@
 (defun start-my-timer ()
   (interactive)
-  (setq mytimer (run-with-timer 0 3000 'org-capture)))
+  (setq mytimer (run-with-timer 0 3000 'counsel-projectile-org-capture)))
 
 (defun cancel-my-timer ()
   (interactive)
-  (cancel-timer mytimer)
-  (setq mytimer nil))
+  (when (boundp 'mytimer)
+    (cancel-timer mytimer)
+    (setq mytimer nil)))
 
 (use-package org
   :init
@@ -25,8 +26,7 @@
 			       (cancel-my-timer)
 			       (start-my-timer))
 			     (defadvice org-clock-out (after org-clock-out-after activate)
-			       (cancel-my-timer)
-			       (start-my-timer)))))
+			       (cancel-my-timer)))))
 
 (defun org-ask-location ()
   (let* ((org-refile-targets '((nil :maxlevel . 9)))
