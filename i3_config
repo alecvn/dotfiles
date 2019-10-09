@@ -211,7 +211,7 @@ bindsym $mod+m [title=".MellowPlayer*"] scratchpad show
 
 
 for_window [class="konsole"] move scratchpad
-for_window [class="konsole"] move position 767px -130px
+for_window [class="konsole"] move position 1200px 30px
 bindsym $mod+c [class="konsole"] scratchpad show
 for_window [class="konsole"] resize set width 700 px height 900 px
 
@@ -225,7 +225,7 @@ bindsym $mod+minus scratchpad show
 exec --no-startup-id wmctrl -c Plasma
 for_window [title="Desktop — Plasma"] kill, floating enable, border none
 
-no_focus [class="^plasmashell$"]
+no_focus [id="^Plasma$"]
 
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows
