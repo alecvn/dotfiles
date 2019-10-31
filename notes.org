@@ -1,0 +1,14 @@
+* ivy
+** search
+  wherever ivy completion is used (ag, projectile, swiper, etc) you can use `!` to remove things from search
+  ex.
+  
+  1. these are words
+  2. these are not words
+
+  C-s words ! not
+
+  will not match the second line
+
+  ivy--regex-ignore-order
+  
