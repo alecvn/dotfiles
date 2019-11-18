@@ -41,8 +41,9 @@
 (load-file "~/.emacs.d/config/init-nav.el")
 (load-file "~/.emacs.d/config/init-git.el")
 (load-file "~/.emacs.d/config/init-shell.el")
+;;(load-file "~/.emacs.d/config/init-dap.el")
 
-(load-file "~/.emacs.d/config/init-lsp.el")
+;;(load-file "~/.emacs.d/config/init-lsp.el")
 (load-file "~/.emacs.d/config/init-ruby.el")
 (load-file "~/.emacs.d/config/init-python.el")
 (load-file "~/.emacs.d/config/init-web.el")
@@ -63,25 +64,23 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (face
-	  (:family "Material Icons" :height 1.44)
-	  font-lock-face
-	  (:family "Material Icons" :height 1.44)
-	  display
-	  (raise -0.288)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise -0.288)
+			 font-lock-face
+			 (:family "Material Icons" :height 1.44)
+			 face
+			 (:family "Material Icons" :height 1.44)))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (face
-	  (:family "FontAwesome" :height 1.44)
-	  font-lock-face
-	  (:family "FontAwesome" :height 1.44)
-	  display
-	  (raise 0.0)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "FontAwesome" :height 1.44)
+			 face
+			 (:family "FontAwesome" :height 1.44)))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)

@@ -15,26 +15,26 @@
   )
 
 
-(use-package company-lsp
-  :ensure t
-  :config
-  (push 'company-lsp company-backends)
-  )
+;; (use-package company-lsp
+;;   :ensure t
+;;   :config
+;;   (push 'company-lsp company-backends)
+;;   )
 
 
-(use-package lsp-javascript-typescript
-  :ensure t
-  :config
-  (add-hook 'js-mode-hook #'lsp-javascript-typescript-enable)
-  (defun my-company-transformer (candidates)
-    (let ((completion-ignore-case t))
-      (all-completions (company-grab-symbol) candidates)))
+;; (use-package lsp-javascript-typescript
+;;   :ensure t
+;;   :config
+;;   (add-hook 'js-mode-hook #'lsp-javascript-typescript-enable)
+;;   (defun my-company-transformer (candidates)
+;;     (let ((completion-ignore-case t))
+;;       (all-completions (company-grab-symbol) candidates)))
 
-  (defun my-js-hook nil
-    (make-local-variable 'company-transformers)
-    (push 'my-company-transformer company-transformers))
+;;   (defun my-js-hook nil
+;;     (make-local-variable 'company-transformers)
+;;     (push 'my-company-transformer company-transformers))
 
-  (add-hook 'js-mode-hook 'my-js-hook)
-  )
+;;   (add-hook 'js-mode-hook 'my-js-hook)
+;;   )
 
-(provide 'init-lsp)
+;; (provide 'init-lsp)
