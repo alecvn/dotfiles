@@ -1,3 +1,5 @@
+# -*- mode: i3wm-config -*-
+
 # (No) Title Bars
 for_window [class="^.*"] border pixel 3
 
@@ -248,6 +250,7 @@ exec --no-startup-id wmctrl -c Plasma
 for_window [title="Desktop — Plasma"] kill, floating enable, border none
 
 no_focus [id="^Plasma$"]
+no_focus [class="^plasmashell$"]
 
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows

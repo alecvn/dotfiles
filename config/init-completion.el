@@ -18,6 +18,7 @@
   (setq ivy-re-builders-alist
 	;; allow input not in order
         '((t   . ivy--regex-ignore-order)))
+  (setq search-default-mode #'char-fold-to-regexp)
   (setq enable-recursive-minibuffers t))
 
 ;; Yasnippet
