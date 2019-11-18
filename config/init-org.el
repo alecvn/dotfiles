@@ -8,12 +8,15 @@
     (cancel-timer mytimer)
     (setq mytimer nil)))
 
+
+
 (use-package org
   :init
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c t") 'start-my-timer)
   (global-set-key (kbd "C-c s") 'cancel-my-timer)
 
+  (setq org-duration-format (quote h:mm))
   (setq org-export-coding-system 'utf-8)
   (setq org-return-follows-link t)
   (setq org-agenda-files (list "~/org/gtd/" "~/org/"))

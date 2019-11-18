@@ -3,6 +3,9 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
+;; Show current function in modeline - via imenu
+(which-function-mode 1)
+
 ;; Enable copy/past-ing from clipboard
 (setq select-enable-clipboard t)
 

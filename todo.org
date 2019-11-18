@@ -1,0 +1,11 @@
+* TODO implement Helm but not globally
+* TODO fix find file
+  possibly just implement a different shortcut to create a file, or just remove IDO from find file
+  since we have Projectile for smart finding
+* TODO fix magit performance issues
+* TODO strip out bare bones emacs config file for the office
+* TODO implement more org-capture templates
+* TODO fix auto complete
+  only want to be able to opt in with tab etc
+  so maybe prefer company over whatever else is trying to comlete (ivy?)
+* TODO web mode sometimes just deactivates 
