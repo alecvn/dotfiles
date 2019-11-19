@@ -9,3 +9,6 @@
   only want to be able to opt in with tab etc
   so maybe prefer company over whatever else is trying to comlete (ivy?)
 * TODO web mode sometimes just deactivates 
+* TODO remove focus on notifications
+* TODO fix positioning of notifications and konsole
+* TODO find a way to stop company-mode from slowing doing shells or disable it with hooks
