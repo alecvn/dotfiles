@@ -12,3 +12,5 @@
 * TODO remove focus on notifications
 * TODO fix positioning of notifications and konsole
 * TODO find a way to stop company-mode from slowing doing shells or disable it with hooks
+* TODO checkout old emacs rails setup guide
+  https://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
