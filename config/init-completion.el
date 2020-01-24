@@ -26,7 +26,7 @@
   :ensure t
   :config
   (setq yas-snippet-dirs
-	'("/home/alec/.emacs.d/elpa/yasnippet-snippets-20190513.1049/snippets"))
+	'("~/.emacs.d/elpa/yasnippet-snippets-20190513.1049/snippets"))
   (yas-global-mode 1))
 
 ;; Company
@@ -39,4 +39,6 @@
     (add-to-list 'company-backends 'company-tern)
     (global-set-key (kbd "M-SPC") 'company-complete)
     )
-  (setq company-idle-delay 0))
+  (setq company-idle-delay 0)
+  (setq company-global-modes '(not inf-ruby-mode))
+)

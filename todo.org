@@ -14,3 +14,5 @@
 * TODO find a way to stop company-mode from slowing doing shells or disable it with hooks
 * TODO checkout old emacs rails setup guide
   https://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
+* TODO remove line numbers from comint and like text files
+  files/buffers above certain size basically

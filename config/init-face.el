@@ -3,6 +3,9 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
+;; Should help with Emacs slowing down on big one-liners
+(setq bidi-paragraph-direction 'left-to-right)
+
 ;; Show current function in modeline - via imenu
 (which-function-mode 1)
 

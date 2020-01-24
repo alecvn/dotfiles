@@ -91,7 +91,7 @@
  '(dashboard-set-navigator t)
  '(package-selected-packages
    (quote
-    (lsp-mode i3wm-config-mode wgrep dashboard-hackernews company-tern all-the-icons-dired use-package-ensure-system-package blacken yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme)))
+    (restclient helm lsp-mode i3wm-config-mode wgrep dashboard-hackernews company-tern all-the-icons-dired use-package-ensure-system-package blacken yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme)))
  '(show-week-agenda-p t t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
