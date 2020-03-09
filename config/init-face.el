@@ -31,7 +31,7 @@
 (global-visual-line-mode 1)
 
 ;; Line number frame
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 (setq column-number-mode t)
 
 ;; Opacity

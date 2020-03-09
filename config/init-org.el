@@ -12,8 +12,6 @@
     (cancel-timer mytimer)
     (setq mytimer nil)))
 
-
-
 (use-package org
   :init
   (global-set-key (kbd "C-c a") 'org-agenda)
