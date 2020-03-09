@@ -26,7 +26,7 @@ https://github.com/avivace/dotfiles
 ### Clone dotfiles repo and symlink
 Any dotfiles copied from another machine needs the following command executed within the folder:
     
-    find . -type f -print0 | xargs -0 chmod 400
+    find . -type f -print0 | xargs -0 chmod 664
 
 Symlink the config files
 
