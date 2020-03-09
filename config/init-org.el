@@ -1,3 +1,7 @@
+(setq org-log-done 'time)
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "FEEDBACK(f)" "|" "DONE(d)" "DELEGATED(e)" "CANCELLED(c)")))
+
 (defun start-my-timer ()
   (interactive)
   (setq mytimer (run-with-timer 0 3000 'counsel-projectile-org-capture)))

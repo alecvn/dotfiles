@@ -16,3 +16,9 @@
   https://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
 * TODO remove line numbers from comint and like text files
   files/buffers above certain size basically
+* TODO swiper for currently selected text
+* TODO swiper for word under cursor
+* TODO GOTO file under cursor
+  I believe find-file (C-x C-f) used to work for this
+* TODO snippets
+  especially for rails (template if statements etc)
