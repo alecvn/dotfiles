@@ -5,7 +5,10 @@
 ;; This stops package-initialize from being called
 ;; twice during start-up, decreasing start-up time
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("gnu" . "https://elpa.gnu.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
 ;; Bootstrap use-package
@@ -66,23 +69,25 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (rear-nonsticky t display
-			 (raise -0.288)
-			 font-lock-face
-			 (:family "Material Icons" :height 1.44)
-			 face
-			 (:family "Material Icons" :height 1.44)))
+	 (face
+	  (:family "Material Icons" :height 1.44)
+	  font-lock-face
+	  (:family "Material Icons" :height 1.44)
+	  display
+	  (raise -0.288)
+	  rear-nonsticky t))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (rear-nonsticky t display
-			 (raise 0.0)
-			 font-lock-face
-			 (:family "FontAwesome" :height 1.44)
-			 face
-			 (:family "FontAwesome" :height 1.44)))
+	 (face
+	  (:family "FontAwesome" :height 1.44)
+	  font-lock-face
+	  (:family "FontAwesome" :height 1.44)
+	  display
+	  (raise 0.0)
+	  rear-nonsticky t))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
