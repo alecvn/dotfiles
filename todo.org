@@ -50,6 +50,16 @@
 ** TODO checkout org-roam
    https://github.com/jethrokuan/org-roam
 
+** TODO make issues relatable
+   add "epic" style issues so that issues can link to other issues
+   or be depend on other issues ("blocking")
+
+** TODO MEETINGS!!!
+
+** TODO change colour scheme of org (at least)
+   four star headers being brown is fucking horrid
+   
+
 * Andrew
 ** DONE timesheet slow
    CLOSED: [2020-03-10 Tue 00:50]

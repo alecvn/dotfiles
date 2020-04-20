@@ -54,6 +54,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242730" "#ff665c" "#7bc275" "#FCCE7B" "#51afef" "#C57BDB" "#5cEfFF" "#bbc2cf"])
  '(custom-enabled-themes (quote (calmer-forest)))
  '(custom-safe-themes
    (quote
@@ -64,25 +66,23 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (face
-	  (:family "Material Icons" :height 1.44)
-	  font-lock-face
-	  (:family "Material Icons" :height 1.44)
-	  display
-	  (raise -0.288)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise -0.288)
+			 font-lock-face
+			 (:family "Material Icons" :height 1.44)
+			 face
+			 (:family "Material Icons" :height 1.44)))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (face
-	  (:family "FontAwesome" :height 1.44)
-	  font-lock-face
-	  (:family "FontAwesome" :height 1.44)
-	  display
-	  (raise 0.0)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "FontAwesome" :height 1.44)
+			 face
+			 (:family "FontAwesome" :height 1.44)))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -91,10 +91,40 @@
  '(dashboard-set-footer nil)
  '(dashboard-set-heading-icons t)
  '(dashboard-set-navigator t)
+ '(fci-rule-color "#62686E")
+ '(jdee-db-active-breakpoint-face-colors (cons "#1c1f24" "#51afef"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1c1f24" "#7bc275"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1c1f24" "#484854"))
+ '(objed-cursor-color "#ff665c")
  '(package-selected-packages
    (quote
     (so-long restclient helm lsp-mode i3wm-config-mode wgrep dashboard-hackernews company-tern all-the-icons-dired use-package-ensure-system-package blacken yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme)))
- '(show-week-agenda-p t t))
+ '(pdf-view-midnight-colors (cons "#bbc2cf" "#242730"))
+ '(rustic-ansi-faces
+   ["#242730" "#ff665c" "#7bc275" "#FCCE7B" "#51afef" "#C57BDB" "#5cEfFF" "#bbc2cf"])
+ '(show-week-agenda-p t t)
+ '(vc-annotate-background "#242730")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#7bc275")
+    (cons 40 "#a6c677")
+    (cons 60 "#d1ca79")
+    (cons 80 "#FCCE7B")
+    (cons 100 "#f4b96e")
+    (cons 120 "#eda461")
+    (cons 140 "#e69055")
+    (cons 160 "#db8981")
+    (cons 180 "#d082ae")
+    (cons 200 "#C57BDB")
+    (cons 220 "#d874b0")
+    (cons 240 "#eb6d86")
+    (cons 260 "#ff665c")
+    (cons 280 "#d15e59")
+    (cons 300 "#a35758")
+    (cons 320 "#754f56")
+    (cons 340 "#62686E")
+    (cons 360 "#62686E")))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
