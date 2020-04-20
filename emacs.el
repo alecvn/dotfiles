@@ -103,7 +103,7 @@
  '(objed-cursor-color "#ff665c")
  '(package-selected-packages
    (quote
-    (so-long restclient helm lsp-mode i3wm-config-mode wgrep dashboard-hackernews company-tern all-the-icons-dired use-package-ensure-system-package blacken yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme)))
+    (org so-long restclient helm lsp-mode i3wm-config-mode wgrep dashboard-hackernews company-tern all-the-icons-dired use-package-ensure-system-package blacken yasnippet-snippets yasnippet shader-mode flycheck omnisharp calm-forest color-theme use-package bundler git-timemachine git-time-metric magit web-mode ivy ag projectile-rails projectile company calmer-forest-theme)))
  '(pdf-view-midnight-colors (cons "#bbc2cf" "#242730"))
  '(rustic-ansi-faces
    ["#242730" "#ff665c" "#7bc275" "#FCCE7B" "#51afef" "#C57BDB" "#5cEfFF" "#bbc2cf"])
@@ -138,4 +138,4 @@
  '(default ((t (:inherit nil :stipple nil :background "gray12" :foreground "green" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
  '(all-the-icons-dired-dir-face ((t (:foreground "steel blue")))))
 
-(set-face-attribute 'default (selected-frame) :height 100)
+(set-face-attribute 'default (selected-frame) :height 90)
