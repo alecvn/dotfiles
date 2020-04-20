@@ -35,6 +35,15 @@
 ** TODO look into emacs server again
    could be very useful to run profiler in the background
 
+** TODO make issues relatable
+   add "epic" style issues so that issues can link to other issues
+   or be depend on other issues ("blocking")
+
+** TODO MEETINGS!!!
+
+** TODO change colour scheme of org (at least)
+   four star headers being brown is fucking horrid
+   
 
 * Andrew
 ** DONE timesheet slow

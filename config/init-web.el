@@ -1,6 +1,14 @@
 ;; web mode
 (use-package web-mode
   :ensure t
+  :defer 5
+  :mode "\\.html?\\'" "\\.phtml\\'" "\\.tpl\\.php\\'" "\\.jsp\\'"
+  "\\.as[cp]x\\'" "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.blade.php\\'"
   :config
-  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-  (add-to-list 'web-mode-indentation-params '("lineup-args" . t)))
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-indentation-params '("lineup-args" . t))
+  (setq web-mode-engines-alist
+        '(("django"."\\.html\\'"))
+        )
+  )
