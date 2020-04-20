@@ -34,7 +34,21 @@
    especially for rails (template if statements etc)
 ** TODO look into emacs server again
    could be very useful to run profiler in the background
+** TODO thing at point
+   projectile ag search
+   find file
+   find dir
+   etc
 
+** TODO schedule issues (todos) for particular days
+   probably already possible, but make it easy-> shortcut
+
+** TODO change the prev-buffer and next-buffer shortcuts
+   it's currently C-x left /or/ right
+   gotta be something requiring less stretch
+
+** TODO checkout org-roam
+   https://github.com/jethrokuan/org-roam
 
 * Andrew
 ** DONE timesheet slow
