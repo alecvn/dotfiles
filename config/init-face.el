@@ -35,8 +35,8 @@
 (setq column-number-mode t)
 
 ;; Opacity
-(set-frame-parameter (selected-frame) 'alpha '(90 . 80))
-(add-to-list 'default-frame-alist '(alpha . (90 . 80)))
+;;(set-frame-parameter (selected-frame) 'alpha '(100 . 100))
+;;(add-to-list 'default-frame-alist '(alpha . (100 . 100)))
 
 ;; Emacs session management
 (global-set-key (kbd "<C-f1>") 'desktop-save)
@@ -51,7 +51,11 @@
   ;;:ensure-system-package (pylint . "pip3 install pylint")
   )
 
-(use-package calmer-forest-theme :ensure t)
+(use-package solarized-theme
+  :ensure t
+  :init
+
+  )
 
 (use-package shader-mode :ensure t)
 

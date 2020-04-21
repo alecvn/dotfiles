@@ -19,7 +19,7 @@
   (setq org-duration-format (quote h:mm))
   (setq org-export-coding-system 'utf-8)
   (setq org-return-follows-link t)
-  (setq org-agenda-files (list "~/org/gtd/" "~/org/"))
+  (setq org-agenda-files (list "~/gtd/"))
   :config
   (setq org-src-fontify-natively t)
   (setq org-refile-targets

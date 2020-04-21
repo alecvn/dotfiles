@@ -1,5 +1,5 @@
 ;; Macro to revert buffer
-;; (global-set-key [f6] 'revert-buffer)
+(global-set-key [f6] 'revert-buffer)
 
 (defun split-and-follow-horizontally ()
   (interactive)
