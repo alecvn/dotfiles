@@ -69,23 +69,25 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (rear-nonsticky t display
-			 (raise -0.288)
-			 font-lock-face
-			 (:family "Material Icons" :height 1.44)
-			 face
-			 (:family "Material Icons" :height 1.44)))
+	 (face
+	  (:family "Material Icons" :height 1.44)
+	  font-lock-face
+	  (:family "Material Icons" :height 1.44)
+	  display
+	  (raise -0.288)
+	  rear-nonsticky t))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (rear-nonsticky t display
-			 (raise 0.0)
-			 font-lock-face
-			 (:family "FontAwesome" :height 1.44)
-			 face
-			 (:family "FontAwesome" :height 1.44)))
+	 (face
+	  (:family "FontAwesome" :height 1.44)
+	  font-lock-face
+	  (:family "FontAwesome" :height 1.44)
+	  display
+	  (raise 0.0)
+	  rear-nonsticky t))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -134,6 +136,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "gray12" :foreground "green" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
- '(all-the-icons-dired-dir-face ((t (:foreground "steel blue")))))
+ '(all-the-icons-dired-dir-face ((t (:foreground "steel blue"))))
+ '(org-agenda-date ((t (:foreground "DeepSkyBlue3" :weight ultra-bold))))
+ '(org-agenda-date-today ((t (:foreground "cyan" :weight ultra-bold))))
+ '(org-agenda-date-weekend ((t (:foreground "DeepSkyBlue4" :weight ultra-bold))))
+ '(org-table ((t (:foreground "deep sky blue")))))
 
 (set-face-attribute 'default (selected-frame) :height 90)

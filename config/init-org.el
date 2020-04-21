@@ -17,21 +17,23 @@
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c t") 'start-my-timer)
   (global-set-key (kbd "C-c s") 'cancel-my-timer)
-
+  (setq org-agenda-clockreport-parameter-plist
+	(quote (:link t :maxlevel 7 :fileskip0 t :compact t :narrow 80 :formula %)))
   (setq org-duration-format (quote h:mm))
   (setq org-export-coding-system 'utf-8)
   (setq org-return-follows-link t)
-  (setq org-agenda-files (list "~/org/gtd/" "~/org/"))
+  (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
   :config
   (setq org-src-fontify-natively t)
   (setq org-refile-targets
-	'((org-agenda-files . (:maxlevel . 3))))
-  (add-hook 'org-mode-hook (lambda ()
-			     (defadvice org-clock-in (after org-clock-in-after activate)
-			       (cancel-my-timer)
-			       (start-my-timer))
-			     (defadvice org-clock-out (after org-clock-out-after activate)
-			       (cancel-my-timer)))))
+	'((org-agenda-files . (:maxlevel . 3)))))
+  ;; look into this later:
+  ;; (add-hook 'org-mode-hook (lambda ()
+  ;; 			     (defadvice org-clock-in (after org-clock-in-after activate)
+  ;; 			       (cancel-my-timer)
+  ;; 			       (start-my-timer))
+  ;; 			     (defadvice org-clock-out (after org-clock-out-after activate)
+  ;; 			       (cancel-my-timer)))))
 
 (defun org-ask-location ()
   (let* ((org-refile-targets '((nil :maxlevel . 9)))
