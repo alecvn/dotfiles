@@ -194,3 +194,4 @@
  '(org-table ((t (:foreground "deep sky blue")))))
 
 (set-face-attribute 'default (selected-frame) :height 90)
+(delete-selection-mode 1)
