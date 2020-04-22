@@ -51,11 +51,7 @@
   ;;:ensure-system-package (pylint . "pip3 install pylint")
   )
 
-(use-package solarized-theme
-  :ensure t
-  :init
-
-  )
+(use-package solarized-theme :ensure t)
 
 (use-package shader-mode :ensure t)
 
