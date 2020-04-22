@@ -67,7 +67,11 @@
 ;; iSearcher with an overview
 (use-package swiper
   :ensure t
-  :bind (("C-s" . swiper)))
+  :bind (
+	 ("C-s" . swiper)
+	 ("C-M-s" . swiper-thing-at-point)
+	 )
+  )
 ;;(global-set-key (kbd "C-s") (lambda () (interactive)
 ;;			      (swiper (format "%s" (let ((sym (thing-at-point 'symbol))) (if sym sym ""))))))
 

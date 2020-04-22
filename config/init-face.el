@@ -31,7 +31,7 @@
 (global-visual-line-mode 1)
 
 ;; Line number frame
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 (setq column-number-mode t)
 
 ;; Opacity
@@ -147,3 +147,7 @@
   :ensure t
   :config
   (smartparens-global-mode t))
+
+(use-package doom-modeline
+      :ensure t
+      :hook (after-init . doom-modeline-mode))
