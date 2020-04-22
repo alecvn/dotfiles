@@ -245,7 +245,7 @@ bindsym $mod+minus scratchpad show
 
 
 ## Plasma Integration
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
+# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everything)
 exec --no-startup-id wmctrl -c Plasma
 # Testing removing this line to see if it fixes the notification position
 # keep resetting to middle of the screen

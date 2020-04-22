@@ -1,6 +1,9 @@
 ;; Macro to revert buffer
 (global-set-key [f6] 'revert-buffer)
 
+(global-set-key (kbd "C-x p") 'previous-buffer)
+(global-set-key (kbd "C-x n") 'next-buffer)
+
 (defun split-and-follow-horizontally ()
   (interactive)
   (split-window-below)
