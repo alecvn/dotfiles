@@ -51,8 +51,6 @@
   ;;:ensure-system-package (pylint . "pip3 install pylint")
   )
 
-(use-package solarized-theme :ensure t)
-
 (use-package shader-mode :ensure t)
 
 ;; Requirements for dashboard
@@ -147,3 +145,9 @@
 (use-package doom-modeline
       :ensure t
       :hook (after-init . doom-modeline-mode))
+
+(use-package solarized-theme
+  :ensure t
+  :config
+  (load-theme 'solarized-dark t)
+  )

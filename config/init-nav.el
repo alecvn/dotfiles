@@ -1,6 +1,8 @@
 ;; Macro to revert buffer
 (global-set-key [f6] 'revert-buffer)
 
+(delete-selection-mode 1)
+
 (defun split-and-follow-horizontally ()
   (interactive)
   (split-window-below)
