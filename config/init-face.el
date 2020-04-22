@@ -51,7 +51,7 @@
   ;;:ensure-system-package (pylint . "pip3 install pylint")
   )
 
-(use-package calmer-forest-theme :ensure t)
+;;(use-package calmer-forest-theme :ensure t)
 
 (use-package shader-mode :ensure t)
 
@@ -147,3 +147,9 @@
 (use-package doom-modeline
       :ensure t
       :hook (after-init . doom-modeline-mode))
+
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-city-lights t)
+  )
