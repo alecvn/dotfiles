@@ -35,8 +35,8 @@
 (setq column-number-mode t)
 
 ;; Opacity
-;;(set-frame-parameter (selected-frame) 'alpha '(100 . 100))
-;;(add-to-list 'default-frame-alist '(alpha . (100 . 100)))
+;;(set-frame-parameter (selected-frame) 'alpha '(90 . 80))
+;;(add-to-list 'default-frame-alist '(alpha . (90 . 80)))
 
 ;; Emacs session management
 (global-set-key (kbd "<C-f1>") 'desktop-save)
