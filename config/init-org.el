@@ -17,6 +17,7 @@
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c t") 'start-my-timer)
   (global-set-key (kbd "C-c s") 'cancel-my-timer)
+  (global-set-key (kbd "C-c l") 'org-store-link)
   (setq org-agenda-clockreport-parameter-plist
 	(quote (:link t :maxlevel 7 :fileskip0 t :compact t :narrow 80 :formula %)))
   (setq org-duration-format (quote h:mm))

@@ -9,31 +9,38 @@
 ** TODO fix find file
    possibly just implement a different shortcut to create a file, or just remove IDO from find file
    since we have Projectile for smart finding
+
 ** TODO fix magit performance issues
 ** TODO strip out bare bones emacs config file for the office
 ** TODO implement more org-capture templates
 ** TODO fix auto complete
    only want to be able to opt in with tab etc
    so maybe prefer company over whatever else is trying to comlete (ivy?)
+
 ** TODO web mode sometimes just deactivates 
 ** TODO remove focus on notifications
 ** TODO fix positioning of notifications and konsole
 ** DONE find a way to stop company-mode from slowing doing shells or disable it with hooks
    CLOSED: [2020-03-10 Tue 00:36]
-** TODO checkout old emacs rails setup guide
-   https://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
+
 ** TODO remove line numbers from comint and like text files
    files/buffers above certain size basically
+
 ** DONE swiper for currently selected text
    CLOSED: [2020-03-10 Tue 00:34]
+
 ** DONE swiper for word under cursor
    CLOSED: [2020-03-10 Tue 00:34]
+
 ** TODO GOTO file under cursor
    I believe find-file (C-x C-f) used to work for this
+
 ** TODO snippets
    especially for rails (template if statements etc)
+
 ** TODO look into emacs server again
    could be very useful to run profiler in the background
+
 ** TODO thing at point
    projectile ag search
    find file
@@ -49,19 +56,37 @@
    it's currently C-x left /or/ right
    gotta be something requiring less stretch
    
-** TODO checkout org-roam
-   https://github.com/jethrokuan/org-roam
-
 ** TODO make issues relatable
    add "epic" style issues so that issues can link to other issues
    or be depend on other issues ("blocking")
 
 ** TODO MEETINGS!!!
+** TODO org mode stuff to check out
+   https://github.com/ahungry/org-jira
+   https://github.com/IvanMalison/org-projectile
+   https://github.com/jethrokuan/org-roam
 
-** DONE change colour scheme of org (at least)
-   CLOSED: [2020-04-22 Wed 10:48]
-   four star headers being brown is fucking horrid
+** TODO update doom-city-lights colour scheme
+   replace some of the reds/pinks/oranges at the theme level instead of the way I'm doing it now
    
+** TODO find a way to properly customize face, fonts, etc
+** TODO make modules easier to include or exclude
+   especially face - it should probably be an entirely empty file for newcomers
+
+   maybe add a wizard for installation that asks about stuff like:
+   ivy? (that probably includes company etc)
+   capture?
+   python?
+
+   and also allows you to easily setup theme
+
+** TODO fix robe so that it start automatically
+   when entering a ruby project it should pick up the gemset (via RVM?) and environment for that project and start robe
+   https://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
+
+** TODO setting TODO on an item that doesn't have state should just default to TODO
+
+** TODO find-file shortcut to just go to other window (if it exists) and open there else create one
 
 * Andrew
 ** DONE timesheet slow
@@ -72,10 +97,13 @@
    CLOSED: [2020-03-10 Tue 00:35]
 ** TODO setup emacs shell for ssh and docker
 this also needs to work when you use django shell inside docker container inside server connection
-** FEEDBACK overwrite mode not working
+** DONE overwrite mode not working
+   CLOSED: [2020-04-23 Thu 12:12]
 ** FEEDBACK need to remap or learn macros
 ** TODO warnings about imports not being used, etc are missing
 ** FEEDBACK learn magit
 ** TODO add pretier for js
-** TODO ctrl . to take me to class or function
+   https://github.com/prettier/prettier-emacs
+** DONE ctrl . to take me to class or function
+   CLOSED: [2020-04-23 Thu 12:12]
 ** TODO restclientmode
