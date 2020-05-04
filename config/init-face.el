@@ -151,7 +151,7 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-city-lights--custom t)
+  (load-theme 'doom-city-lights t)
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
@@ -165,5 +165,7 @@
    '(org-table ((t (:foreground "deep sky blue"))))
    '(org-todo ((t (:foreground "green yellow" :weight bold)))))
   )
+;;(use-package calmer-forest-theme :ensure t)
 
-(set-default-font "DejaVu Sans Mono-10")
+(add-to-list 'default-frame-alist
+                       '(font . "DejaVu Sans Mono-9"))

@@ -1,6 +1,6 @@
 (setq org-log-done 'time)
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "FEEDBACK(f)" "|" "DONE(d)" "DELEGATED(e)" "CANCELLED(c)")))
+      '((sequence "TODO(t)" "WAITING(w)" "IN PROGRESS(i)" "|" "DONE(d)" "DELEGATED(e)" "CANCELLED(c)")))
 
 (defun start-my-timer ()
   (interactive)
@@ -27,7 +27,11 @@
   :config
   (setq org-src-fontify-natively t)
   (setq org-refile-targets
-	'((org-agenda-files . (:maxlevel . 3)))))
+	'((org-agenda-files . (:maxlevel . 3))))
+  ;; (setq org-refile-targets (quote ((nil :maxlevel . 9)
+  ;; 				   (org-agenda-files :maxlevel . 9))))
+  )
+
   ;; look into this later:
   ;; (add-hook 'org-mode-hook (lambda ()
   ;; 			     (defadvice org-clock-in (after org-clock-in-after activate)
@@ -59,18 +63,24 @@
 	'(("c" "Item to Current Clocked Task"
 	   item (clock)
 	   "%i%?" :empty-lines 1)
-	  ("a" "Append"
-	   checkitem (file+function "~/org/todo.org" org-ask-location)
-	   "[ ] Additionally %?\n %u\n  %a")
+	  ;; ("a" "Append"
+	  ;;  checkitem (file+function "~/org/todo.org" org-ask-location)
+	  ;;  "[ ] Additionally %?\n %u\n  %a")
 	  ("t" "Task"
 	   entry (file+headline "~/org/todo.org" "Tasks")
 	   "* TODO %?\n  %u\n  %a" :empty-lines 1)
-	  ("m" "Music"
+	  ("u" "Music"
 	   entry (file+headline org-default-notes-file "Music")
 	   "* TODO %?\n  %u\n  %a" :empty-lines 1)
 	  ("j" "Journal entry"
 	   entry (file+datetree "~/org/journal.org")
 	   (file "~/.emacs.d/org-templates/journal.orgcaptmpl") :empty-lines 1)
+	  ("m" "Meeting" entry (file "~/org/meetings.org")
+	  "* MEETING with %? :MEETING:")
+	  ("i" "Impromptu meeting" entry (file "~/org/meetings.org")
+	   "* MEETING with %? :MEETING:\n%t" :clock-in t :clock-resume t empty-lines 1)
+	  ("s" "Scheduled Action" entry (file+datetree "~/org/meetings.org")
+	   "* %?\n%U\n" :clock-in t :clock-resume t)
 	  ("l" "Today I Learned"
 	   entry (file+datetree "~/org/til.org" "TIL")
 	   (file "~/.emacs.d/org-templates/til.orgcaptmpl")  :empty-lines 1))))

@@ -10,7 +10,7 @@
    possibly just implement a different shortcut to create a file, or just remove IDO from find file
    since we have Projectile for smart finding
 
-** TODO fix magit performance issues
+** TODO fix magit performance issues during large merge conflict
 ** TODO strip out bare bones emacs config file for the office
 ** TODO implement more org-capture templates
 ** TODO fix auto complete
@@ -18,8 +18,8 @@
    so maybe prefer company over whatever else is trying to comlete (ivy?)
 
 ** TODO web mode sometimes just deactivates 
-** TODO remove focus on notifications
-** TODO fix positioning of notifications and konsole
+** TODO i3: remove focus on notifications
+** TODO i3: fix positioning of notifications and konsole
 ** DONE find a way to stop company-mode from slowing doing shells or disable it with hooks
    CLOSED: [2020-03-10 Tue 00:36]
 
@@ -60,7 +60,15 @@
    add "epic" style issues so that issues can link to other issues
    or be depend on other issues ("blocking")
 
-** TODO MEETINGS!!!
+** TODO handle scheduled events
+   https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-to-a-task-with-idle-timer/22488
+   :LOGBOOK:
+   CLOCK: [2020-04-29 Wed 01:32]--[2020-04-29 Wed 22:23] => 20:51
+   CLOCK: [2020-04-29 Wed 01:28]--[2020-04-29 Wed 01:32] =>  0:04
+   CLOCK: [2020-04-29 Wed 01:26]--[2020-04-29 Wed 01:27] =>  0:01
+   CLOCK: [2020-04-29 Wed 01:16]--[2020-04-29 Wed 01:26] =>  0:10
+   :END:
+   
 ** TODO org mode stuff to check out
    https://github.com/ahungry/org-jira
    https://github.com/IvanMalison/org-projectile
@@ -85,8 +93,18 @@
    https://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
 
 ** TODO setting TODO on an item that doesn't have state should just default to TODO
+   https://emacs.stackexchange.com/questions/57830/how-can-i-automatically-change-a-todo-agenda-item-task-to-progress-when-clocking
+   or possibly "IN_PROGRESS"
 
 ** TODO find-file shortcut to just go to other window (if it exists) and open there else create one
+** TODO navigate around windows
+   https://sachachua.com/blog/2015/01/emacs-microhabit-switching-windows-windmove-ace-window-ace-jump/
+   checkout ace window and ace jump, as well as keychord
+
+   https://emacs.stackexchange.com/questions/3458/how-to-switch-between-windows-quickly
+
+   https://emacs.stackexchange.com/questions/22286/shiftarrow-to-change-window-does-not-work-in-org-mode
+   
 
 * Andrew
 ** DONE timesheet slow
