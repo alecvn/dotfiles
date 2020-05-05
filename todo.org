@@ -105,6 +105,10 @@
 
    https://emacs.stackexchange.com/questions/22286/shiftarrow-to-change-window-does-not-work-in-org-mode
    
+** TODO setup refile like here
+   http://doc.rix.si/cce/cce-org.html#org9971637
+** TODO more great org configs
+   https://github.com/gjstein/emacs.d/blob/master/config/init-10-face.el
 
 * Andrew
 ** DONE timesheet slow

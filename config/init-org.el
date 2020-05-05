@@ -26,10 +26,10 @@
   (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
   :config
   (setq org-src-fontify-natively t)
-  (setq org-refile-targets
-	'((org-agenda-files . (:maxlevel . 3))))
-  ;; (setq org-refile-targets (quote ((nil :maxlevel . 9)
-  ;; 				   (org-agenda-files :maxlevel . 9))))
+  ;; (setq org-refile-targets
+  ;; 	'((org-agenda-files . (:maxlevel . 3))))
+  (setq org-refile-targets (quote ((nil :maxlevel . 9)
+  				   (org-agenda-files :maxlevel . 9))))
   )
 
   ;; look into this later:
@@ -76,11 +76,11 @@
 	   entry (file+datetree "~/org/journal.org")
 	   (file "~/.emacs.d/org-templates/journal.orgcaptmpl") :empty-lines 1)
 	  ("m" "Meeting" entry (file "~/org/meetings.org")
-	  "* MEETING with %? :MEETING:")
+	  "* MEETING with %? :MEETING:\n%U")
 	  ("i" "Impromptu meeting" entry (file "~/org/meetings.org")
 	   "* MEETING with %? :MEETING:\n%t" :clock-in t :clock-resume t empty-lines 1)
-	  ("s" "Scheduled Action" entry (file+datetree "~/org/meetings.org")
-	   "* %?\n%U\n" :clock-in t :clock-resume t)
+	  ;; ("s" "Scheduled Action" entry (file+datetree "~/org/meetings.org")
+	  ;;  "* %?\n%U\n" :clock-in t :clock-resume t)
 	  ("l" "Today I Learned"
 	   entry (file+datetree "~/org/til.org" "TIL")
 	   (file "~/.emacs.d/org-templates/til.orgcaptmpl")  :empty-lines 1))))
