@@ -30,8 +30,12 @@
 (use-package python
   :ensure t
   :init
+  (add-hook 'python-mode-hook
+          '(lambda()
+             (add-hook 'before-save-hook 'py-isort-before-save)))
   (add-hook 'python-mode-hook 'blacken-mode)
   (fset 'pdb "import pdb; pdb.set_trace()")
+  (fset 'ipdb "import ipdb; ipdb.set_trace()")
   :bind (:map python-mode-map
 	      ("C-x , p" . pdb)
               ("C-c ." . jedi:goto-definition)
