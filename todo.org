@@ -5,7 +5,7 @@
 
 
 * Alec
-** TODO implement Helm but not globally
+** TODO implement Helm
 ** TODO fix find file
    possibly just implement a different shortcut to create a file, or just remove IDO from find file
    since we have Projectile for smart finding
@@ -107,8 +107,38 @@
    
 ** TODO setup refile like here
    http://doc.rix.si/cce/cce-org.html#org9971637
+
 ** TODO more great org configs
    https://github.com/gjstein/emacs.d/blob/master/config/init-10-face.el
+
+** TODO symlink id-project.org to notes.org in project folder
+   add the notes.org to git info exclude
+   this is so that we can find notes easier, it also fixes the whole org capture problem for project
+   specific issues
+** TODO create and backup gpg keys
+https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#transfer-keys-to-another-computer
+   https://tunjos.co/blog/backup-your-gpg-key/
+** TODO setup tmux keys
+   https://zserge.com/posts/tmux/
+   https://tmuxguide.readthedocs.io/en/latest/tmux/tmux.html
+** TODO ubuntu 20.04 upgrade
+   https://github.com/efazati/i3buntu
+
+** TODO renaming a file should autocomplete that files name
+   I also used to be able to rename a file from within it
+
+** TODO python breakpoints
+   https://documen.tician.de/pudb/starting.html
+
+** TODO link org to project management
+   - [ ] Github projects
+   - [ ] Jira
+
+** TODO deal with repeated meetings when sprint is closed
+
+** TODO get rid of "activity screens" shortcut that fucks up the i3 layout
+** TODO setup the compose key configuration
+   CapsLock -> ComposeKey allowing special characters
 
 * Andrew
 ** DONE timesheet slow
@@ -129,3 +159,21 @@ this also needs to work when you use django shell inside docker container inside
 ** DONE ctrl . to take me to class or function
    CLOSED: [2020-04-23 Thu 12:12]
 ** TODO restclientmode
+
+* Emacs productivity sessions
+** Session 2 - Agenda
+*** 
+*** org capture
+**** meetings, scheduled tasks and deadlines
+     https://orgmode.org/manual/The-date_002ftime-prompt.html#The-date_002ftime-prompt
+**** getting things set up
+     symlink notes.org in your project folder to id-{project_name}.org
+     put notes.org in your project's .git/info/exclude
+
+     git config --global core.excludesfile 'notes.org'
+*** ivy
+**** ivy-occur
+     ag search for something then:
+     C-c C-o
+     we can inline search and replace
+     
