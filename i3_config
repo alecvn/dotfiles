@@ -264,6 +264,8 @@ for_window [class="krunner"] floating enable, border none
 for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [title="Microsoft Teams Notification"] floating enable, border none
+
 
 
 for_window [window_role="pop-up"] floating enable

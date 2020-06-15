@@ -89,6 +89,7 @@
   (define-key projectile-mode-map (kbd "C-c p e") 'projectile-run-shell)
   (define-key projectile-mode-map (kbd "C-c p x") 'projectile-compile-project)
   (define-key projectile-mode-map (kbd "C-c p c") 'counsel-projectile-org-capture)
+  (setq projectile-globally-ignored-file-suffixes '("~"))
   (setq projectile-completion-system 'ivy)
   (setq projectile-switch-project-action 'projectile-commander)
   (def-projectile-commander-method ?s

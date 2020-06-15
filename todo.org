@@ -140,6 +140,29 @@ https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#
 ** TODO setup the compose key configuration
    CapsLock -> ComposeKey allowing special characters
 
+** TODO implement whatfiles
+   https://github.com/spieglt/whatfiles
+
+** TODO email
+   http://www.mycpu.org/read-email-in-emacs/
+   https://200ok.ch/posts/2020-05-27_using_emacs_and_mu4e_for_emails_even_with_html.html
+
+** TODO i3 - open new window in specific size
+   https://www.reddit.com/r/i3wm/comments/9j10ae/i3wm_open_window_in_specific_size/
+   https://i3wm.org/docs/layout-saving.html
+
+** TODO unix pipes
+   https://prithu.xyz/posts/unix-pipeline/
+
+** TODO uml
+   https://plantuml.com/
+   http://eschulte.github.io/babel-dev/DONE-integrate-plantuml-support.html
+
+** TODO Zettelkasten
+   https://eugeneyan.com/2020/04/05/note-taking-zettelkasten/
+** TODO i3 terminal stuff
+   https://www.youtube.com/watch?v=q-l7DnDbiiU
+
 * Andrew
 ** DONE timesheet slow
    CLOSED: [2020-03-10 Tue 00:50]
@@ -176,4 +199,6 @@ this also needs to work when you use django shell inside docker container inside
      ag search for something then:
      C-c C-o
      we can inline search and replace
+     C-x C-q
      
+*** M-y yank if you want to repeat cut+paste previous item
