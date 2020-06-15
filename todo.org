@@ -162,6 +162,15 @@ https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#
    https://eugeneyan.com/2020/04/05/note-taking-zettelkasten/
 ** TODO i3 terminal stuff
    https://www.youtube.com/watch?v=q-l7DnDbiiU
+   Yakuake
+   https://github.com/akermu/emacs-libvterm
+   tmux
+
+** TODO show i3 keyboard shortcuts
+   https://www.reddit.com/r/i3wm/comments/gz2eyx/small_tool_i_made_to_visualize_your_i3_keybindings/
+** TODO conky
+   https://github.com/brndnmtthws/conky
+** TODO dmenu vs rofi
 
 * Andrew
 ** DONE timesheet slow
@@ -182,6 +191,7 @@ this also needs to work when you use django shell inside docker container inside
 ** DONE ctrl . to take me to class or function
    CLOSED: [2020-04-23 Thu 12:12]
 ** TODO restclientmode
+
 
 * Emacs productivity sessions
 ** Session 2 - Agenda
