@@ -12,3 +12,54 @@
 
   ivy--regex-ignore-order
   
+* notes on useful tricks and tools
+** ram/cpu usage profiler!!!
+  M-x profiler-start RET
+  M-x profiler-report RET
+
+* OS
+** screenshot
+*** spectacle
+
+** audio
+*** jack2
+    sound server
+
+*** carla
+    bridge ALSA and PulseAudio to Jack
+
+*** reaper
+    + plugins + vsts
+
+** text editing
+*** emacs
+
+** game dev
+*** godot
+
+** messaging
+*** slack
+*** discord
+*** thunderbird
+
+** games
+*** mtga
+    mtg arena tool
+*** steam
+
+** editing
+*** gimp
+
+** desktop recording
+*** obs studio
+
+** misc
+   spotify (scrobbler)
+   tuxguitar
+   dropbox
+   firefox
+   wine
+   i3
+   i3-gaps
+   minecraft
+   

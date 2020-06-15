@@ -1,9 +1,3 @@
-* notes on useful tricks and tools
-** ram/cpu usage profiler!!!
-  M-x profiler-start RET
-  M-x profiler-report RET
-
-
 * Alec
 ** TODO implement Helm but not globally
 ** TODO fix find file
