@@ -171,6 +171,20 @@ https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#
 ** TODO conky
    https://github.com/brndnmtthws/conky
 ** TODO dmenu vs rofi
+   https://www.reddit.com/r/unixporn/comments/h9hdyc/oc_rofi_shortcuts/
+   
+** TODO prescient - alternative to helm
+   https://github.com/raxod502/prescient.el
+
+** TODO regex
+   https://github.com/immerrr/ample-regexps.el/blob/master/README.rst
+
+** TODO shx
+   shell extras
+** TODO Manjaro i3: something for usb connection
+** TODO unixporn goals
+   https://www.reddit.com/r/unixporn/comments/haogs0/bspwm_i_have_spent_too_much_time_on_this/
+
 
 * Andrew
 ** DONE timesheet slow
