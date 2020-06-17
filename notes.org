@@ -18,6 +18,8 @@
   M-x profiler-report RET
 
 * OS
+** filesystem ref
+   https://refspecs.linuxfoundation.org/FHS_2.3/fhs-2.3.html
 ** screenshot
 *** spectacle
 

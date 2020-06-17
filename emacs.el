@@ -52,3 +52,49 @@
 (load-file "~/.emacs.d/config/init-web.el")
 (load-file "~/.emacs.d/config/init-csharp.el")
 (load-file "~/.emacs.d/config/init-rest.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(dashboard-banner-logo-title
+   "This is my Emacs. There are many like it, but this one is mine. My Emacs is my best friend. It is my life. I must master it as I master my life. My Emacs, without me, is useless. Without my Emacs, I am useless." t)
+ '(dashboard-center-content t)
+ '(dashboard-navigator-buttons
+   (quote
+    (((#("" 0 1
+	 (rear-nonsticky t display
+			 (raise -0.288)
+			 font-lock-face
+			 (:family "Material Icons" :height 1.44)
+			 face
+			 (:family "Material Icons" :height 1.44)))
+       "Refresh" "Refresh packages"
+       (lambda
+	 (&rest _)
+	 (package-refresh-contents t)))
+      (#("" 0 1
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "FontAwesome" :height 1.44)
+			 face
+			 (:family "FontAwesome" :height 1.44)))
+       "Update" "Update emacs"
+       (lambda
+	 (&rest _)
+	 (auto-package-update-now)))))) t)
+ '(dashboard-set-file-icons t)
+ '(dashboard-set-footer nil)
+ '(dashboard-set-heading-icons t)
+ '(dashboard-set-navigator t)
+ '(package-selected-packages
+   (quote
+    (shx yasnippet-snippets ws-butler wgrep web-mode use-package-ensure-system-package solarized-theme smartparens shader-mode rvm robe restclient rbenv py-isort projectile-rails org omnisharp magit lsp-ui highlight-indent-guides git-timemachine flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard-hackernews dap-mode counsel-projectile company-tern company-lsp company-jedi company-inf-ruby color-theme calmer-forest-theme blacken auto-package-update all-the-icons-dired ag)))
+ '(show-week-agenda-p t t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

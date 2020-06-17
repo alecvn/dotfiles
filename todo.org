@@ -165,6 +165,26 @@ https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#
 ** TODO conky
    https://github.com/brndnmtthws/conky
 ** TODO dmenu vs rofi
+** TODO Manjaro Jack setup 
+   https://www.youtube.com/watch?v=vgrqMv3Lzfk
+   https://forum.manjaro.org/t/how-to-replace-pulseaudio-with-jack-jack-and-pulseaudio-together-as-friend/2086
+   https://kx.studio/Repositories
+** TODO home drive mounted to second hard drive
+   https://www.howtogeek.com/442101/how-to-move-your-linux-home-directory-to-another-hard-drive/
+** TODO jumping around in code
+   https://www.reddit.com/r/emacs/comments/h138pp/what_is_the_best_method_you_have_found_for/
+** TODO polybar
+   https://github.com/polybar/polybar
+** TODO org mode css
+   https://sandyuraz.com/articles/orgmode-css/
+** TODO i3 font awesome icons and notification demon
+   https://github.com/Algorithm79/Dotfiles_i3/
+
+
+** TODO custom theme generator
+   https://www.reddit.com/r/unixporn/comments/947y8t/ocemacs_a_doom_theme_generator/
+   http://terminal.sexy/#Hh4ep6enHh4ez2pMj51q-e6YdYemm4Wdr8Tbp6enX1pgz2pMj51q-e6YdYemm4Wdr8Tb____
+   https://github.com/hlissner/doom-emacs/issues/2732
 
 * Andrew
 ** DONE timesheet slow
