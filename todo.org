@@ -1,9 +1,3 @@
-* notes on useful tricks and tools
-** ram/cpu usage profiler!!!
-  M-x profiler-start RET
-  M-x profiler-report RET
-
-
 * Alec
 ** TODO implement Helm
 ** TODO fix find file
@@ -172,26 +166,53 @@ https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#
    https://github.com/brndnmtthws/conky
 ** TODO dmenu vs rofi
    https://www.reddit.com/r/unixporn/comments/h9hdyc/oc_rofi_shortcuts/
-   
+
+** TODO Manjaro Jack setup 
+   https://www.youtube.com/watch?v=vgrqMv3Lzfk
+   https://forum.manjaro.org/t/how-to-replace-pulseaudio-with-jack-jack-and-pulseaudio-together-as-friend/2086
+   https://kx.studio/Repositories
+** TODO home drive mounted to second hard drive
+   https://www.howtogeek.com/442101/how-to-move-your-linux-home-directory-to-another-hard-drive/
+** TODO jumping around in code
+   https://www.reddit.com/r/emacs/comments/h138pp/what_is_the_best_method_you_have_found_for/
+** TODO polybar (status bar and system tray)
+   https://github.com/polybar/polybar
+** TODO org mode css
+   https://sandyuraz.com/articles/orgmode-css/
+** TODO i3 font awesome icons and notification demon
+   https://github.com/Algorithm79/Dotfiles_i3/
+** TODO custom theme generator
+   https://github.com/dylanaraps/pywal
+
+   https://www.reddit.com/r/unixporn/comments/947y8t/ocemacs_a_doom_theme_generator/
+   http://terminal.sexy/#Hh4ep6enHh4ez2pMj51q-e6YdYemm4Wdr8Tbp6enX1pgz2pMj51q-e6YdYemm4Wdr8Tb____
+   https://github.com/hlissner/doom-emacs/issues/2732
 ** TODO prescient - alternative to helm
    https://github.com/raxod502/prescient.el
-
 ** TODO regex
    https://github.com/immerrr/ample-regexps.el/blob/master/README.rst
-
 ** TODO shx
    shell extras
 ** TODO Manjaro i3: something for usb connection
 ** TODO unixporn goals
    https://www.reddit.com/r/unixporn/comments/haogs0/bspwm_i_have_spent_too_much_time_on_this/
-
 ** TODO blogging
    https://jgkamat.gitlab.io/blog/website1.html
    https://orgmode.org/worg/org-blog-wiki.html
 ** TODO habits
    https://orgmode.org/manual/Tracking-your-habits.html
 ** TODO fonts
-   https://github.com/ryanoasis/nerd-fonts
+   https://github.com/ryanoasis/nerd-
+** TODO shell output: open file at line on Enter (it works on mouse click)
+
+** TODO i3 status bar click events
+   https://en.jeffprod.com/blog/2020/create-your-own-i3-sway-status-bar/
+
+** TODO projectile caching stuff
+   https://emacs.stackexchange.com/questions/8074/projectile-with-caching-doesnt-like-new-files
+   https://emacs.stackexchange.com/questions/26266/projectile-and-magit-branch-checkout
+   https://docs.projectile.mx/projectile/configuration.html#caching
+** TODO customize yakuake
 
 * Andrew
 ** DONE timesheet slow
@@ -215,21 +236,65 @@ this also needs to work when you use django shell inside docker container inside
 
 
 * Emacs productivity sessions
-** Session 2 - Agenda
-*** 
+** Session 2 - Navigation
+
+*** key mods
+**** hyper key (CapsLock)
+     check init-nav for shortcuts
+
+**** compose key (RightAlt)
+     special keys like ë
+
+*** windows
+    C-x 0 kills a window
+    C-x 2 horizontal
+    C-x 3 vertical
+    C-x | toggle 2 window split
+*** buffers
+**** M-y yank if you want to repeat cut+paste previous item
+**** swiper
+
+
+*** projectile
+**** org setup
+***** getting things set up
+      symlink notes.org in your project folder to id-{project_name}.org
+      put notes.org in your project's .git/info/exclude
+
+      git config --global core.excludesfile 'notes.org'
+
+**** find files
+    C-c p f
+    Find file, open in current window
+
+    C-c p 4 f
+    File file, open in another window.
+
+    C-c p F
+    projectile-find-file-in-known-projects - Find file in all known projects
+    
+    C-c p g
+    projectile-find-file-dwim -	Find file based on context at point
+
+    C-u C-c p f
+    Invalidate cache and find files (files created outside of Emacs won't be added to cache: how about magit files?)
+    
+**** ag search
+***** ivy-occur + wgrep
+      ag search for something then:
+      C-c C-o
+      wgrep for: we can inline search and replace
+      C-x C-q
+      M-S-5 search replace
+      C-c C-e apply and save buffers
+     
+
+
+** Session 3 - Magit
+*** magit-status slow fix
+    (global-so-long-mode)
+
+** Session 3 - Agenda
 *** org capture
 **** meetings, scheduled tasks and deadlines
      https://orgmode.org/manual/The-date_002ftime-prompt.html#The-date_002ftime-prompt
-**** getting things set up
-     symlink notes.org in your project folder to id-{project_name}.org
-     put notes.org in your project's .git/info/exclude
-
-     git config --global core.excludesfile 'notes.org'
-*** ivy
-**** ivy-occur
-     ag search for something then:
-     C-c C-o
-     we can inline search and replace
-     C-x C-q
-     
-*** M-y yank if you want to repeat cut+paste previous item

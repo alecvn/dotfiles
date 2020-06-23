@@ -2,8 +2,8 @@
 (global-set-key [f6] 'revert-buffer)
 (global-so-long-mode)
 
-(global-set-key (kbd "C-x p") 'previous-buffer)
-(global-set-key (kbd "C-x n") 'next-buffer)
+(global-set-key (kbd "H-p") 'previous-buffer)
+(global-set-key (kbd "H-n") 'next-buffer)
 
 (defun split-and-follow-horizontally ()
   (interactive)
@@ -21,6 +21,20 @@
 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
+(global-set-key (kbd "H-j") 'windmove-left)
+(global-set-key (kbd "H-l") 'windmove-right)
+(global-set-key (kbd "H-i") 'windmove-up)
+(global-set-key (kbd "H-k") 'windmove-down)
+
+
+(use-package buffer-move
+  :ensure t
+  :config
+  (global-set-key (kbd "H-M-i") 'buf-move-up)
+  (global-set-key (kbd "H-M-k") 'buf-move-down)
+  (global-set-key (kbd "H-M-j") 'buf-move-left)
+  (global-set-key (kbd "H-M-l") 'buf-move-right)
+  )
 
 (defun toggle-window-split ()
   (interactive)
@@ -90,11 +104,15 @@
   (define-key projectile-mode-map (kbd "C-c p e") 'projectile-run-shell)
   (define-key projectile-mode-map (kbd "C-c p x") 'projectile-compile-project)
   (define-key projectile-mode-map (kbd "C-c p c") 'counsel-projectile-org-capture)
-  (setq projectile-globally-ignored-file-suffixes '("~"))
+  (setq projectile-enable-caching t)
+  (setq projectile-indexing-method 'hybrid)
+  ;; (setq projectile-sort-order 'recently-active)
+  (setq projectile-globally-ignored-file-suffixes '("~" "#"))
+  (setq projectile-globally-unignored-files '("gtd.org"))
   (setq projectile-completion-system 'ivy)
   (setq projectile-switch-project-action 'projectile-commander)
   (def-projectile-commander-method ?s
-    "Open a *eshell* buffer for the project."
+    "Open a *shell* buffer for the project."
     (projectile-run-shell))
   (def-projectile-commander-method ?x
     "Run `compile' in the project."
@@ -116,10 +134,12 @@
 	     entry (file+olp "~/org/gtd/id-${name}.org" "DEVELOPMENT" "sprint2714 Inbox")
 	     "* TODO %?\n  %u\n  %a" :empty-lines 1)))))
 
+
 ;; Projects on Rails
 (use-package projectile-rails
   :ensure t
   :config
+  (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
   (projectile-rails-global-mode)
   (add-hook 'projectile-rails-mode-hook 'compilation-shell-minor-mode)
   (setq projectile-rails-vanilla-command "bin/rails")

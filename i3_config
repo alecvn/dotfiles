@@ -75,8 +75,8 @@ bindsym $mod+p exec krunner
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+i focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -87,8 +87,8 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -237,10 +237,10 @@ for_window [title=".MellowPlayer*"] move scratchpad
 bindsym $mod+m [title=".MellowPlayer*"] scratchpad show
 
 
-for_window [class="konsole"] move scratchpad
-for_window [class="konsole"] move position 1200px 30px
-bindsym $mod+c [class="konsole"] scratchpad show
-for_window [class="konsole"] resize set width 700 px height 900 px
+# for_window [class="konsole"] move scratchpad
+# for_window [class="konsole"] move position 1200px 30px
+# bindsym $mod+y [class="konsole"] scratchpad show
+# for_window [class="konsole"] resize set width 700 px height 900 px
 
 
 # show first scratchpad
