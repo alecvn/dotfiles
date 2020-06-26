@@ -34,6 +34,7 @@
 
 ** TODO look into emacs server again
    could be very useful to run profiler in the background
+   https://github.com/nex3/perspective-el
 
 ** TODO thing at point
    projectile ag search
@@ -50,10 +51,6 @@
    it's currently C-x left /or/ right
    gotta be something requiring less stretch
    
-** TODO make issues relatable
-   add "epic" style issues so that issues can link to other issues
-   or be depend on other issues ("blocking")
-
 ** TODO handle scheduled events
    https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-to-a-task-with-idle-timer/22488
    :LOGBOOK:
@@ -214,6 +211,28 @@ https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#
    https://docs.projectile.mx/projectile/configuration.html#caching
 ** TODO customize yakuake
 
+** TODO compositor
+   picom
+   https://www.reddit.com/r/unixporn/comments/du6ms3/i3gaps_rounded_corners_everywhere/
+
+** TODO customize Spotify
+   https://github.com/khanhas/spicetify-cli
+
+** TODO learn Regex
+   https://regexone.com/
+
+** TODO windows not going to correct workspace/position
+   https://www.reddit.com/r/i3wm/comments/hey84b/firefox_nightly_doesnt_get_assigned_to_the/
+
+** TODO org source blocks
+   https://jherrlin.github.io/posts/emacs-orgmode-source-code-blocks/
+
+** TODO Human Programming Interface
+   https://beepb00p.xyz/hpi.html
+
+** TODO kdesettings!!!
+   https://github.com/shalva97/kde-configuration-files
+
 * Andrew
 ** DONE timesheet slow
    CLOSED: [2020-03-10 Tue 00:50]
@@ -236,8 +255,14 @@ this also needs to work when you use django shell inside docker container inside
 
 
 * Emacs productivity sessions
-** Session 2 - Navigation
+  Happy Friday dudes!
 
+I was thinking of doing a "Emacs productivity session" next week if there's enough interest (i.e. one person who feels they'd benefit from it).  We can do it via Zoom or whatever else.
+
+It will be better structured than last time we tried this.  I'll focus on a topic, you guys can test things out on your side as we go along, tell me if something doesn't work for you etc.  I'll stick to packages and shortcuts that you all should have already (since most of you are on Keith's config), and only show you something I've customised and how to do so yourself if it's really super useful IMO.
+
+I think it's best to do it early-ish in the week so you have some time to try some things out.  So how about 
+** Session 2 - Navigation
 *** key mods
 **** hyper key (CapsLock)
      check init-nav for shortcuts
@@ -245,6 +270,10 @@ this also needs to work when you use django shell inside docker container inside
 **** compose key (RightAlt)
      special keys like ë
 
+*** containers
+    windows
+    frames
+    buffers
 *** windows
     C-x 0 kills a window
     C-x 2 horizontal
@@ -254,15 +283,9 @@ this also needs to work when you use django shell inside docker container inside
 **** M-y yank if you want to repeat cut+paste previous item
 **** swiper
 
-
+*** frames
+    M-x tear-off-window
 *** projectile
-**** org setup
-***** getting things set up
-      symlink notes.org in your project folder to id-{project_name}.org
-      put notes.org in your project's .git/info/exclude
-
-      git config --global core.excludesfile 'notes.org'
-
 **** find files
     C-c p f
     Find file, open in current window
@@ -287,14 +310,33 @@ this also needs to work when you use django shell inside docker container inside
       C-x C-q
       M-S-5 search replace
       C-c C-e apply and save buffers
-     
-
-
-** Session 3 - Magit
+** Session 3 - Magit, Git Timemachine, Git blame
 *** magit-status slow fix
     (global-so-long-mode)
 
-** Session 3 - Agenda
+** Session 4 - Org, Org Capture and Agenda
+*** projectile setup
+**** getting things set up
+     symlink notes.org in your project folder to id-{project_name}.org
+     put notes.org in your project's .git/info/exclude
+
+     git config --global core.excludesfile 'notes.org'
+
 *** org capture
 **** meetings, scheduled tasks and deadlines
      https://orgmode.org/manual/The-date_002ftime-prompt.html#The-date_002ftime-prompt
+** Session X - Shells
+*** shell
+    M-. to go to error
+
+** Session X - Misc
+*** dired
+**** mass edit
+     ~C-x C-q~
+     *edit*
+     ~C-c C-c~
+**** rename file
+     ~R~
+     ~C-n~ to select the old name
+     
+** Session X - Configuration

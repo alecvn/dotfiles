@@ -63,25 +63,23 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (face
-	  (:family "Material Icons" :height 1.44)
-	  font-lock-face
-	  (:family "Material Icons" :height 1.44)
-	  display
-	  (raise -0.288)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise -0.288)
+			 font-lock-face
+			 (:family "Material Icons" :height 1.44)
+			 face
+			 (:family "Material Icons" :height 1.44)))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (face
-	  (:family "FontAwesome" :height 1.44)
-	  font-lock-face
-	  (:family "FontAwesome" :height 1.44)
-	  display
-	  (raise 0.0)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "FontAwesome" :height 1.44)
+			 face
+			 (:family "FontAwesome" :height 1.44)))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -95,7 +93,7 @@
     ("/home/alec/org/gtd/id-1address.org" "/home/alec/org/gtd/id-7days.org" "/home/alec/org/gtd/id-admin.org" "/home/alec/org/gtd/id-african.org" "/home/alec/org/gtd/id-bountyxp.org" "/home/alec/org/gtd/id-bunchcut.org" "/home/alec/org/gtd/id-charlottetilbury.org" "/home/alec/org/gtd/id-cliffcentral.org" "/home/alec/org/gtd/id-coin-it.org" "/home/alec/org/gtd/id-csir.org" "/home/alec/org/gtd/id-dannfica.org" "/home/alec/org/gtd/id-evolabs.org" "/home/alec/org/gtd/id-evolabs2.org" "/home/alec/org/gtd/id-fonk-fieldmate.org" "/home/alec/org/gtd/id-fonk-ing.org" "/home/alec/org/gtd/id-fonk-nbk.org" "/home/alec/org/gtd/id-fonk.org" "/home/alec/org/gtd/id-foodlink.org" "/home/alec/org/gtd/id-handheld.org" "/home/alec/org/gtd/id-hungrylion.org" "/home/alec/org/gtd/id-impact-spii.org" "/home/alec/org/gtd/id-impd.org" "/home/alec/org/gtd/id-imptime.org" "/home/alec/org/gtd/id-jobber.org" "/home/alec/org/gtd/id-katalyst.org" "/home/alec/org/gtd/id-koen-hfm.org" "/home/alec/org/gtd/id-malcolm.org" "/home/alec/org/gtd/id-mixtelamtics.org" "/home/alec/org/gtd/id-optics.org" "/home/alec/org/gtd/id-orca.org" "/home/alec/org/gtd/id-pemas.org" "/home/alec/org/gtd/id-quindici.org" "/home/alec/org/gtd/id-samsung.org" "/home/alec/org/gtd/id-sparrow.org" "/home/alec/org/gtd/id-stint.org" "/home/alec/org/gtd/id-tastemakersafrica.org" "/home/alec/org/gtd/id-timesheet.org" "/home/alec/org/gtd/id-tusk.org" "/home/alec/org/gtd/id-unionswiss.org" "/home/alec/org/gtd/id-vumela.org" "/home/alec/org/gtd/id-yebo-fresh.org" "/home/alec/org/gtd/id-youverify.org" "/home/alec/org/gtd/notes.org" "/home/alec/org/gtd/passwords.org" "/home/alec/org/gtd/traveltime.org" "/home/alec/org/gtd/us.org" "/home/alec/org/Boardgames.org" "/home/alec/org/Kommetjie.org" "/home/alec/org/beer.org" "/home/alec/org/blogposts.org" "/home/alec/org/cEDH AI.org" "/home/alec/org/cubigama.org" "/home/alec/org/finance.org" "/home/alec/org/games.org" "/home/alec/org/interview.org" "/home/alec/org/journal.org" "/home/alec/org/kids.org" "/home/alec/org/kubigawa.org" "/home/alec/org/magic.org" "/home/alec/org/meetings.org" "/home/alec/org/music.org" "/home/alec/org/oupa.org" "/home/alec/org/passwords.org" "/home/alec/org/podcasts_and_audiobooks.org" "/home/alec/org/project_management.org" "/home/alec/org/projects.org" "/home/alec/org/recipes.org" "/home/alec/org/social_work.org" "/home/alec/org/tattoo.org" "/home/alec/org/til.org" "/home/alec/org/todo.org" "/home/alec/org/vehicle.org")))
  '(package-selected-packages
    (quote
-    (wgrep-ag ioccur ivy counsel projectile buffer-move shx yasnippet-snippets ws-butler wgrep web-mode use-package-ensure-system-package solarized-theme smartparens shader-mode rvm robe restclient rbenv py-isort projectile-rails org omnisharp magit lsp-ui highlight-indent-guides git-timemachine flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard-hackernews dap-mode counsel-projectile company-tern company-lsp company-jedi company-inf-ruby color-theme calmer-forest-theme blacken auto-package-update all-the-icons-dired ag)))
+    (swiper wgrep-ag ioccur ivy counsel projectile buffer-move shx yasnippet-snippets ws-butler wgrep web-mode use-package-ensure-system-package solarized-theme smartparens shader-mode rvm robe restclient rbenv py-isort projectile-rails org omnisharp magit lsp-ui highlight-indent-guides git-timemachine flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard-hackernews dap-mode counsel-projectile company-tern company-lsp company-jedi company-inf-ruby color-theme calmer-forest-theme blacken auto-package-update all-the-icons-dired ag)))
  '(projectile-globally-ignored-file-suffixes (quote ("~")))
  '(projectile-indexing-method (quote alien))
  '(show-week-agenda-p t t))

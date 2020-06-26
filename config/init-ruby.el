@@ -41,12 +41,12 @@
   :ensure t
   :config
   (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
-  (setq enh-ruby-bounce-deep-indent t)
-  (setq enh-ruby-bounce-deep-indent-paren t)
-  (setq enh-ruby-hanging-brace-indent-level 2)
-  (setq enh-ruby-hanging-paren-deep-indent-level 2)
-  (setq enh-ruby-hanging-indent-level 2)
-  (setq enh-ruby-indent-level 2)
+  ;; (setq enh-ruby-bounce-deep-indent t)
+  ;; (setq enh-ruby-bounce-deep-indent-paren t)
+  ;; (setq enh-ruby-hanging-brace-indent-level 2)
+  ;; (setq enh-ruby-hanging-paren-deep-indent-level 2)
+  ;; (setq enh-ruby-hanging-indent-level 2)
+  ;; (setq enh-ruby-indent-level 2)
   (add-to-list 'auto-mode-alist
              '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
   )
