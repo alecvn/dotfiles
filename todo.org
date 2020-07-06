@@ -233,6 +233,17 @@ https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#
 ** TODO kdesettings!!!
    https://github.com/shalva97/kde-configuration-files
 
+** TODO kde taskbar disappearing fix
+   https://superuser.com/questions/946206/no-taskbar-and-cant-right-click-desktop/1091973#1091973
+
+** TODO checkout other WM's
+   bspwn - https://www.youtube.com/watch?v=EIxEGcHDAp0
+   dwm - https://ratfactor.com/slackware/dwm/
+   https://github.com/SwiftyChicken/dotfiles/tree/master/.config
+   https://www.reddit.com/r/unixporn/comments/hm22qs/bspwm_minimal_plannet/
+   https://www.reddit.com/r/linux_gaming/comments/enb77a/bspwm_most_efficient_way_of_sending_all_steam/
+   
+
 * Andrew
 ** DONE timesheet slow
    CLOSED: [2020-03-10 Tue 00:50]
@@ -255,36 +266,48 @@ this also needs to work when you use django shell inside docker container inside
 
 
 * Emacs productivity sessions
-  Happy Friday dudes!
-
-I was thinking of doing a "Emacs productivity session" next week if there's enough interest (i.e. one person who feels they'd benefit from it).  We can do it via Zoom or whatever else.
-
-It will be better structured than last time we tried this.  I'll focus on a topic, you guys can test things out on your side as we go along, tell me if something doesn't work for you etc.  I'll stick to packages and shortcuts that you all should have already (since most of you are on Keith's config), and only show you something I've customised and how to do so yourself if it's really super useful IMO.
-
-I think it's best to do it early-ish in the week so you have some time to try some things out.  So how about 
+rename
+save window
 ** Session 2 - Navigation
-*** key mods
-**** hyper key (CapsLock)
-     check init-nav for shortcuts
-
-**** compose key (RightAlt)
-     special keys like ë
+   ivy
+   ido
+   projectile
+   
 
 *** containers
     windows
     frames
     buffers
+
 *** windows
     C-x 0 kills a window
     C-x 2 horizontal
     C-x 3 vertical
     C-x | toggle 2 window split
+
+    Shift - arrows
+
 *** buffers
+**** move
+     shift arrows
+
 **** M-y yank if you want to repeat cut+paste previous item
+
 **** swiper
+     
 
 *** frames
     M-x tear-off-window
+
+*** key mods
+**** hyper key (CapsLock)
+     https://askubuntu.com/questions/1133312/how-do-i-remap-caps-lock-to-hyper-key-in-ubuntu-18-04
+     check init-nav for shortcuts
+
+**** compose key (RightAlt)
+     special keys like ë
+
+
 *** projectile
 **** find files
     C-c p f
@@ -301,6 +324,9 @@ I think it's best to do it early-ish in the week so you have some time to try so
 
     C-u C-c p f
     Invalidate cache and find files (files created outside of Emacs won't be added to cache: how about magit files?)
+
+**** imenu
+     M-i
     
 **** ag search
 ***** ivy-occur + wgrep

@@ -172,5 +172,5 @@
    :ensure t
    :config
    (set-frame-font "DejaVu Sans Mono-9" nil t)
-   (load-theme 'doom-gruvbox t)
+   (load-theme 'doom-city-lights t)
    )
