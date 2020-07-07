@@ -30,6 +30,7 @@ set $green       #b8bb26
 set $darkgreen   #98971a
 set $yellow      #fabd2f
 set $darkyellow  #d79921
+set $lightblue   #5294E2
 set $blue        #83a598
 set $darkblue    #458588
 set $magenta     #d3869b
@@ -200,7 +201,6 @@ bindsym $mod+r mode "resize"
 bar {
 
     i3bar_command     i3bar -t
-    status_command    i3status
     position          top
     mode              dock
     workspace_buttons yes
@@ -231,7 +231,7 @@ bar {
 #}
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #A7FA00 #A7FA00 $black #A7FA00 #A7FA00
+client.focused          $lightblue $lightblue $black $lightblue $lightblue
 
 for_window [title=".MellowPlayer*"] move scratchpad
 bindsym $mod+m [title=".MellowPlayer*"] scratchpad show
@@ -252,10 +252,14 @@ bindsym $mod+minus scratchpad show
 exec --no-startup-id wmctrl -c Plasma
 # Testing removing this line to see if it fixes the notification position
 # keep resetting to middle of the screen
-# for_window [title="Desktop — Plasma"] kill, floating enable, border none
+for_window [title="Desktop — Plasma"] kill, floating enable, border none
 
-no_focus [id="^Plasma$"]
+no_focus [class="plasmashell" window_type="notification"]
+no_focus [title="Plasma" window_type="notification"] 
+no_focus [class="^Plasma$"]
 no_focus [class="^plasmashell$"]
+
+# for_window [class="plasmashell" window_type="notification"] floating enable, border none, move position 2816px 30px
 
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows
@@ -283,4 +287,4 @@ for_window [window_type="dialog"] floating enable
 
 # Starting things with i3
 # exec --no-startup-id xcompmgr -C &    # Bare compositor to allow transparency
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png

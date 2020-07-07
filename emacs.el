@@ -63,25 +63,23 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (face
-	  (:family "Material Icons" :height 1.44)
-	  font-lock-face
-	  (:family "Material Icons" :height 1.44)
-	  display
-	  (raise -0.288)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise -0.288)
+			 font-lock-face
+			 (:family "Material Icons" :height 1.44)
+			 face
+			 (:family "Material Icons" :height 1.44)))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (face
-	  (:family "FontAwesome" :height 1.44)
-	  font-lock-face
-	  (:family "FontAwesome" :height 1.44)
-	  display
-	  (raise 0.0)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "FontAwesome" :height 1.44)
+			 face
+			 (:family "FontAwesome" :height 1.44)))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -92,7 +90,7 @@
  '(dashboard-set-navigator t)
  '(package-selected-packages
    (quote
-    (so-long shx yasnippet-snippets ws-butler wgrep web-mode use-package-ensure-system-package solarized-theme smartparens shader-mode rvm robe restclient rbenv py-isort projectile-rails org omnisharp magit lsp-ui highlight-indent-guides git-timemachine flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard-hackernews dap-mode counsel-projectile company-tern company-lsp company-jedi company-inf-ruby color-theme calmer-forest-theme blacken auto-package-update all-the-icons-dired ag)))
+    (yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))
  '(show-week-agenda-p t t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
