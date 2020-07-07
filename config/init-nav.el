@@ -1,6 +1,6 @@
 ;; Macro to revert buffer
 (global-set-key [f6] 'revert-buffer)
-(global-so-long-mode)
+(global-so-long-mode 1)
 
 (global-set-key (kbd "H-p") 'previous-buffer)
 (global-set-key (kbd "H-n") 'next-buffer)
