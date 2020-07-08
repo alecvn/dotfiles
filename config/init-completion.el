@@ -37,6 +37,4 @@
     (add-to-list 'company-backends 'company-robe)
     (global-set-key (kbd "M-SPC") 'company-complete)
     )
-  (setq company-idle-delay 0)
-  (setq company-global-modes '(not inf-ruby-mode org-mode)))
-
+  (setq company-idle-delay 0))

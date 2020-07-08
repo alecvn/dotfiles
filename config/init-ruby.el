@@ -24,7 +24,7 @@
 (use-package robe
   :ensure t
   :config
-  (add-hook 'ruby-mode-hook 'robe-mode))
+  (global-robe-mode))
   ;; this needs to be done manually for now as robe needs to be started in context of dev environment
   ;; (with-eval-after-load 'robe
   ;;   (inf-ruby)
@@ -37,19 +37,6 @@
   (add-to-list 'company-backends 'company-inf-ruby)
   )
 
-(use-package enh-ruby-mode
-  :ensure t
-  :config
-  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
-  ;; (setq enh-ruby-bounce-deep-indent t)
-  ;; (setq enh-ruby-bounce-deep-indent-paren t)
-  ;; (setq enh-ruby-hanging-brace-indent-level 2)
-  ;; (setq enh-ruby-hanging-paren-deep-indent-level 2)
-  ;; (setq enh-ruby-hanging-indent-level 2)
-  ;; (setq enh-ruby-indent-level 2)
-  (add-to-list 'auto-mode-alist
-             '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
-  )
 
 (use-package web-mode
   :ensure t
