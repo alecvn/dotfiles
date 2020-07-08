@@ -1,10 +1,12 @@
 * Alec
 ** TODO implement Helm
-** TODO fix find file
+** DONE fix find file
+   CLOSED: [2020-06-25 Thu 00:11]
    possibly just implement a different shortcut to create a file, or just remove IDO from find file
    since we have Projectile for smart finding
 
 ** TODO fix magit performance issues during large merge conflict
+
 ** TODO strip out bare bones emacs config file for the office
 ** TODO implement more org-capture templates
 ** TODO fix auto complete
@@ -17,7 +19,8 @@
 ** DONE find a way to stop company-mode from slowing doing shells or disable it with hooks
    CLOSED: [2020-03-10 Tue 00:36]
 
-** TODO remove line numbers from comint and like text files
+** DONE remove line numbers from comint and like text files
+   CLOSED: [2020-06-25 Thu 00:12]
    files/buffers above certain size basically
 
 ** DONE swiper for currently selected text
@@ -26,23 +29,28 @@
 ** DONE swiper for word under cursor
    CLOSED: [2020-03-10 Tue 00:34]
 
-** TODO GOTO file under cursor
+** DONE GOTO file under cursor
+   M-. or S-ENTER
+   CLOSED: [2020-06-25 Thu 00:12]
    I believe find-file (C-x C-f) used to work for this
 
 ** TODO snippets
    especially for rails (template if statements etc)
 
-** TODO look into emacs server again
+** DONE look into emacs server again
+   CLOSED: [2020-06-25 Thu 00:12]
    could be very useful to run profiler in the background
    https://github.com/nex3/perspective-el
 
-** TODO thing at point
+** DONE thing at point
+   CLOSED: [2020-06-25 Thu 00:13]
    projectile ag search
    find file
    find dir
    etc
 
-** TODO schedule issues (todos) for particular days
+** DONE schedule issues (todos) for particular days
+   CLOSED: [2020-06-25 Thu 00:13]
    probably already possible, but make it easy-> shortcut
 
 ** DONE change the prev-buffer and next-buffer shortcuts
@@ -51,8 +59,14 @@
    it's currently C-x left /or/ right
    gotta be something requiring less stretch
    
-** TODO handle scheduled events
-   https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-to-a-task-with-idle-timer/22488
+** CANCELLED make issues relatable
+   CLOSED: [2020-06-25 Thu 00:13]
+   add "epic" style issues so that issues can link to other issues
+   or be depend on other issues ("blocking")
+
+** DONE handle scheduled events
+   CLOSED: [2020-06-25 Thu 00:13]
+https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-to-a-task-with-idle-timer/22488
    :LOGBOOK:
    CLOCK: [2020-04-29 Wed 01:32]--[2020-04-29 Wed 22:23] => 20:51
    CLOCK: [2020-04-29 Wed 01:28]--[2020-04-29 Wed 01:32] =>  0:04
@@ -65,10 +79,12 @@
    https://github.com/IvanMalison/org-projectile
    https://github.com/jethrokuan/org-roam
 
-** TODO update doom-city-lights colour scheme
+** DONE update doom-city-lights colour scheme
+   CLOSED: [2020-06-25 Thu 00:14]
    replace some of the reds/pinks/oranges at the theme level instead of the way I'm doing it now
    
-** TODO find a way to properly customize face, fonts, etc
+** DONE find a way to properly customize face, fonts, etc
+   CLOSED: [2020-06-25 Thu 00:14]
 ** TODO make modules easier to include or exclude
    especially face - it should probably be an entirely empty file for newcomers
 
@@ -87,8 +103,10 @@
    https://emacs.stackexchange.com/questions/57830/how-can-i-automatically-change-a-todo-agenda-item-task-to-progress-when-clocking
    or possibly "IN_PROGRESS"
 
-** TODO find-file shortcut to just go to other window (if it exists) and open there else create one
-** TODO navigate around windows
+** DONE find-file shortcut to just go to other window (if it exists) and open there else create one
+   CLOSED: [2020-06-25 Thu 00:14]
+** DONE navigate around windows
+   CLOSED: [2020-06-25 Thu 00:15]
    https://sachachua.com/blog/2015/01/emacs-microhabit-switching-windows-windmove-ace-window-ace-jump/
    checkout ace window and ace jump, as well as keychord
 
@@ -102,17 +120,19 @@
 ** TODO more great org configs
    https://github.com/gjstein/emacs.d/blob/master/config/init-10-face.el
 
-** TODO symlink id-project.org to notes.org in project folder
+** DONE symlink id-project.org to notes.org in project folder
+   CLOSED: [2020-06-25 Thu 00:15]
    add the notes.org to git info exclude
    this is so that we can find notes easier, it also fixes the whole org capture problem for project
    specific issues
 ** TODO create and backup gpg keys
-https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#transfer-keys-to-another-computer
+   https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#transfer-keys-to-another-computer
    https://tunjos.co/blog/backup-your-gpg-key/
 ** TODO setup tmux keys
    https://zserge.com/posts/tmux/
    https://tmuxguide.readthedocs.io/en/latest/tmux/tmux.html
-** TODO ubuntu 20.04 upgrade
+** CANCELLED ubuntu 20.04 upgrade
+   CLOSED: [2020-06-25 Thu 00:15]
    https://github.com/efazati/i3buntu
 
 ** TODO renaming a file should autocomplete that files name
@@ -126,7 +146,6 @@ https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#
    - [ ] Jira
 
 ** TODO deal with repeated meetings when sprint is closed
-
 ** TODO get rid of "activity screens" shortcut that fucks up the i3 layout
 ** TODO setup the compose key configuration
    CapsLock -> ComposeKey allowing special characters
@@ -266,12 +285,24 @@ this also needs to work when you use django shell inside docker container inside
 
 
 * Emacs productivity sessions
-rename
-save window
+** Session 1 - Misc goodies from my config (you might have it too)
+*** making a selection and then typing [ " ' etc encapsulates with those characters
+*** M-y copies the second last thing automatically
+
 ** Session 2 - Navigation
    ivy
    ido
    projectile
+*** key mods
+**** hyper key (CapsLock)
+     https://askubuntu.com/questions/1133312/how-do-i-remap-caps-lock-to-hyper-key-in-ubuntu-18-04
+     check init-nav for shortcuts
+
+**** compose key (RightAlt)
+     special keys like ë
+*** takeaways
+    rename
+    save window
    
 
 *** containers
@@ -298,15 +329,6 @@ save window
 
 *** frames
     M-x tear-off-window
-
-*** key mods
-**** hyper key (CapsLock)
-     https://askubuntu.com/questions/1133312/how-do-i-remap-caps-lock-to-hyper-key-in-ubuntu-18-04
-     check init-nav for shortcuts
-
-**** compose key (RightAlt)
-     special keys like ë
-
 
 *** projectile
 **** find files
@@ -336,6 +358,7 @@ save window
       C-x C-q
       M-S-5 search replace
       C-c C-e apply and save buffers
+
 ** Session 3 - Magit, Git Timemachine, Git blame
 *** magit-status slow fix
     (global-so-long-mode)

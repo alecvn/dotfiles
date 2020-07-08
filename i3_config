@@ -1,7 +1,7 @@
 # -*- mode: i3wm-config -*-
 
 # (No) Title Bars
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 
 # Gaps
 gaps inner 10
@@ -9,7 +9,7 @@ gaps outer 0
 smart_gaps on
 
 # Corners
-border_radius 3
+# border_radius 3
 
 # Assign workspaces to screens
 #  On E560, eDP-1 is the first display, while DP-2 is VGA output

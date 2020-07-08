@@ -3,7 +3,8 @@
   :config
   (ido-mode t)
   (setq ido-separator "\n")
-  (setq ido-use-filename-at-point 'guess))
+  ;; (setq ido-use-filename-at-point 'guess)
+  )
 
 (use-package ivy
   :ensure t

@@ -34,6 +34,7 @@
 *** wm
 *** de
 *** compositor
+    https://wiki.archlinux.org/index.php/Picom
 *** status bar
 *** system tray
 *** launcher
