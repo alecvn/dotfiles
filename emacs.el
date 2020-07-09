@@ -52,7 +52,8 @@
 (load-file "~/.emacs.d/config/init-web.el")
 (load-file "~/.emacs.d/config/init-csharp.el")
 
-(set-face-attribute 'default (selected-frame) :height 90)
+;; (set-face-attribute 'default (selected-frame) :height 90)
+(load-file "~/.emacs.d/config/init-rest.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -72,7 +73,8 @@
    "This is my Emacs. There are many like it, but this one is mine. My Emacs is my best friend. It is my life. I must master it as I master my life. My Emacs, without me, is useless. Without my Emacs, I am useless.")
  '(dashboard-center-content t)
  '(dashboard-navigator-buttons
-   '(((#("" 0 1
+   (quote
+    (((#("" 0 1
 	 (rear-nonsticky t display
 			 (raise -0.288)
 			 font-lock-face
@@ -156,6 +158,12 @@
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
  '(xterm-color-names-bright
    ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
+=======
+ '(package-selected-packages
+   (quote
+    (yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))
+ '(show-week-agenda-p t t))
+>>>>>>> 9b187bc79e2af7c72063e1150a0f986f067a2f24
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

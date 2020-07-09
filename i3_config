@@ -8,6 +8,9 @@ gaps inner 10
 gaps outer 0
 smart_gaps on
 
+# Corners
+# border_radius 3
+
 # Assign workspaces to screens
 #  On E560, eDP-1 is the first display, while DP-2 is VGA output
 # workspace 1 output HDMI-1
@@ -27,6 +30,7 @@ set $green       #b8bb26
 set $darkgreen   #98971a
 set $yellow      #fabd2f
 set $darkyellow  #d79921
+set $lightblue   #5294E2
 set $blue        #83a598
 set $darkblue    #458588
 set $magenta     #d3869b
@@ -72,8 +76,8 @@ bindsym $mod+p exec krunner
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+i focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -84,8 +88,8 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -197,7 +201,6 @@ bindsym $mod+r mode "resize"
 bar {
 
     i3bar_command     i3bar -t
-    status_command    i3status
     position          top
     mode              dock
     workspace_buttons yes
@@ -228,16 +231,16 @@ bar {
 #}
 
 # class                 border  backgr. text    indicator child_border
-client.focused          $green $green $black $green #A7FA00
+client.focused          $lightblue $lightblue $black $lightblue $lightblue
 
 for_window [title=".MellowPlayer*"] move scratchpad
 bindsym $mod+m [title=".MellowPlayer*"] scratchpad show
 
 
-for_window [class="konsole"] move scratchpad
-for_window [class="konsole"] move position 1200px 30px
-bindsym $mod+c [class="konsole"] scratchpad show
-for_window [class="konsole"] resize set width 700 px height 900 px
+# for_window [class="konsole"] move scratchpad
+# for_window [class="konsole"] move position 1200px 30px
+# bindsym $mod+y [class="konsole"] scratchpad show
+# for_window [class="konsole"] resize set width 700 px height 900 px
 
 
 # show first scratchpad
@@ -245,14 +248,18 @@ bindsym $mod+minus scratchpad show
 
 
 ## Plasma Integration
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
+# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everything)
 exec --no-startup-id wmctrl -c Plasma
 # Testing removing this line to see if it fixes the notification position
 # keep resetting to middle of the screen
-# for_window [title="Desktop — Plasma"] kill, floating enable, border none
+for_window [title="Desktop — Plasma"] kill, floating enable, border none
 
-no_focus [id="^Plasma$"]
+no_focus [class="plasmashell" window_type="notification"]
+no_focus [title="Plasma" window_type="notification"] 
+no_focus [class="^Plasma$"]
 no_focus [class="^plasmashell$"]
+
+# for_window [class="plasmashell" window_type="notification"] floating enable, border none, move position 2816px 30px
 
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows
@@ -264,6 +271,8 @@ for_window [class="krunner"] floating enable, border none
 for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [title="Microsoft Teams Notification"] floating enable, border none
+for_window [class="yakuake"] floating enable
 
 
 for_window [window_role="pop-up"] floating enable
@@ -273,9 +282,9 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_role="About"] floating enable 
 for_window [window_type="dialog"] floating enable
 
+
 #for_window [floating] move position 0 0
 
 # Starting things with i3
 # exec --no-startup-id xcompmgr -C &    # Bare compositor to allow transparency
-for_window [class="yakuake"] floating enable
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png

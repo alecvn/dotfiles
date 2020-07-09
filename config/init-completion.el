@@ -1,10 +1,10 @@
-;; ido
 (use-package ido
   :ensure t
   :config
   (ido-mode t)
   (setq ido-separator "\n")
-  (setq ido-use-filename-at-point 'guess))
+  ;; (setq ido-use-filename-at-point 'guess)
+  )
 
 (use-package ivy
   :ensure t
@@ -21,7 +21,6 @@
   (setq search-default-mode #'char-fold-to-regexp)
   (setq enable-recursive-minibuffers t))
 
-;; Yasnippet
 (use-package yasnippet
   :ensure t
   :config
@@ -29,7 +28,6 @@
 	'("~/.emacs.d/elpa/yasnippet-snippets-20190513.1049/snippets"))
   (yas-global-mode 1))
 
-;; Company
 (use-package company
   :ensure t
   :config
@@ -37,8 +35,9 @@
   (add-hook 'after-init-hook 'global-company-mode)
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-tern)
+    (add-to-list 'company-backends 'company-robe)
     (global-set-key (kbd "M-SPC") 'company-complete)
     )
   (setq company-idle-delay 0)
-  (setq company-global-modes '(not inf-ruby-mode org-mode))
-)
+  (setq company-global-modes '(not inf-ruby-mode org-mode)))
+

@@ -1,5 +1,7 @@
 (global-set-key (kbd "C-c M-o") 'comint-clear-buffer)
 
+(shx-global-mode 1)
+
 ;; History searching already available through M-r, C-r to cycle
 
 (defun my-shell-mode-hook ()

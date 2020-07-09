@@ -1,3 +1,4 @@
+
 ;; Remove window ui elements
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
@@ -50,6 +51,9 @@
   :init (global-flycheck-mode)
   ;;:ensure-system-package (pylint . "pip3 install pylint")
   )
+
+
+;;(use-package calmer-forest-theme :ensure t)
 
 (use-package shader-mode :ensure t)
 
@@ -146,8 +150,34 @@
       :ensure t
       :hook (after-init . doom-modeline-mode))
 
-(use-package solarized-theme
+;; (use-package solarized-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'solarized-dark t)
+;;   )
+
+;; (use-package doom-themes
+;;   :ensure t
+;;   :config
+;;   (load-theme 'doom-city-lights t)
+;;   (custom-set-faces
+;;    ;; custom-set-faces was added by Custom.
+;;    ;; If you edit it by hand, you could mess it up, so be careful.
+;;    ;; Your init file should contain only one such instance.
+;;    ;; If there is more than one, they won't work right.
+;;    '(all-the-icons-dired-dir-face ((t (:foreground "steel blue"))))
+;;    '(org-agenda-date ((t (:foreground "DeepSkyBlue3" :weight ultra-bold))))
+;;    '(org-agenda-date-today ((t (:foreground "cyan" :weight ultra-bold))))
+;;    '(org-agenda-date-weekend ((t (:foreground "DeepSkyBlue4" :weight ultra-bold))))
+;;    '(org-link ((t (:inherit link :slant italic))))
+;;    '(org-table ((t (:foreground "deep sky blue"))))
+;;    '(org-todo ((t (:foreground "green yellow" :weight bold)))))
+;;   )
+;; ;;(use-package calmer-forest-theme :ensure t)
+
+(use-package doom-themes
   :ensure t
   :config
-  (load-theme 'solarized-dark t)
+  (set-frame-font "DejaVu Sans Mono-9" nil t)
+  (load-theme 'doom-city-lights t)
   )

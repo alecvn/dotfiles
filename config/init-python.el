@@ -16,7 +16,7 @@
   :config
   (defun my/jedi-python-mode-hook ()
     (add-to-list 'company-backends 'company-jedi))
-  (add-hook 'python-mode-hook 'my/jedi-python-mode-hook)
+  (add-hook 'python-mode-hook 'my/python-mode-hook)
   )
 
 (use-package highlight-indent-guides
@@ -30,6 +30,7 @@
 (use-package python
   :ensure t
   :init
+  (setq python-shell-interpreter "python3")
   (add-hook 'python-mode-hook
           '(lambda()
              (add-hook 'before-save-hook 'py-isort-before-save)))
@@ -43,4 +44,3 @@
               )
 
   )
-

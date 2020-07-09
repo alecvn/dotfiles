@@ -1,63 +1,266 @@
-* notes on useful tricks and tools
-** ram/cpu usage profiler!!!
-  M-x profiler-start RET
-  M-x profiler-report RET
-
-
 * Alec
-** TODO implement Helm but not globally
-** TODO fix find file
+** TODO implement Helm
+** DONE fix find file
+   CLOSED: [2020-06-25 Thu 00:11]
    possibly just implement a different shortcut to create a file, or just remove IDO from find file
    since we have Projectile for smart finding
-** TODO fix magit performance issues
+
+** TODO fix magit performance issues during large merge conflict
+
 ** TODO strip out bare bones emacs config file for the office
 ** TODO implement more org-capture templates
 ** TODO fix auto complete
    only want to be able to opt in with tab etc
    so maybe prefer company over whatever else is trying to comlete (ivy?)
+
 ** TODO web mode sometimes just deactivates 
-** TODO remove focus on notifications
-** TODO fix positioning of notifications and konsole
+** TODO i3: remove focus on notifications
+** TODO i3: fix positioning of notifications and konsole
 ** DONE find a way to stop company-mode from slowing doing shells or disable it with hooks
    CLOSED: [2020-03-10 Tue 00:36]
-** TODO checkout old emacs rails setup guide
-   https://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
-** TODO remove line numbers from comint and like text files
+
+** DONE remove line numbers from comint and like text files
+   CLOSED: [2020-06-25 Thu 00:12]
    files/buffers above certain size basically
+
 ** DONE swiper for currently selected text
    CLOSED: [2020-03-10 Tue 00:34]
+
 ** DONE swiper for word under cursor
    CLOSED: [2020-03-10 Tue 00:34]
-** TODO GOTO file under cursor
+
+** DONE GOTO file under cursor
+   M-. or S-ENTER
+   CLOSED: [2020-06-25 Thu 00:12]
    I believe find-file (C-x C-f) used to work for this
+
 ** TODO snippets
    especially for rails (template if statements etc)
-** TODO look into emacs server again
+
+** DONE look into emacs server again
+   CLOSED: [2020-06-25 Thu 00:12]
    could be very useful to run profiler in the background
-** TODO thing at point
+   https://github.com/nex3/perspective-el
+
+** DONE thing at point
+   CLOSED: [2020-06-25 Thu 00:13]
    projectile ag search
    find file
    find dir
    etc
 
-** TODO schedule issues (todos) for particular days
+** DONE schedule issues (todos) for particular days
+   CLOSED: [2020-06-25 Thu 00:13]
    probably already possible, but make it easy-> shortcut
 
-** TODO change the prev-buffer and next-buffer shortcuts
+** DONE change the prev-buffer and next-buffer shortcuts
+   it's /C-x p/ or /C-x r/ now
+   CLOSED: [2020-04-22 Wed 10:48]
    it's currently C-x left /or/ right
    gotta be something requiring less stretch
-
-** TODO checkout org-roam
-   https://github.com/jethrokuan/org-roam
-
-** TODO make issues relatable
+   
+** CANCELLED make issues relatable
+   CLOSED: [2020-06-25 Thu 00:13]
    add "epic" style issues so that issues can link to other issues
    or be depend on other issues ("blocking")
 
-** TODO MEETINGS!!!
+** DONE handle scheduled events
+   CLOSED: [2020-06-25 Thu 00:13]
+https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-to-a-task-with-idle-timer/22488
+   :LOGBOOK:
+   CLOCK: [2020-04-29 Wed 01:32]--[2020-04-29 Wed 22:23] => 20:51
+   CLOCK: [2020-04-29 Wed 01:28]--[2020-04-29 Wed 01:32] =>  0:04
+   CLOCK: [2020-04-29 Wed 01:26]--[2020-04-29 Wed 01:27] =>  0:01
+   CLOCK: [2020-04-29 Wed 01:16]--[2020-04-29 Wed 01:26] =>  0:10
+   :END:
+   
+** TODO org mode stuff to check out
+   https://github.com/ahungry/org-jira
+   https://github.com/IvanMalison/org-projectile
+   https://github.com/jethrokuan/org-roam
 
-** TODO change colour scheme of org (at least)
-   four star headers being brown is fucking horrid
+** DONE update doom-city-lights colour scheme
+   CLOSED: [2020-06-25 Thu 00:14]
+   replace some of the reds/pinks/oranges at the theme level instead of the way I'm doing it now
+   
+** DONE find a way to properly customize face, fonts, etc
+   CLOSED: [2020-06-25 Thu 00:14]
+** TODO make modules easier to include or exclude
+   especially face - it should probably be an entirely empty file for newcomers
+
+   maybe add a wizard for installation that asks about stuff like:
+   ivy? (that probably includes company etc)
+   capture?
+   python?
+
+   and also allows you to easily setup theme
+
+** TODO fix robe so that it start automatically
+   when entering a ruby project it should pick up the gemset (via RVM?) and environment for that project and start robe
+   https://lorefnon.me/2014/02/02/configuring-emacs-for-rails.html
+
+** TODO setting TODO on an item that doesn't have state should just default to TODO
+   https://emacs.stackexchange.com/questions/57830/how-can-i-automatically-change-a-todo-agenda-item-task-to-progress-when-clocking
+   or possibly "IN_PROGRESS"
+
+** DONE find-file shortcut to just go to other window (if it exists) and open there else create one
+   CLOSED: [2020-06-25 Thu 00:14]
+** DONE navigate around windows
+   CLOSED: [2020-06-25 Thu 00:15]
+   https://sachachua.com/blog/2015/01/emacs-microhabit-switching-windows-windmove-ace-window-ace-jump/
+   checkout ace window and ace jump, as well as keychord
+
+   https://emacs.stackexchange.com/questions/3458/how-to-switch-between-windows-quickly
+
+   https://emacs.stackexchange.com/questions/22286/shiftarrow-to-change-window-does-not-work-in-org-mode
+   
+** TODO setup refile like here
+   http://doc.rix.si/cce/cce-org.html#org9971637
+
+** TODO more great org configs
+   https://github.com/gjstein/emacs.d/blob/master/config/init-10-face.el
+
+** DONE symlink id-project.org to notes.org in project folder
+   CLOSED: [2020-06-25 Thu 00:15]
+   add the notes.org to git info exclude
+   this is so that we can find notes easier, it also fixes the whole org capture problem for project
+   specific issues
+** TODO create and backup gpg keys
+   https://gpgtools.tenderapp.com/kb/gpg-keychain-faq/backup-or-transfer-your-keys#transfer-keys-to-another-computer
+   https://tunjos.co/blog/backup-your-gpg-key/
+** TODO setup tmux keys
+   https://zserge.com/posts/tmux/
+   https://tmuxguide.readthedocs.io/en/latest/tmux/tmux.html
+** CANCELLED ubuntu 20.04 upgrade
+   CLOSED: [2020-06-25 Thu 00:15]
+   https://github.com/efazati/i3buntu
+
+** TODO renaming a file should autocomplete that files name
+   I also used to be able to rename a file from within it
+
+** TODO python breakpoints
+   https://documen.tician.de/pudb/starting.html
+
+** TODO link org to project management
+   - [ ] Github projects
+   - [ ] Jira
+
+** TODO deal with repeated meetings when sprint is closed
+** TODO get rid of "activity screens" shortcut that fucks up the i3 layout
+** TODO setup the compose key configuration
+   CapsLock -> ComposeKey allowing special characters
+
+** TODO implement whatfiles
+   https://github.com/spieglt/whatfiles
+
+** TODO email
+   http://www.mycpu.org/read-email-in-emacs/
+   https://200ok.ch/posts/2020-05-27_using_emacs_and_mu4e_for_emails_even_with_html.html
+
+** TODO i3 - open new window in specific size
+   https://www.reddit.com/r/i3wm/comments/9j10ae/i3wm_open_window_in_specific_size/
+   https://i3wm.org/docs/layout-saving.html
+
+** TODO unix pipes
+   https://prithu.xyz/posts/unix-pipeline/
+
+** TODO uml
+   https://plantuml.com/
+   http://eschulte.github.io/babel-dev/DONE-integrate-plantuml-support.html
+
+** TODO Zettelkasten
+   https://eugeneyan.com/2020/04/05/note-taking-zettelkasten/
+** TODO i3 terminal stuff
+   https://www.youtube.com/watch?v=q-l7DnDbiiU
+   Yakuake
+   https://github.com/akermu/emacs-libvterm
+   tmux
+
+** TODO show i3 keyboard shortcuts
+   https://www.reddit.com/r/i3wm/comments/gz2eyx/small_tool_i_made_to_visualize_your_i3_keybindings/
+** TODO conky
+   https://github.com/brndnmtthws/conky
+** TODO dmenu vs rofi
+   https://www.reddit.com/r/unixporn/comments/h9hdyc/oc_rofi_shortcuts/
+
+** TODO Manjaro Jack setup 
+   https://www.youtube.com/watch?v=vgrqMv3Lzfk
+   https://forum.manjaro.org/t/how-to-replace-pulseaudio-with-jack-jack-and-pulseaudio-together-as-friend/2086
+   https://kx.studio/Repositories
+** TODO home drive mounted to second hard drive
+   https://www.howtogeek.com/442101/how-to-move-your-linux-home-directory-to-another-hard-drive/
+** TODO jumping around in code
+   https://www.reddit.com/r/emacs/comments/h138pp/what_is_the_best_method_you_have_found_for/
+** TODO polybar (status bar and system tray)
+   https://github.com/polybar/polybar
+** TODO org mode css
+   https://sandyuraz.com/articles/orgmode-css/
+** TODO i3 font awesome icons and notification demon
+   https://github.com/Algorithm79/Dotfiles_i3/
+** TODO custom theme generator
+   https://github.com/dylanaraps/pywal
+
+   https://www.reddit.com/r/unixporn/comments/947y8t/ocemacs_a_doom_theme_generator/
+   http://terminal.sexy/#Hh4ep6enHh4ez2pMj51q-e6YdYemm4Wdr8Tbp6enX1pgz2pMj51q-e6YdYemm4Wdr8Tb____
+   https://github.com/hlissner/doom-emacs/issues/2732
+** TODO prescient - alternative to helm
+   https://github.com/raxod502/prescient.el
+** TODO regex
+   https://github.com/immerrr/ample-regexps.el/blob/master/README.rst
+** TODO shx
+   shell extras
+** TODO Manjaro i3: something for usb connection
+** TODO unixporn goals
+   https://www.reddit.com/r/unixporn/comments/haogs0/bspwm_i_have_spent_too_much_time_on_this/
+** TODO blogging
+   https://jgkamat.gitlab.io/blog/website1.html
+   https://orgmode.org/worg/org-blog-wiki.html
+** TODO habits
+   https://orgmode.org/manual/Tracking-your-habits.html
+** TODO fonts
+   https://github.com/ryanoasis/nerd-
+** TODO shell output: open file at line on Enter (it works on mouse click)
+
+** TODO i3 status bar click events
+   https://en.jeffprod.com/blog/2020/create-your-own-i3-sway-status-bar/
+
+** TODO projectile caching stuff
+   https://emacs.stackexchange.com/questions/8074/projectile-with-caching-doesnt-like-new-files
+   https://emacs.stackexchange.com/questions/26266/projectile-and-magit-branch-checkout
+   https://docs.projectile.mx/projectile/configuration.html#caching
+** TODO customize yakuake
+
+** TODO compositor
+   picom
+   https://www.reddit.com/r/unixporn/comments/du6ms3/i3gaps_rounded_corners_everywhere/
+
+** TODO customize Spotify
+   https://github.com/khanhas/spicetify-cli
+
+** TODO learn Regex
+   https://regexone.com/
+
+** TODO windows not going to correct workspace/position
+   https://www.reddit.com/r/i3wm/comments/hey84b/firefox_nightly_doesnt_get_assigned_to_the/
+
+** TODO org source blocks
+   https://jherrlin.github.io/posts/emacs-orgmode-source-code-blocks/
+
+** TODO Human Programming Interface
+   https://beepb00p.xyz/hpi.html
+
+** TODO kdesettings!!!
+   https://github.com/shalva97/kde-configuration-files
+
+** TODO kde taskbar disappearing fix
+   https://superuser.com/questions/946206/no-taskbar-and-cant-right-click-desktop/1091973#1091973
+
+** TODO checkout other WM's
+   bspwn - https://www.youtube.com/watch?v=EIxEGcHDAp0
+   dwm - https://ratfactor.com/slackware/dwm/
+   https://github.com/SwiftyChicken/dotfiles/tree/master/.config
+   https://www.reddit.com/r/unixporn/comments/hm22qs/bspwm_minimal_plannet/
+   https://www.reddit.com/r/linux_gaming/comments/enb77a/bspwm_most_efficient_way_of_sending_all_steam/
    
 
 * Andrew
@@ -69,10 +272,120 @@
    CLOSED: [2020-03-10 Tue 00:35]
 ** TODO setup emacs shell for ssh and docker
 this also needs to work when you use django shell inside docker container inside server connection
-** FEEDBACK overwrite mode not working
+** DONE overwrite mode not working
+   CLOSED: [2020-04-23 Thu 12:12]
 ** FEEDBACK need to remap or learn macros
 ** TODO warnings about imports not being used, etc are missing
 ** FEEDBACK learn magit
 ** TODO add pretier for js
-** TODO ctrl . to take me to class or function
+   https://github.com/prettier/prettier-emacs
+** DONE ctrl . to take me to class or function
+   CLOSED: [2020-04-23 Thu 12:12]
 ** TODO restclientmode
+
+
+* Emacs productivity sessions
+** Session 1 - Misc goodies from my config (you might have it too)
+*** making a selection and then typing [ " ' etc encapsulates with those characters
+*** M-y copies the second last thing automatically
+
+** Session 2 - Navigation
+   ivy
+   ido
+   projectile
+*** key mods
+**** hyper key (CapsLock)
+     https://askubuntu.com/questions/1133312/how-do-i-remap-caps-lock-to-hyper-key-in-ubuntu-18-04
+     check init-nav for shortcuts
+
+**** compose key (RightAlt)
+     special keys like ë
+*** takeaways
+    rename
+    save window
+   
+
+*** containers
+    windows
+    frames
+    buffers
+
+*** windows
+    C-x 0 kills a window
+    C-x 2 horizontal
+    C-x 3 vertical
+    C-x | toggle 2 window split
+
+    Shift - arrows
+
+*** buffers
+**** move
+     shift arrows
+
+**** M-y yank if you want to repeat cut+paste previous item
+
+**** swiper
+     
+
+*** frames
+    M-x tear-off-window
+
+*** projectile
+**** find files
+    C-c p f
+    Find file, open in current window
+
+    C-c p 4 f
+    File file, open in another window.
+
+    C-c p F
+    projectile-find-file-in-known-projects - Find file in all known projects
+    
+    C-c p g
+    projectile-find-file-dwim -	Find file based on context at point
+
+    C-u C-c p f
+    Invalidate cache and find files (files created outside of Emacs won't be added to cache: how about magit files?)
+
+**** imenu
+     M-i
+    
+**** ag search
+***** ivy-occur + wgrep
+      ag search for something then:
+      C-c C-o
+      wgrep for: we can inline search and replace
+      C-x C-q
+      M-S-5 search replace
+      C-c C-e apply and save buffers
+
+** Session 3 - Magit, Git Timemachine, Git blame
+*** magit-status slow fix
+    (global-so-long-mode)
+
+** Session 4 - Org, Org Capture and Agenda
+*** projectile setup
+**** getting things set up
+     symlink notes.org in your project folder to id-{project_name}.org
+     put notes.org in your project's .git/info/exclude
+
+     git config --global core.excludesfile 'notes.org'
+
+*** org capture
+**** meetings, scheduled tasks and deadlines
+     https://orgmode.org/manual/The-date_002ftime-prompt.html#The-date_002ftime-prompt
+** Session X - Shells
+*** shell
+    M-. to go to error
+
+** Session X - Misc
+*** dired
+**** mass edit
+     ~C-x C-q~
+     *edit*
+     ~C-c C-c~
+**** rename file
+     ~R~
+     ~C-n~ to select the old name
+     
+** Session X - Configuration

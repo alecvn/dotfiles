@@ -1,14 +1,100 @@
-* ivy
-** search
-  wherever ivy completion is used (ag, projectile, swiper, etc) you can use `!` to remove things from search
-  ex.
+* notes on useful tricks and tools
+** ram/cpu usage profiler!!!
+  M-x profiler-start RET
+  M-x profiler-report RET
+** shell goto file at line number
+   compilation-minor-mode
+   if this hook is on your shell, ~M-ENTER~ or ~C-c C-c~ will goto line number of file of link, eg
+   =/path/to/file.rb:25:=
+   it's using ~compile-goto-error~
+   
+** ivy
+*** search
+   wherever ivy completion is used (ag, projectile, swiper, etc) you can use `!` to remove things from search
+   ex.
   
-  1. these are words
-  2. these are not words
+   1. these are words
+   2. these are not words
 
-  C-s words ! not
+   C-s words ! not
 
-  will not match the second line
+   will not match the second line
 
-  ivy--regex-ignore-order
+   ivy--regex-ignore-order
   
+
+
+* OS
+** references
+*** filesystem ref
+    https://refspecs.linuxfoundation.org/FHS_2.3/fhs-2.3.html
+
+
+** components
+*** wm
+*** de
+*** compositor
+    https://wiki.archlinux.org/index.php/Picom
+*** status bar
+*** system tray
+*** launcher
+*** notifications
+
+
+** programs
+*** notifications
+    dunst
+
+*** screenshot
+**** spectacle
+
+*** audio
+**** jack2
+     sound server
+
+**** carla
+     bridge ALSA and PulseAudio to Jack
+
+**** reaper
+     + plugins + vsts
+
+*** text editing
+**** emacs
+
+*** game dev
+**** godot
+
+*** messaging
+**** slack
+**** discord
+**** thunderbird
+
+*** games
+**** mtga
+     mtg arena tool
+**** steam
+
+*** editing
+**** gimp
+
+*** desktop recording
+**** obs studio
+
+*** misc
+    spotify (scrobbler)
+    tuxguitar
+    dropbox
+    firefox
+    wine
+    i3
+    i3-gaps
+    minecraft
+   
+
+* keys
+** map Caps to Hyper key (Ubuntu)
+   https://askubuntu.com/questions/1133312/how-do-i-remap-caps-lock-to-hyper-key-in-ubuntu-18-40
+** map RightAlt to Compose key (KDE)
+   https://userbase.kde.org/Tutorials/ComposeKey
+** map RightAlt via .profile
+   ~setxkbmap -option compose:ralt~
