@@ -73,25 +73,23 @@
  '(dashboard-center-content t)
  '(dashboard-navigator-buttons
    '(((#("" 0 1
-	 (face
-	  (:family "Material Icons" :height 1.44)
-	  font-lock-face
-	  (:family "Material Icons" :height 1.44)
-	  display
-	  (raise -0.288)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise -0.288)
+			 font-lock-face
+			 (:family "Material Icons" :height 1.44)
+			 face
+			 (:family "Material Icons" :height 1.44)))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (face
-	  (:family "FontAwesome" :height 1.44)
-	  font-lock-face
-	  (:family "FontAwesome" :height 1.44)
-	  display
-	  (raise 0.0)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "FontAwesome" :height 1.44)
+			 face
+			 (:family "FontAwesome" :height 1.44)))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -122,6 +120,8 @@
  '(lsp-ui-doc-border "#93a1a1")
  '(nrepl-message-colors
    '("#dc322f" "#cb4b16" "#b58900" "#5b7300" "#b3c34d" "#0061a8" "#2aa198" "#d33682" "#6c71c4"))
+ '(package-selected-packages
+   '(tide add-node-modules-path yasnippet ws-butler wgrep web-mode use-package-ensure-system-package spacemacs-theme solarized-theme smartparens shader-mode restclient rbenv py-isort projectile-rails org omnisharp markdown-mode magit highlight-indent-guides git-timemachine exec-path-from-shell doom-modeline diminish dashboard counsel-projectile company-tern company-jedi calmer-forest-theme blacken auto-package-update all-the-icons-dired ag))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(show-week-agenda-p t t)
