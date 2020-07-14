@@ -20,7 +20,7 @@
   :config
   (defun my/jedi-python-mode-hook ()
     (add-to-list 'company-backends 'company-jedi))
-  (add-hook 'python-mode-hook 'my/python-mode-hook)
+  (add-hook 'python-mode-hook 'my/jedi-python-mode-hook)
   )
 
 (use-package highlight-indent-guides
@@ -72,11 +72,9 @@
   )
 ;; elpy
 (use-package elpy
-  :after poetry
   :ensure t
   :config
   (elpy-enable)
-  (add-hook 'elpy-mode-hook 'poetry-tracking-mode) ;; optional if you're using Poetry
   (setq elpy-rpc-virtualenv-path 'current)
   (setq elpy-syntax-check-command "~/.pyenv/shims/pyflakes") ;; or replace with the path to your pyflakes binary
   ;; allows Elpy to see virtualenv
@@ -91,6 +89,3 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
   )
-;; poetry
-(use-package poetry
-  :ensure t)
