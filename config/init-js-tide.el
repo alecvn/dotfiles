@@ -66,5 +66,18 @@
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   )
 
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint json-jsonlist)))
+(add-hook 'flycheck-mode-hook 'add-node-modules-path)
+(eval-after-load
+  'typescript-mode
+  '(add-hook 'typescript-mode-hook #'add-node-modules-path))
+(defun web-mode-init-prettier-hook ()
+  (add-node-modules-path)
+  (prettier-js-mode))
+(add-hook 'web-mode-hook  'web-mode-init-prettier-hook)
+(add-hook 'after-save-hook 'prettier-js-mode)
+
 (provide 'init-js-tide)
-;; init-js.el ends here
+;;; init-js-tide.el ends here

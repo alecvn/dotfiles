@@ -35,7 +35,7 @@
   :ensure t
   :init
   (setq python-shell-interpreter "python3")
-  (add-hook 'before-save-hook 'pyimport-remove-unused)
+  ;; (add-hook 'before-save-hook 'pyimport-remove-unused)
   (add-hook 'before-save-hook 'py-isort-before-save)
   (add-hook 'python-mode-hook 'blacken-mode)
   (fset 'pdb "import pdb; pdb.set_trace()")

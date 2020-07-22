@@ -49,6 +49,7 @@
 ;;(load-file "~/.emacs.d/config/init-lsp.el")
 (load-file "~/.emacs.d/config/init-ruby.el")
 (load-file "~/.emacs.d/config/init-python.el")
+(load-file "~/.emacs.d/config/init-js-tide.el")
 (load-file "~/.emacs.d/config/init-web.el")
 (load-file "~/.emacs.d/config/init-csharp.el")
 (load-file "~/.emacs.d/config/init-rest.el")
@@ -90,7 +91,7 @@
  '(dashboard-set-heading-icons t)
  '(dashboard-set-navigator t)
  '(package-selected-packages
-   '(pyimpsort poetry elpy flycheck-pycheckers yasnippet ws-butler wgrep web-mode use-package-ensure-system-package spacemacs-theme solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv py-isort projectile-rails org omnisharp markdown-mode magit highlight-indent-guides git-timemachine flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme buffer-move blacken auto-package-update all-the-icons-dired ag add-node-modules-path))
+   '(prettier-js tide pyimpsort poetry elpy flycheck-pycheckers yasnippet ws-butler wgrep web-mode use-package-ensure-system-package spacemacs-theme solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv py-isort projectile-rails org omnisharp markdown-mode magit highlight-indent-guides git-timemachine flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme buffer-move blacken auto-package-update all-the-icons-dired ag add-node-modules-path))
  '(show-week-agenda-p t t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
