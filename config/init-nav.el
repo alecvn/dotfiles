@@ -5,6 +5,8 @@
 (global-set-key (kbd "H-p") 'previous-buffer)
 (global-set-key (kbd "H-n") 'next-buffer)
 
+(delete-selection-mode 1)
+
 (defun split-and-follow-horizontally ()
   (interactive)
   (split-window-below)

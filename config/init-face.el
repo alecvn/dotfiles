@@ -36,8 +36,8 @@
 (setq column-number-mode t)
 
 ;; Opacity
-(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
-(add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+;;(set-frame-parameter (selected-frame) 'alpha '(90 . 80))
+;;(add-to-list 'default-frame-alist '(alpha . (90 . 80)))
 
 ;; Emacs session management
 (global-set-key (kbd "<C-f1>") 'desktop-save)
@@ -51,6 +51,7 @@
   :init (global-flycheck-mode)
   ;;:ensure-system-package (pylint . "pip3 install pylint")
   )
+
 
 ;;(use-package calmer-forest-theme :ensure t)
 
@@ -149,6 +150,12 @@
       :ensure t
       :hook (after-init . doom-modeline-mode))
 
+;; (use-package solarized-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'solarized-dark t)
+;;   )
+
 ;; (use-package doom-themes
 ;;   :ensure t
 ;;   :config
@@ -169,8 +176,8 @@
 ;; ;;(use-package calmer-forest-theme :ensure t)
 
 (use-package doom-themes
-   :ensure t
-   :config
-   (set-frame-font "DejaVu Sans Mono-9" nil t)
-   (load-theme 'doom-city-lights t)
-   )
+  :ensure t
+  :config
+  (set-frame-font "DejaVu Sans Mono-9" nil t)
+  (load-theme 'doom-city-lights t)
+  )
