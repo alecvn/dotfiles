@@ -1,7 +1,7 @@
 # -*- mode: i3wm-config -*-
 
 # (No) Title Bars
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 
 # Gaps
 gaps inner 10
@@ -197,28 +197,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# i3bar
-bar {
+# # i3bar
+# bar {
 
-    i3bar_command     i3bar -t
-    position          top
-    mode              dock
-    workspace_buttons yes
-    tray_output       primary
+#     i3bar_command     i3bar -t
+#     position          top
+#     mode              dock
+#     workspace_buttons yes
+#     tray_output       primary
     
-    font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-    font pango:DejaVu Sans Mono 10
+#     font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#     font pango:DejaVu Sans Mono 10
 
-    colors {
-        background #000000
-        statusline #ffffff
+#     colors {
+#         background #000000
+#         statusline #ffffff
 
-        focused_workspace  #ffffff #285577
-        active_workspace   #ffffff #333333
-        inactive_workspace #888888 #222222
-        urgent_workspace   #ffffff #900000
-    }
-}
+#         focused_workspace  #ffffff #285577
+#         active_workspace   #ffffff #333333
+#         inactive_workspace #888888 #222222
+#         urgent_workspace   #ffffff #900000
+#     }
+# }
 #bar {
 #        verbose yes
 #        position bottom 

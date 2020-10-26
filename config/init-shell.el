@@ -1,5 +1,7 @@
 (global-set-key (kbd "C-c M-o") 'comint-clear-buffer)
 
+(use-package shx :ensure t)
+
 (shx-global-mode 1)
 
 ;; History searching already available through M-r, C-r to cycle

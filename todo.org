@@ -153,9 +153,14 @@ https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-
 ** TODO implement whatfiles
    https://github.com/spieglt/whatfiles
 
-** TODO email
-   http://www.mycpu.org/read-email-in-emacs/
-   https://200ok.ch/posts/2020-05-27_using_emacs_and_mu4e_for_emails_even_with_html.html
+** email
+*** read
+    http://www.mycpu.org/read-email-in-emacs/
+
+*** mu4e
+    https://200ok.ch/posts/2020-05-27_using_emacs_and_mu4e_for_emails_even_with_html.html
+**** meeting invitations
+    https://www.reddit.com/r/emacs/comments/ho8lxi/mu4e_office365_meeting_invitations/
 
 ** TODO i3 - open new window in specific size
    https://www.reddit.com/r/i3wm/comments/9j10ae/i3wm_open_window_in_specific_size/
@@ -262,6 +267,20 @@ https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-
    https://www.reddit.com/r/unixporn/comments/hm22qs/bspwm_minimal_plannet/
    https://www.reddit.com/r/linux_gaming/comments/enb77a/bspwm_most_efficient_way_of_sending_all_steam/
    
+** TODO tramp
+   https://www.reddit.com/r/emacs/comments/dx7d9l/can_tramp_be_as_efficient_as_ssh_tmux_emacs/
+
+** org
+*** org-gcal
+    https://github.com/myuhe/org-gcal.el
+
+*** TODO org mode icons
+    https://www.reddit.com/r/emacs/comments/hnf3cw/my_orgmode_agenda_much_better_now_with_category/
+
+** docker
+*** apps logging to docker
+    https://stackoverflow.com/questions/55156980/python-docker-how-to-use-python-logging-module-with-docker
+
 
 * Andrew
 ** DONE timesheet slow
