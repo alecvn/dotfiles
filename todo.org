@@ -262,6 +262,39 @@ https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-
    https://www.reddit.com/r/unixporn/comments/hm22qs/bspwm_minimal_plannet/
    https://www.reddit.com/r/linux_gaming/comments/enb77a/bspwm_most_efficient_way_of_sending_all_steam/
    
+** TODO notifications
+   https://github.com/phuhl/linux_notification_center
+
+** TODO helm buffer selector
+   https://github.com/emacs-helm/helm-selector
+
+** TODO configure shx
+
+** TODO current theme for work laptop
+   https://github.com/PapirusDevelopmentTeam/arc-kde
+   https://github.com/tsujan/Kvantum/tree/master/Kvantum
+   
+** TODO awk
+   https://www.skeeve.com/awk-sys-prog.html
+
+** TODO anki
+   https://apps.ankiweb.net/
+
+** TODO docker commands
+   https://codeopolis.com/posts/25-basic-docker-commands-for-beginners
+
+** TODO get holidays
+   https://smallstep.com/blog/ssh-tricks-and-tips/
+
+** TODO color extraction
+   https://labs.tineye.com/color/
+   
+** swiper
+*** TODO faster swiper searching (swiper-isearch)
+    https://oremacs.com/2019/04/07/swiper-isearch/#enter-swiper-isearch
+
+*** TODO go to swiper candidate (swiper-avy)
+    https://www.reddit.com/r/emacs/comments/d6jj1e/til_of_the_beauty_that_is_swiperavy/
 
 * Andrew
 ** DONE timesheet slow

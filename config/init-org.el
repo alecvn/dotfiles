@@ -30,6 +30,10 @@
   ;; 	'((org-agenda-files . (:maxlevel . 3))))
   (setq org-refile-targets (quote ((nil :maxlevel . 9)
   				   (org-agenda-files :maxlevel . 9))))
+  :bind (:map org-mode-map
+	      ("C-S-l" . org-shiftright)
+	      ("C-S-j" . org-shiftleft)
+	 )
   )
 
   ;; look into this later:
@@ -88,3 +92,14 @@
 (use-package org-crypt
   :init
   (global-set-key [C-f5] (lambda() (interactive) (epa-decrypt-region (region-beginning) (region-end)))))
+
+;; (use-package spotify
+;;   :ensure t
+;;   :bind-keymap
+;;   ("C-c s" . spotify-command-map)
+;;   :init
+;;   (setq spotify-oauth2-client-secret (getenv "SPOTIFY_CLIENT_SECRET"))
+;;   (setq spotify-oauth2-client-id (getenv "SPOTIFY_CLIENT_ID"))
+;;   )
+
+(setq org-agenda-include-diary t)
