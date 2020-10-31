@@ -16,7 +16,7 @@
   :config
   (defun my/jedi-python-mode-hook ()
     (add-to-list 'company-backends 'company-jedi))
-  (add-hook 'python-mode-hook 'my/python-mode-hook)
+  (add-hook 'python-mode-hook 'my/jedi-python-mode-hook)
   )
 
 (use-package highlight-indent-guides
@@ -32,6 +32,7 @@
   :init
   (setq python-shell-interpreter "python3")
   (add-hook 'python-mode-hook 'blacken-mode)
+  (add-hook 'before-save-hook 'py-isort-before-save)
   (fset 'pdb "import pdb; pdb.set_trace()")
   :bind (:map python-mode-map
 	      ("C-x , p" . pdb)

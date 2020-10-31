@@ -1,4 +1,59 @@
 ;; Working on Emacs 26.2 and 25.2
+(scroll-bar-mode -1)
+;; Remove window ui elements
+(menu-bar-mode -1)
+;;(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
+;; Should help with Emacs slowing down on big one-liners
+(setq bidi-paragraph-direction 'left-to-right)
+
+;; Show current function in modeline - via imenu
+(which-function-mode 1)
+
+;; Enable copy/past-ing from clipboard
+(setq select-enable-clipboard t)
+
+;; Prefer UTF-8 encoding
+;; (prefer-coding-system 'UTF-8)
+
+;; Always reload the file if it changed on disk, see also: auto-revert-tail-mode
+(global-auto-revert-mode 1)
+
+;; Auto update dired when files change
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
+;; Highlight matching parens
+(show-paren-mode 1)
+
+;; Jump between words in CamelCase - this isn't as great as I had hoped
+;; (global-subword-mode 1)
+
+;; Text wraps around buffer edges - still not convinced about this
+(global-visual-line-mode 1)
+
+;; Line number frame
+(global-display-line-numbers-mode t)
+(setq column-number-mode t)
+
+;; Opacity
+(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
+(add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+
+;; Emacs session management
+(global-set-key (kbd "<C-f1>") 'desktop-save)
+(global-set-key (kbd "<C-f2>") 'desktop-read)
+(global-set-key (kbd "<C-f3>") 'desktop-clear)
+;; Automatically save and restore sessions
+;; (setq desktop-dirname             "~/.emacs.d/desktop/"
+;;       desktop-base-file-name      "emacs.desktop"
+;;       desktop-base-lock-name      "lock"
+;;       desktop-path                (list desktop-dirname)
+;;       desktop-save                t
+;;       desktop-files-not-to-save   "^$" ;reload tramp paths
+;;       desktop-load-locked-desktop nil
+;;       desktop-auto-save-timeout   30)
+;; (desktop-save-mode 1)
 
 ;; Install use-package if necessary
 (require 'package)
@@ -37,6 +92,7 @@
 ;;(use-package org-protocol
 ;;  :ensure t)
 
+(load-file "~/.emacs.d/config/init-org.el")
 (load-file "~/.emacs.d/config/init-face.el")
 (load-file "~/.emacs.d/config/init-org.el")
 (load-file "~/.emacs.d/config/init-completion.el")
@@ -64,23 +120,25 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (rear-nonsticky t display
-			 (raise -0.288)
-			 font-lock-face
-			 (:family "Material Icons" :height 1.44)
-			 face
-			 (:family "Material Icons" :height 1.44)))
+	 (face
+	  (:family "Material Icons" :height 1.44)
+	  font-lock-face
+	  (:family "Material Icons" :height 1.44)
+	  display
+	  (raise -0.288)
+	  rear-nonsticky t))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (rear-nonsticky t display
-			 (raise 0.0)
-			 font-lock-face
-			 (:family "FontAwesome" :height 1.44)
-			 face
-			 (:family "FontAwesome" :height 1.44)))
+	 (face
+	  (:family "FontAwesome" :height 1.44)
+	  font-lock-face
+	  (:family "FontAwesome" :height 1.44)
+	  display
+	  (raise 0.0)
+	  rear-nonsticky t))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
