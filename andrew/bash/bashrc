@@ -1,0 +1,378 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# activate virtualenv
+alias vgo=". ../venv/bin/activate"
+# run django server
+alias dj="python manage.py runserver 0:8000"
+alias dj1="python manage.py runserver 0:8001"
+alias dj2="python manage.py runserver 0:8002"
+alias dj3="python manage.py runserver 0:8003"
+# run django commands
+alias djc="python manage.py collectstatic"
+alias djcr="echo yes | djc ; dj"
+alias djmm="python manage.py makemigrations"
+alias djm="python manage.py migrate"
+alias djs="python manage.py shell"
+
+function regex() {
+  REGEX=$1
+  docker ps --no-trunc | grep ${REGEX} | awk '{print $1}'
+}
+
+function regexa() {
+  REGEX=$1
+  docker ps -a --no-trunc | grep ${REGEX} | awk '{print $1}'
+}
+
+function docke() {
+  echo $(dockps $1 | awk '{print $2}')
+  docker exec -it `regex $1` bash
+}
+
+function dockl() {
+  docker logs -f `regexa $1`
+}
+
+function dockps() {
+  REGEX=$1
+  docker ps | grep ${REGEX}
+}
+
+function dockpsa() {
+  REGEX=$1
+  docker ps -a | grep ${REGEX}
+}
+
+function dockstop() {
+  docker stop `regexstop $1`
+}
+
+function re() {
+    /home/$USER/Android/Sdk/platform-tools/adb shell input keyevent KEYCODE_MENU && /home/$USER/Android/Sdk/platform-tools/adb shell input keyevent ENTER && /home/$USER/Android/Sdk/platform-tools/adb shell input keyevent ENTER
+}
+
+function reverse() {
+    /home/$USER/Android/Sdk/platform-tools/adb reverse tcp:8081 tcp:8081
+}
+
+function devices() {
+    /home/$USER/Android/Sdk/platform-tools/adb devices
+}
+
+function killadb() {
+    /home/$USER/Android/Sdk/platform-tools/adb kill-server
+}
+
+function shake() {
+    /home/$USER/Android/Sdk/platform-tools/adb shell input keyevent KEYCODE_MENU
+}
+
+function clearcan() {
+    /home/$USER/Android/Sdk/platform-tools/adb shell pm clear com.african
+}
+
+function clearstint() {
+    /home/$USER/Android/Sdk/platform-tools/adb shell pm clear com.stint.stint
+}
+
+function startstint() {
+    /home/$USER/Android/Sdk/platform-tools/adb shell am start -n com.stint.stint/com.stint.stint.MainActivity
+}
+
+function start() {
+    REGEX=$1
+    /home/$USER/Android/Sdk/platform-tools/adb shell am start -n com.${REGEX}.${REGEX}/com.${REGEX}.${REGEX}.MainActivity
+}
+
+function stop() {
+    REGEX=$1
+    /home/$USER/Android/Sdk/platform-tools/adb shell am force-stop com.${REGEX}.${REGEX}
+}
+
+function clear() {
+    REGEX=$1
+    /home/$USER/Android/Sdk/platform-tools/adb shell pm clear com.${REGEX}.${REGEX}
+}
+
+function restartadb() {
+    sudo adb kill-server
+    sudo adb start-server
+}
+
+function killport() {
+    sudo kill $(fuser -n tcp $1 2> /dev/null)
+}
+
+JAVA_HOME=/opt/jdk
+export JAVA_HOME
+
+ANDROID_HOME=/home/$USER/Android/Sdk
+export ANDROID_HOME
+
+PATH=$JAVA_HOME/bin:$ANDROID_HOME/tools/bin:$PATH
+export PATH
+
+# system shutdown
+alias restart='/sbin/shutdown -r now'
+alias off='/sbin/shutdown -h now'
+alias lock="i3lock -c 000000"
+# alias off="sudo poweroff"
+alias shot="gnome-screenshot --interactive && exit"
+alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+
+# git commands
+alias gstat='git status'
+alias gadd='git add *'
+alias gfetch='git fetch origin'
+alias gwip='git commit -am "wip"'
+function gpush() {
+    REGEX=$1
+    chrlen=${#REGEX}
+    if (( chrlen == 0 )); then
+        echo "Please provide branch"
+    else
+        git push origin ${REGEX}
+    fi
+}
+function gpull() {
+    REGEX=$1
+    chrlen=${#REGEX}
+    if (( chrlen == 0 )); then
+        echo "Please provide branch"
+    else
+        git pull origin ${REGEX}
+    fi
+}
+alias gprune='git branch | grep -v "develop" | xargs git branch -D '
+
+# stint
+STINT_PATH="id/stint/stint/"
+STINT_MOBILE_PATH="id/stint/mobile-app/"
+
+# stint git
+alias fetch_stint="cd /home/$USER/$STINT_PATH; git fetch origin"
+alias stat_stint="cd /home/$USER/$STINT_PATH; git status"
+
+alias fetch_mobile="cd /home/$USER/$STINT_MOBILE_PATH; git fetch origin"
+alias stat_mobile="cd /home/$USER/$STINT_MOBILE_PATH; git status"
+
+# stint docker
+alias build_stint="cd /home/$USER/$STINT_PATH; docker-compose build"
+alias up_stint="cd /home/$USER/$STINT_PATH; docker-compose up -d"
+alias down_stint="cd /home/$USER/$STINT_PATH; docker-compose down"
+alias debug_up_stint="cd /home/$USER/$STINT_PATH; docker-compose run --rm --service-ports django"
+alias list_backups="cd /home/$USER/$STINT_PATH; docker-compose run --rm postgres backups"
+alias create_backup="cd /home/$USER/$STINT_PATH; docker-compose run --rm postgres backup"
+# docker-compose exec postgres backup
+function restore_backup() {
+    BACKUP_FILE=$1
+    backup_file=${#BACKUP_FILE}
+    if (( backup_file == 0 )); then
+        echo "Please provide a backup file name"
+    else
+	cd /home/$USER/$STINT_PATH
+	docker-compose run --rm postgres restore ${BACKUP_FILE}
+    fi
+}
+
+# stint react
+alias yarn_stint_install="cd /home/$USER/$STINT_PATH; rm -rf node_modules/; yarn install"
+alias admin_stint_start="cd /home/$USER/$STINT_PATH; yarn workspace admin start"
+alias corporate_stint_start="cd /home/$USER/$STINT_PATH; yarn workspace corporate start"
+alias radmin_stint_start="cd /home/$USER/$STINT_PATH/react-admin; yarn start"
+alias mobile_stint_staging="cd /home/$USER/$STINT_MOBILE_PATH; yarn env staging"
+alias corporate_cypress_open="cd /home/$USER/$STINT_PATH; yarn workspace corporate cypress open"
+
+# stint vpn connections
+alias staging_stint="sudo openvpn --config /home/$USER/id//stint/temp/staging-client.ovpn"
+alias stint_staging_connect="aws sso login --profile staging"
+alias stint_staging_config="aws eks update-kubeconfig --name stint-staging --profile staging"
+alias stint_production_connect="aws sso login --profile production"
+alias stint_production_config="aws eks update-kubeconfig --name stint-production --profile production"
+alias stint_prod_api_exec="kubectl exec -ti deployment/stint-api -n stint-master -- bash"
+
+# namespace probably has stint- in front
+function get_pods() {
+    NAMESPACE=$1
+    namespace=${#NAMESPACE}
+    if (( namespace == 0 )); then
+        echo "Please provide a namespace"
+    else
+	kubectl get pods -n=${NAMESPACE}
+    fi
+}
+
+function get_pod() {
+    CONTAINER=$1
+    NAMESPACE=$2
+    container=${#CONTAINER}
+    namespace=${#NAMESPACE}
+    if (( container == 0 )); then
+        echo "Please provide a container"
+    elif (( namespace == 0 )); then
+        echo "Please provide a namespace"
+    else
+	kubectl get pods -n=${NAMESPACE} | grep ${CONTAINER} | awk '{print $1}'
+    fi
+}
+
+function kube_exec() {
+    CONTAINER=$1
+    NAMESPACE=$2
+    container=${#CONTAINER}
+    namespace=${#NAMESPACE}
+    if (( container == 0 )); then
+        echo "Please provide a container"
+    elif (( namespace == 0 )); then
+        echo "Please provide a namespace"
+    else
+        kubectl exec -ti `get_pod $CONTAINER $NAMESPACE` -n=${NAMESPACE} -- /bin/bash
+    fi
+}
+
+# wip
+alias setup_prod="export KOPS_CLUSTER_NAME='k8s.stint-production.internal'; export KOPS_STATE_STORE='s3://stint-kops-state-production'; kops export kubecfg"
+alias setup_staging="export KOPS_CLUSTER_NAME='k8s.stint-staging.internal'; export KOPS_STATE_STORE='s3://stint-kops-state-staging'; kops export kubecfg"
+
+# magic
+MAGIC_PATH="id/magic"
+
+# magic git
+alias fetch_magic="cd /home/$USER/$MAGIC_PATH/; git fetch origin"
+alias stat_magic="cd /home/$USER/$MAGIC_PATH/; git status"
+
+# magic docker
+alias build_magic="cd /home/$USER/$MAGIC_PATH/; docker-compose build"
+alias up_magic="cd /home/$USER/$MAGIC_PATH/; docker-compose up -d"
+alias down_magic="cd /home/$USER/$MAGIC_PATH/; docker-compose down"
+alias debug_up_magic="cd /home/$USER/$MAGIC_PATH/; docker-compose run --rm --service-ports django"
+
+# magic react
+alias yarn_magic_install="cd /home/$USER/$MAGIC_PATH/admin/; rm -rf node_modules/; yarn install"
+alias admin_magic_start="cd /home/$USER/$MAGIC_PATH/admin/; yarn start"
+
+# ngrok
+alias api_localhost="./ngrok http 8009"
+alias web_localhost="./ngrok http 3000"
+
+export PATH=$PATH:$HOME/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
