@@ -177,12 +177,15 @@ bar {
         }
 }
 
-exec --no-startup-id xmodmap ~/i3/.xmodmap
 exec --no-startup-id nm-applet
 # exec --no-startup-id feh --bg-scale ~/Pictures/bg.jpg
-exec --no-startup-id ~/i3/miniapps/start.sh
+# exec --no-startup-id ~/i3/miniapps/start.sh
 
 # exec --no-startup-id xautolock -detectsleep -time 5 -locker 'i3lock -c 000000' -notify 30 -notifier "notify-send 'LOCKING SCREEN IN 30 SECONDS'"
 
 bindsym $ms+n exec nautilus
 #alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+
+# load xmodmap config
+exec --no-startup-id sleep 15
+exec --no-startup-id /usr/bin/xmodmap /home/andrew/.Xmodmap

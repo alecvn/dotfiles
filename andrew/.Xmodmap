@@ -1,0 +1,12 @@
+! maps Caps_Lock to Control_L
+!
+clear lock
+clear control
+keycode 66 = Control_L
+add control = Control_L Control_R
+
+! maps Alt GR to Alt_R and maps Mod3 to Alt_R
+! 
+keycode 108 = Alt_R Meta_R
+clear Mod3
+add Mod3 = Alt_R Meta_R
