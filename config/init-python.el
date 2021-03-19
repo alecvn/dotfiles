@@ -28,6 +28,7 @@
   :init
   (setq python-shell-interpreter "python3")
   (add-hook 'python-mode-hook 'blacken-mode)
+  (add-hook 'before-save-hook 'py-isort-before-save)
   (fset 'pdb "import pdb; pdb.set_trace()")
   (fset 'ipdb "import ipdb; ipdb.set_trace()")
   :bind (:map python-mode-map

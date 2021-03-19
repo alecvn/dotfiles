@@ -87,6 +87,9 @@
 ;; iSearcher with an overview
 (use-package swiper
   :ensure t
+  :init
+  (setq swiper-use-visual-line nil)
+  (setq swiper-use-visual-line-p (lambda (a) nil))
   :bind (
 	 ("C-s" . swiper)
 	 ("C-M-s" . swiper-thing-at-point)

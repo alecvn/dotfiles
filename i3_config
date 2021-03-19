@@ -1,7 +1,7 @@
 # -*- mode: i3wm-config -*-
 
 # (No) Title Bars
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 
 # Gaps
 gaps inner 10
@@ -9,7 +9,7 @@ gaps outer 0
 smart_gaps on
 
 # Corners
-# border_radius 3
+border_radius 3
 
 # Assign workspaces to screens
 #  On E560, eDP-1 is the first display, while DP-2 is VGA output
@@ -153,6 +153,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+h exec "i3-msg move workspace to `xrandr --listmonitors | grep HDMI | awk '{print $4}'`"
 bindsym $mod+Shift+v exec "i3-msg move workspace to `xrandr --listmonitors | grep VGA | awk '{print $4}'`"
 bindsym $mod+Shift+d exec "i3-msg move workspace to `xrandr --listmonitors | grep DP | awk '{print $4}'`"
+bindsym $mod+Shift+u move workspace to output left
+bindsym $mod+Shift+o move workspace to output right
 
 # Move focus between screens
 bindsym $mod+Alt+h focus output left
@@ -197,28 +199,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# i3bar
-bar {
+# # i3bar
+# bar {
 
-    i3bar_command     i3bar -t
-    position          top
-    mode              dock
-    workspace_buttons yes
-    tray_output       primary
+#     i3bar_command     i3bar -t
+#     position          top
+#     mode              dock
+#     workspace_buttons yes
+#     tray_output       primary
     
-    font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-    font pango:DejaVu Sans Mono 10
+#     font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#     font pango:DejaVu Sans Mono 10
 
-    colors {
-        background #000000
-        statusline #ffffff
+#     colors {
+#         background #000000
+#         statusline #ffffff
 
-        focused_workspace  #ffffff #285577
-        active_workspace   #ffffff #333333
-        inactive_workspace #888888 #222222
-        urgent_workspace   #ffffff #900000
-    }
-}
+#         focused_workspace  #ffffff #285577
+#         active_workspace   #ffffff #333333
+#         inactive_workspace #888888 #222222
+#         urgent_workspace   #ffffff #900000
+#     }
+# }
 #bar {
 #        verbose yes
 #        position bottom 
@@ -233,8 +235,8 @@ bar {
 # class                 border  backgr. text    indicator child_border
 client.focused          $lightblue $lightblue $black $lightblue $lightblue
 
-for_window [title=".MellowPlayer*"] move scratchpad
-bindsym $mod+m [title=".MellowPlayer*"] scratchpad show
+# for_window [title=".MellowPlayer*"] move scratchpad
+# bindsym $mod+m [title=".MellowPlayer*"] scratchpad show
 
 
 # for_window [class="konsole"] move scratchpad
@@ -273,6 +275,7 @@ for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
 for_window [title="Microsoft Teams Notification"] floating enable, border none
 for_window [class="yakuake"] floating enable
+# for_window [class="Firefox"] floating disable, resize set 1900 1030, move window to position 10 40, sticky disable
 
 
 for_window [window_role="pop-up"] floating enable
@@ -284,6 +287,97 @@ for_window [window_type="dialog"] floating enable
 
 
 #for_window [floating] move position 0 0
+
+
+# ### i3-gaps stuff ###
+
+# # Necessary for i3-gaps to work properly (pixel can be any value)
+# for_window [class="^.*"] border pixel 0
+
+# # Smart Gaps
+# # smart_gaps on
+
+# # Smart Borders
+# smart_borders on
+
+# # Set inner/outer gaps
+# gaps inner 8
+# gaps outer 0
+
+# # Gaps mode
+# set $mode_gaps Gaps: (o) outer, (i) inner
+# set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+# set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+# bindsym $mod+Shift+g mode "$mode_gaps"
+
+# mode "$mode_gaps" {
+#         bindsym o      mode "$mode_gaps_outer"
+#         bindsym i      mode "$mode_gaps_inner"
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+# }
+
+# mode "$mode_gaps_inner" {
+#         bindsym plus  gaps inner current plus 5
+#         bindsym minus gaps inner current minus 5
+#         bindsym 0     gaps inner current set 0
+
+#         bindsym Shift+plus  gaps inner all plus 5
+#         bindsym Shift+minus gaps inner all minus 5
+#         bindsym Shift+0     gaps inner all set 0
+
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+# }
+
+# mode "$mode_gaps_outer" {
+#         bindsym plus  gaps outer current plus 5
+#         bindsym minus gaps outer current minus 5
+#         bindsym 0     gaps outer current set 0
+
+#         bindsym Shift+plus  gaps outer all plus 5
+#         bindsym Shift+minus gaps outer all minus 5
+#         bindsym Shift+0     gaps outer all set 0
+
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+# }
+
+
+# WORKSPACES
+# switch to workspace
+# bindsym $mod+ampersand workspace number 1 irc
+# bindsym $mod+eacute workspace number 2 www
+# bindsym $mod+quotedbl workspace number 3 code
+# bindsym $mod+apostrophe workspace number 4 code
+# bindsym $mod+parenleft workspace number 5 code
+# bindsym $mod+minus workspace number 6 code
+# bindsym $mod+egrave workspace number 7 code
+# bindsym $mod+underscore workspace number 8 code
+# bindsym $mod+ccedilla workspace number 9 mail
+# bindsym $mod+agrave workspace number 10 mon
+
+# # move focused container to workspace
+# bindsym $mod+Shift+1 move container to workspace number 1 irc
+# bindsym $mod+Shift+2 move container to workspace number 2 www
+# bindsym $mod+Shift+3 move container to workspace number 3 code
+# bindsym $mod+Shift+4 move container to workspace number 4 code
+# bindsym $mod+Shift+5 move container to workspace number 5 code
+# bindsym $mod+Shift+6 move container to workspace number 6 code
+# bindsym $mod+Shift+7 move container to workspace number 7 code
+# bindsym $mod+Shift+8 move container to workspace number 8 code
+# bindsym $mod+Shift+9 move container to workspace number 9 mail
+# bindsym $mod+Shift+0 move container to workspace number 10 mon
+
+# # force a window on a named workspace
+# assign [class="Opera"] 2 www
+# assign [class="Firefox"] 10 mon
+
+# rename workspace
+bindsym $mod+m exec i3-input -P "Switch to: " -F "exec python3 ~/.config/i3/find_workspace.py 'workspace ' %s ''"
+bindsym $mod+Shift+m exec i3-input -P "Move to: " -F "exec python3 ~/.config/i3/find_workspace.py 'move container to workspace ' %s ''"
+bindsym $mod+Control+m exec i3-input -P "Rename: " -F "rename workspace to %s"
+
 
 # Starting things with i3
 # exec --no-startup-id xcompmgr -C &    # Bare compositor to allow transparency

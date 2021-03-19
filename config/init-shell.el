@@ -8,6 +8,10 @@
   (setq comint-input-ring-file-name "~/.bash_history")
   (comint-read-input-ring t))
 
+(defun disable-company-mode ()
+    (company-mode -1))
+
 (add-hook 'shell-mode-hook (lambda () (goto-address-mode)))
 (add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
 (add-hook 'shell-mode-hook 'my-shell-mode-hook)
+(add-hook 'shx-mode-hook 'disable-company-mode)
