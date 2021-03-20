@@ -185,7 +185,3 @@ exec --no-startup-id nm-applet
 
 bindsym $ms+n exec nautilus
 #alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
-
-# load xmodmap config
-exec --no-startup-id sleep 15
-exec --no-startup-id /usr/bin/xmodmap /home/andrew/.Xmodmap
