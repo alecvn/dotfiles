@@ -143,7 +143,8 @@ bindsym $mod+0 workspace $ws10
 
 # switch to saved named workspace
 mode "named" {
-     bindsym c workspace $ws11; mode "default"; exec --no-startup-id i3-msg 'exec /usr/bin/chromium-browser'
+     #bindsym c workspace $ws11; mode "default"; exec --no-startup-id i3-msg 'exec /usr/bin/chromium-browser'
+     bindsym c workspace $ws11; mode "default"
      bindsym s workspace $ws12; mode "default"
      bindsym g workspace $ws13; mode "default"
      bindsym m workspace $ws14; mode "default"
@@ -186,9 +187,9 @@ mode "moveworkspace" {
 bindsym $mod+semicolon mode "moveworkspace"
 
 # reload the configuration file
-# bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload
 # restart i3 inplace
-# bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
