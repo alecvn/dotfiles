@@ -1,3 +1,51 @@
+* Sprints
+** sprint 0
+*** blog
+    https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.org.html
+*** upgrade Emacs to 27
+*** speed up start time
+*** ruby/rails
+    web-mode - proper indentation 
+    goto function definitions
+*** prettify org
+    https://www.youtube.com/watch?v=VcgjTEa0kU4
+*** github integration
+    https://emacs.stackexchange.com/questions/12361/can-i-sync-github-issues-and-milestones-with-org-mode
+*** gcalendar integration
+    https://github.com/kidd/org-gcal.el
+
+*** implement better incremental search
+    https://github.com/raxod502/selectrum
+    https://github.com/raxod502/selectrum/issues/112
+
+    
+
+** sprint 1
+*** literate dotfiles
+    https://www.reddit.com/r/emacs/comments/83usco/literate_emacs_config_in_orgmode/
+*** org projectile
+    https://github.com/IvanMalison/org-projectile
+*** git gutter
+    https://github.com/emacsorphanage/git-gutter
+*** vuejs
+*** try to get ag/find-file results sorting to be more relevant
+*** docker workflow
+*** what to use emacs shell for and what to use terminal
+*** should I split out different bits of dotfiles other repos?
+    so I can install in parts?
+
+*** setup for applications
+    like reaper (jack/carla/cadence/native instruments etc), mtga
+
+*** setup dropbox pro and backup REAPER folder
+*** tuxguitar shortcuts
+
+
+** backlog
+*** check org cookbook
+    http://ehneilsen.net/notebook/orgExamples/org-examples.html
+
+
 * Alec
 ** TODO implement Helm
 ** DONE fix find file
@@ -315,6 +363,15 @@ https://emacs.stackexchange.com/questions/22479/org-mode-automatically-clock-in-
 *** TODO go to swiper candidate (swiper-avy)
     https://www.reddit.com/r/emacs/comments/d6jj1e/til_of_the_beauty_that_is_swiperavy/
 
+** test
+   #+BEGIN_SRC emacs-lisp
+   ;; Working on Emacs 26.2 and 25.2
+   (scroll-bar-mode 1)
+   ;; Remove window ui elements
+   (menu-bar-mode 1)
+   ;;(scroll-bar-mode -1)
+   (tool-bar-mode 1)
+   #+END_SRC
 
 * Andrew
 ** DONE timesheet slow

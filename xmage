@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ~/Downloads/
+java -jar XMageLauncher-0.3.8.jar

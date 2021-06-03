@@ -32,6 +32,12 @@
 ;; Text wraps around buffer edges - still not convinced about this
 (global-visual-line-mode 1)
 
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 ;; Line number frame
 (global-display-line-numbers-mode t)
 (setq column-number-mode t)
@@ -39,6 +45,8 @@
 ;; Opacity
 (set-frame-parameter (selected-frame) 'alpha '(95 . 85))
 (add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+
+(global-set-key (kbd "<C-x C-a>") 'desktop-save)
 
 ;; Emacs session management
 (global-set-key (kbd "<C-f1>") 'desktop-save)
@@ -100,6 +108,7 @@
 (load-file "~/.emacs.d/config/init-git.el")
 (load-file "~/.emacs.d/config/init-shell.el")
 (load-file "~/.emacs.d/config/init-macros.el")
+(load-file "~/.emacs.d/config/init-docker.el")
 ;;(load-file "~/.emacs.d/config/init-dap.el")
 
 ;;(load-file "~/.emacs.d/config/init-lsp.el")
@@ -109,36 +118,94 @@
 (load-file "~/.emacs.d/config/init-csharp.el")
 (load-file "~/.emacs.d/config/init-rest.el")
 
+
+
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Allow find-file-at-point to go to the line number if available
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defvar ffap-file-at-point-line-number nil
+  "Variable to hold line number from the last `ffap-file-at-point' call.")
+
+(defadvice ffap-file-at-point (after ffap-store-line-number activate)
+  "Search `ffap-string-at-point' for a line number pattern and
+save it in `ffap-file-at-point-line-number' variable."
+  (let* ((string (ffap-string-at-point)) ;; string/name definition copied from `ffap-string-at-point'
+         (name
+          (or (condition-case nil
+                  (and (not (string-match "//" string)) ; foo.com://bar
+                       (substitute-in-file-name string))
+                (error nil))
+              string))
+         (line-number-string
+          (and (string-match ":[0-9]+" name)
+               (substring name (1+ (match-beginning 0)) (match-end 0))))
+         (line-number
+          (and line-number-string
+               (string-to-number line-number-string))))
+    (if (and line-number (> line-number 0))
+        (setq ffap-file-at-point-line-number line-number)
+      (setq ffap-file-at-point-line-number nil))))
+
+(defadvice find-file-at-point (after ffap-goto-line-number activate)
+  "If `ffap-file-at-point-line-number' is non-nil goto this line."
+  (when ffap-file-at-point-line-number
+    (forward-line ffap-file-at-point-line-number)
+    (setq ffap-file-at-point-line-number nil)))
+
+
+
+
+(defun mark-from-point-to-end-of-line ()
+  "Marks everything from point to end of line"
+  (interactive)
+  (set-mark (line-end-position))
+  (activate-mark))
+(global-set-key (kbd "<C-M-@>") 'mark-from-point-to-end-of-line)
+
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#222222" "#aa4450" "#87875f" "#cc8800" "#87AFD7" "#8787AF" "#87ceeb" "#c2c2b0"])
+ '(custom-safe-themes
+   (quote
+    ("229c5cf9c9bd4012be621d271320036c69a14758f70e60385e87880b46d60780" "f9cae16fd084c64bf0a9de797ef9caedc9ff4d463dd0288c30a3f89ecf36ca7e" "e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "7f791f743870983b9bb90c8285e1e0ba1bf1ea6e9c9a02c60335899ba20f3c94" default)))
  '(dashboard-banner-logo-title
    "This is my Emacs. There are many like it, but this one is mine. My Emacs is my best friend. It is my life. I must master it as I master my life. My Emacs, without me, is useless. Without my Emacs, I am useless." t)
  '(dashboard-center-content t)
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (face
-	  (:family "Material Icons" :height 1.44)
-	  font-lock-face
-	  (:family "Material Icons" :height 1.44)
-	  display
-	  (raise -0.288)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise -0.288)
+			 font-lock-face
+			 (:family "Material Icons" :height 1.44)
+			 face
+			 (:family "Material Icons" :height 1.44)))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (face
-	  (:family "FontAwesome" :height 1.44)
-	  font-lock-face
-	  (:family "FontAwesome" :height 1.44)
-	  display
-	  (raise 0.0)
-	  rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "FontAwesome" :height 1.44)
+			 face
+			 (:family "FontAwesome" :height 1.44)))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -147,13 +214,43 @@
  '(dashboard-set-footer nil)
  '(dashboard-set-heading-icons t)
  '(dashboard-set-navigator t)
+ '(fci-rule-color "#62686E")
+ '(jdee-db-active-breakpoint-face-colors (cons "#1d2127" "#87ceeb"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1d2127" "#87875f"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1d2127" "#686858"))
+ '(objed-cursor-color "#aa4450")
  '(org-agenda-files
    (quote
-    ("/home/alec/org/gtd/id-1address.org" "/home/alec/org/gtd/id-7days.org" "/home/alec/org/gtd/id-admin.org" "/home/alec/org/gtd/id-african.org" "/home/alec/org/gtd/id-bountyxp.org" "/home/alec/org/gtd/id-bunchcut.org" "/home/alec/org/gtd/id-charlottetilbury.org" "/home/alec/org/gtd/id-cliffcentral.org" "/home/alec/org/gtd/id-coin-it.org" "/home/alec/org/gtd/id-csir.org" "/home/alec/org/gtd/id-dannfica.org" "/home/alec/org/gtd/id-evolabs.org" "/home/alec/org/gtd/id-evolabs2.org" "/home/alec/org/gtd/id-fonk-fieldmate.org" "/home/alec/org/gtd/id-fonk-ing.org" "/home/alec/org/gtd/id-fonk-nbk.org" "/home/alec/org/gtd/id-fonk.org" "/home/alec/org/gtd/id-foodlink.org" "/home/alec/org/gtd/id-handheld.org" "/home/alec/org/gtd/id-hungrylion.org" "/home/alec/org/gtd/id-impact-spii.org" "/home/alec/org/gtd/id-impd.org" "/home/alec/org/gtd/id-imptime.org" "/home/alec/org/gtd/id-jobber.org" "/home/alec/org/gtd/id-katalyst.org" "/home/alec/org/gtd/id-koen-hfm.org" "/home/alec/org/gtd/id-malcolm.org" "/home/alec/org/gtd/id-mixtelamtics.org" "/home/alec/org/gtd/id-optics.org" "/home/alec/org/gtd/id-orca.org" "/home/alec/org/gtd/id-pemas.org" "/home/alec/org/gtd/id-quindici.org" "/home/alec/org/gtd/id-samsung.org" "/home/alec/org/gtd/id-sparrow.org" "/home/alec/org/gtd/id-stint.org" "/home/alec/org/gtd/id-tastemakersafrica.org" "/home/alec/org/gtd/id-timesheet.org" "/home/alec/org/gtd/id-tusk.org" "/home/alec/org/gtd/id-unionswiss.org" "/home/alec/org/gtd/id-vumela.org" "/home/alec/org/gtd/id-yebo-fresh.org" "/home/alec/org/gtd/id-youverify.org" "/home/alec/org/gtd/notes.org" "/home/alec/org/gtd/passwords.org" "/home/alec/org/gtd/traveltime.org" "/home/alec/org/gtd/us.org" "/home/alec/org/Boardgames.org" "/home/alec/org/Kommetjie.org" "/home/alec/org/beer.org" "/home/alec/org/blogposts.org" "/home/alec/org/cEDH AI.org" "/home/alec/org/cubigama.org" "/home/alec/org/finance.org" "/home/alec/org/games.org" "/home/alec/org/interview.org" "/home/alec/org/journal.org" "/home/alec/org/kids.org" "/home/alec/org/kubigawa.org" "/home/alec/org/magic.org" "/home/alec/org/marisca.org" "/home/alec/org/meetings.org" "/home/alec/org/music.org" "/home/alec/org/oupa.org" "/home/alec/org/passwords.org" "/home/alec/org/podcasts_and_audiobooks.org" "/home/alec/org/project_management.org" "/home/alec/org/projects.org" "/home/alec/org/recipes.org" "/home/alec/org/social_work.org" "/home/alec/org/tattoo.org" "/home/alec/org/til.org" "/home/alec/org/todo.org" "/home/alec/org/vehicle.org")))
+    ("~/org/homes.org" "~/org/projects/gtd.org" "~/Dropbox/org/blogging.org" "~/Dropbox/org/birthdays.org" "/home/alec/org/gtd/id-1address.org" "/home/alec/org/gtd/id-7days.org" "/home/alec/org/gtd/id-admin.org" "/home/alec/org/gtd/id-african.org" "/home/alec/org/gtd/id-bountyxp.org" "/home/alec/org/gtd/id-bunchcut.org" "/home/alec/org/gtd/id-charlottetilbury.org" "/home/alec/org/gtd/id-cliffcentral.org" "/home/alec/org/gtd/id-coin-it.org" "/home/alec/org/gtd/id-csir.org" "/home/alec/org/gtd/id-dannfica.org" "/home/alec/org/gtd/id-evolabs.org" "/home/alec/org/gtd/id-evolabs2.org" "/home/alec/org/gtd/id-fonk-fieldmate.org" "/home/alec/org/gtd/id-fonk-ing.org" "/home/alec/org/gtd/id-fonk-nbk.org" "/home/alec/org/gtd/id-fonk.org" "/home/alec/org/gtd/id-foodlink.org" "/home/alec/org/gtd/id-handheld.org" "/home/alec/org/gtd/id-hungrylion.org" "/home/alec/org/gtd/id-impact-spii.org" "/home/alec/org/gtd/id-impd.org" "/home/alec/org/gtd/id-imptime.org" "/home/alec/org/gtd/id-jobber.org" "/home/alec/org/gtd/id-katalyst.org" "/home/alec/org/gtd/id-koen-hfm.org" "/home/alec/org/gtd/id-malcolm.org" "/home/alec/org/gtd/id-mixtelamtics.org" "/home/alec/org/gtd/id-optics.org" "/home/alec/org/gtd/id-orca.org" "/home/alec/org/gtd/id-pemas.org" "/home/alec/org/gtd/id-quindici.org" "/home/alec/org/gtd/id-samsung.org" "/home/alec/org/gtd/id-sparrow.org" "/home/alec/org/gtd/id-stint.org" "/home/alec/org/gtd/id-tastemakersafrica.org" "/home/alec/org/gtd/id-timesheet.org" "/home/alec/org/gtd/id-tusk.org" "/home/alec/org/gtd/id-unionswiss.org" "/home/alec/org/gtd/id-vumela.org" "/home/alec/org/gtd/id-yebo-fresh.org" "/home/alec/org/gtd/id-youverify.org" "/home/alec/org/gtd/notes.org" "/home/alec/org/gtd/passwords.org" "/home/alec/org/gtd/traveltime.org" "/home/alec/org/gtd/us.org" "/home/alec/org/Kommetjie.org" "/home/alec/org/beer.org" "/home/alec/org/cEDH AI.org" "/home/alec/org/cubigama.org" "/home/alec/org/finance.org" "/home/alec/org/games.org" "/home/alec/org/interview.org" "/home/alec/org/journal.org" "/home/alec/org/kids.org" "/home/alec/org/kubigawa.org" "/home/alec/org/magic.org" "/home/alec/org/marisca.org" "/home/alec/org/meetings.org" "/home/alec/org/music.org" "/home/alec/org/oupa.org" "/home/alec/org/passwords.org" "/home/alec/org/project_management.org" "/home/alec/org/projects.org" "/home/alec/org/recipes.org" "/home/alec/org/social_work.org" "/home/alec/org/tattoo.org" "/home/alec/org/til.org" "/home/alec/org/todo.org" "/home/alec/org/vehicle.org")))
  '(package-selected-packages
    (quote
-    (mtg company docker transient docker-cli docker-compose org-rich-yank ansible-vault yaml-mode dockerfile-mode yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))
- '(show-week-agenda-p t t))
+    (which-key vue-mode ivy-prescient forge org-sync impatient-mode phps-mode php-mode mtg company docker transient docker-cli docker-compose org-rich-yank ansible-vault yaml-mode dockerfile-mode yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))
+ '(pdf-view-midnight-colors (cons "#c2c2b0" "#222222"))
+ '(rustic-ansi-faces
+   ["#222222" "#aa4450" "#87875f" "#cc8800" "#87AFD7" "#8787AF" "#87ceeb" "#c2c2b0"])
+ '(show-week-agenda-p t t)
+ '(vc-annotate-background "#222222")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#87875f")
+    (cons 40 "#9e873f")
+    (cons 60 "#b5871f")
+    (cons 80 "#cc8800")
+    (cons 100 "#dd8d00")
+    (cons 120 "#ee9200")
+    (cons 140 "#ff9800")
+    (cons 160 "#d7923a")
+    (cons 180 "#af8c74")
+    (cons 200 "#8787AF")
+    (cons 220 "#92708f")
+    (cons 240 "#9e5a6f")
+    (cons 260 "#aa4450")
+    (cons 280 "#994d51")
+    (cons 300 "#895654")
+    (cons 320 "#785f55")
+    (cons 340 "#62686E")
+    (cons 360 "#62686E")))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

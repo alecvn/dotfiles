@@ -382,3 +382,6 @@ bindsym $mod+Control+m exec i3-input -P "Rename: " -F "rename workspace to %s"
 # Starting things with i3
 # exec --no-startup-id xcompmgr -C &    # Bare compositor to allow transparency
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+
+
+bindsym $mod+x exec xclip -selection clipboard -o | qrencode -o ~/.qr.png; exec feh -FZ ~/.qr.png

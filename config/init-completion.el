@@ -3,7 +3,7 @@
   :config
   (ido-mode t)
   (setq ido-separator "\n")
-  (setq ido-use-filename-at-point 'guess)
+  (setq ido-use-filename-at-point nil)
   )
 
 (use-package ivy
@@ -20,6 +20,10 @@
         '((t   . ivy--regex-ignore-order)))
   (setq search-default-mode #'char-fold-to-regexp)
   (setq enable-recursive-minibuffers t))
+
+(use-package ivy-prescient
+  :ensure t
+  :config (ivy-prescient-mode))
 
 (use-package yasnippet
   :ensure t

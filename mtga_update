@@ -1,0 +1,13 @@
+#!/bin/bash
+cd Downloads
+
+download_url=$(curl https://mtgarena.downloads.wizards.com/Live/Windows64/version | jq -r '.CurrentInstallerURL')
+echo $download_url
+filename=$(awk -F/ '{print $NF}' <<< $download_url)
+echo $filename
+
+wget $download_url
+
+WINEPREFIX='/home/alec/.wine32' msiexec /i $filename
+
+rm $filename

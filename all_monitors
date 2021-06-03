@@ -1,0 +1,6 @@
+#!/bin/bash
+
+xrandr --output LVDS-0 --auto
+xrandr --output HDMI-0 --primary
+xrandr --output HDMI-0 --right-of LVDS-0 
+feh --bg-scale ~/Pictures/wallpaper.png

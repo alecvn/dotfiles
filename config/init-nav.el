@@ -1,5 +1,6 @@
 ;; Macro to revert buffer
 (global-set-key [f6] 'revert-buffer)
+(use-package so-long :ensure t)
 (global-so-long-mode 1)
 
 (global-set-key (kbd "H-p") 'previous-buffer)
@@ -95,6 +96,8 @@
   )
 ;;(global-set-key (kbd "C-s") (lambda () (interactive)
 ;;			      (swiper (format "%s" (let ((sym (thing-at-point 'symbol))) (if sym sym ""))))))
+(global-set-key (kbd "C-z") 'isearch-forward)
+(define-key isearch-mode-map "\C-z" 'isearch-repeat-forward)
 
 ;; Project viewer
 (use-package projectile

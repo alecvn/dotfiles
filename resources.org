@@ -1,13 +1,27 @@
 * emacs
+  https://github.com/Gleek/emacs.d/blob/master/init.el
+  https://jamiecollinson.com/blog/my-emacs-config/
+
   http://cachestocaches.com/series/emacs-productivity/
   http://emacslife.com/how-to-read-emacs-lisp.html
   https://lupan.pl/dotemacs/
-  
+  http://nullman.net/emacs/files/init-emacs.el.html
 
 ** org
+   https://www.philnewton.net/blog/how-i-get-work-done-with-emacs/
    https://orgmode.org/worg/orgcard.html
    https://www.reddit.com/r/emacs/comments/c6bsop/ros_my_yet_another_orgmode_screenshot/
+   https://github.com/angrybacon/dotemacs
+   https://stackoverflow.com/questions/11384516/how-to-make-all-org-files-under-a-folder-added-in-agenda-list-automatically/41969519#41969519
+   
+** literate config file
+   https://www.reddit.com/r/emacs/comments/83usco/literate_emacs_config_in_orgmode/
 
 
 ** face
    https://github.com/tonsky/FiraCode
+* backup & sync
+  https://docs.syncthing.net/intro/getting-started.html
+  
+* music production
+  https://www.youtube.com/watch?v=vgrqMv3Lzfk

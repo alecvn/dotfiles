@@ -4,7 +4,7 @@
   :ensure t
   :config
   (global-rbenv-mode)
-  (rbenv-use-global))
+  (rbenv-use-corresponding))
 
 (use-package rvm :ensure t)
 
@@ -16,10 +16,10 @@
   (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
     (rvm-activate-corresponding-ruby)))
 
-(use-package flymake-ruby
-  :ensure t
-  :init
-  (add-hook 'ruby-mode-hook 'flymake-ruby-load))
+;; (use-package flymake-ruby
+;;   :ensure t
+;;   :init
+;;   (add-hook 'ruby-mode-hook 'flymake-ruby-load))
 
 (use-package robe
   :ensure t

@@ -1,0 +1,1 @@
+alias wine32="WINEPREFIX='/home/alec/.wine32'"

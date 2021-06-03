@@ -1,0 +1,4 @@
+#!/bin/bash
+
+xrandr --output LVDS-0 --off
+feh --bg-scale ~/Pictures/wallpaper.png

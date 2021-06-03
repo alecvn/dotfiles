@@ -9,6 +9,13 @@
   (setq web-mode-markup-indent-offset 4)
   (setq web-mode-indentation-params '("lineup-args" . t))
   (setq web-mode-engines-alist
-        '(("django"."\\.html\\'"))
+        '(("erb" . "\\.html\\'")
+	  ("django"."\\.html\\'"))
         )
   )
+
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(use-package vue-mode
+  :ensure t)
