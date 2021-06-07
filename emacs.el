@@ -189,23 +189,25 @@ save it in `ffap-file-at-point-line-number' variable."
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (rear-nonsticky t display
-			 (raise -0.288)
-			 font-lock-face
-			 (:family "Material Icons" :height 1.44)
-			 face
-			 (:family "Material Icons" :height 1.44)))
+	 (face
+	  (:family "Material Icons" :height 1.44)
+	  font-lock-face
+	  (:family "Material Icons" :height 1.44)
+	  display
+	  (raise -0.288)
+	  rear-nonsticky t))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (rear-nonsticky t display
-			 (raise 0.0)
-			 font-lock-face
-			 (:family "FontAwesome" :height 1.44)
-			 face
-			 (:family "FontAwesome" :height 1.44)))
+	 (face
+	  (:family "FontAwesome" :height 1.44)
+	  font-lock-face
+	  (:family "FontAwesome" :height 1.44)
+	  display
+	  (raise 0.0)
+	  rear-nonsticky t))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -221,7 +223,7 @@ save it in `ffap-file-at-point-line-number' variable."
  '(objed-cursor-color "#aa4450")
  '(org-agenda-files
    (quote
-    ("~/org/homes.org" "~/org/projects/gtd.org" "~/Dropbox/org/blogging.org" "~/Dropbox/org/birthdays.org" "/home/alec/org/gtd/id-1address.org" "/home/alec/org/gtd/id-7days.org" "/home/alec/org/gtd/id-admin.org" "/home/alec/org/gtd/id-african.org" "/home/alec/org/gtd/id-bountyxp.org" "/home/alec/org/gtd/id-bunchcut.org" "/home/alec/org/gtd/id-charlottetilbury.org" "/home/alec/org/gtd/id-cliffcentral.org" "/home/alec/org/gtd/id-coin-it.org" "/home/alec/org/gtd/id-csir.org" "/home/alec/org/gtd/id-dannfica.org" "/home/alec/org/gtd/id-evolabs.org" "/home/alec/org/gtd/id-evolabs2.org" "/home/alec/org/gtd/id-fonk-fieldmate.org" "/home/alec/org/gtd/id-fonk-ing.org" "/home/alec/org/gtd/id-fonk-nbk.org" "/home/alec/org/gtd/id-fonk.org" "/home/alec/org/gtd/id-foodlink.org" "/home/alec/org/gtd/id-handheld.org" "/home/alec/org/gtd/id-hungrylion.org" "/home/alec/org/gtd/id-impact-spii.org" "/home/alec/org/gtd/id-impd.org" "/home/alec/org/gtd/id-imptime.org" "/home/alec/org/gtd/id-jobber.org" "/home/alec/org/gtd/id-katalyst.org" "/home/alec/org/gtd/id-koen-hfm.org" "/home/alec/org/gtd/id-malcolm.org" "/home/alec/org/gtd/id-mixtelamtics.org" "/home/alec/org/gtd/id-optics.org" "/home/alec/org/gtd/id-orca.org" "/home/alec/org/gtd/id-pemas.org" "/home/alec/org/gtd/id-quindici.org" "/home/alec/org/gtd/id-samsung.org" "/home/alec/org/gtd/id-sparrow.org" "/home/alec/org/gtd/id-stint.org" "/home/alec/org/gtd/id-tastemakersafrica.org" "/home/alec/org/gtd/id-timesheet.org" "/home/alec/org/gtd/id-tusk.org" "/home/alec/org/gtd/id-unionswiss.org" "/home/alec/org/gtd/id-vumela.org" "/home/alec/org/gtd/id-yebo-fresh.org" "/home/alec/org/gtd/id-youverify.org" "/home/alec/org/gtd/notes.org" "/home/alec/org/gtd/passwords.org" "/home/alec/org/gtd/traveltime.org" "/home/alec/org/gtd/us.org" "/home/alec/org/Kommetjie.org" "/home/alec/org/beer.org" "/home/alec/org/cEDH AI.org" "/home/alec/org/cubigama.org" "/home/alec/org/finance.org" "/home/alec/org/games.org" "/home/alec/org/interview.org" "/home/alec/org/journal.org" "/home/alec/org/kids.org" "/home/alec/org/kubigawa.org" "/home/alec/org/magic.org" "/home/alec/org/marisca.org" "/home/alec/org/meetings.org" "/home/alec/org/music.org" "/home/alec/org/oupa.org" "/home/alec/org/passwords.org" "/home/alec/org/project_management.org" "/home/alec/org/projects.org" "/home/alec/org/recipes.org" "/home/alec/org/social_work.org" "/home/alec/org/tattoo.org" "/home/alec/org/til.org" "/home/alec/org/todo.org" "/home/alec/org/vehicle.org")))
+    ("/home/alec/org/homes.org" "/home/alec/org/projects/gtd.org" "/home/alec/Dropbox/org/blogging.org" "/home/alec/Dropbox/org/birthdays.org" "/home/alec/org/Kommetjie.org" "/home/alec/org/beer.org" "/home/alec/org/cEDH AI.org" "/home/alec/org/cubigama.org" "/home/alec/org/finance.org" "/home/alec/org/games.org" "/home/alec/org/interview.org" "/home/alec/org/journal.org" "/home/alec/org/kids.org" "/home/alec/org/kubigawa.org" "/home/alec/org/magic.org" "/home/alec/org/marisca.org" "/home/alec/org/meetings.org" "/home/alec/org/music.org" "/home/alec/org/oupa.org" "/home/alec/org/passwords.org" "/home/alec/org/project_management.org" "/home/alec/org/projects.org" "/home/alec/org/recipes.org" "/home/alec/org/social_work.org" "/home/alec/org/tattoo.org" "/home/alec/org/til.org" "/home/alec/org/todo.org" "/home/alec/org/vehicle.org")))
  '(package-selected-packages
    (quote
     (which-key vue-mode ivy-prescient forge org-sync impatient-mode phps-mode php-mode mtg company docker transient docker-cli docker-compose org-rich-yank ansible-vault yaml-mode dockerfile-mode yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))

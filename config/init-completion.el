@@ -23,7 +23,10 @@
 
 (use-package ivy-prescient
   :ensure t
-  :config (ivy-prescient-mode))
+  :config
+  (ivy-prescient-mode)
+  (add-to-list 'ivy-prescient-sort-commands '(:not kill-ring))
+  )
 
 (use-package yasnippet
   :ensure t

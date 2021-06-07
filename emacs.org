@@ -105,3 +105,28 @@ This is too slow
     :config
     (setq which-key-idle-delay 0.3))
 #+end_src
+
+* Language specific settings
+** Javascript
+Auto-linting fix
+https://github.com/aaronjensen/eslintd-fix
+https://github.com/jscheid/prettier.el
+https://github.com/prettier/prettier-emacs
+
+* Org
+** Calendars
+There's built-in export to icalendar. Set that up for Thunderbird icalendar.
+Here's an org icalendar import.
+https://github.com/vjohansen/emacs-config/blob/master/org-import-calendar.el
+
+With those two we should now have end-to-end Thunderbird (or whatever icalendar), Org Agenda and Orgzly integration.
+
+* Themes
+https://github.com/hlissner/emacs-doom-themes
+https://monokai.pro/vscode
+https://www.nordtheme.com/docs
+https://github.com/atomiks/moonlight-vscode-theme
+https://citylights.xyz/
+
+* Other configs
+https://github.com/daviwil/dotfiles/blob/master/Emacs.org
