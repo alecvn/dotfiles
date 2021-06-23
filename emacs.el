@@ -104,6 +104,13 @@
 (load-file "~/.emacs.d/config/init-web.el")
 (load-file "~/.emacs.d/config/init-csharp.el")
 (load-file "~/.emacs.d/config/init-rest.el")
+
+;;use larger font
+(set-face-attribute 'default nil :height 110)
+
+;;disable creation of symlink files https://github.com/npm/cli/issues/1365
+(setq create-lockfiles nil)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -115,23 +122,25 @@
  '(dashboard-navigator-buttons
    (quote
     (((#("" 0 1
-	 (rear-nonsticky t display
-			 (raise -0.288)
-			 font-lock-face
-			 (:family "Material Icons" :height 1.44)
-			 face
-			 (:family "Material Icons" :height 1.44)))
+	 (face
+	  (:family "Material Icons" :height 1.44)
+	  font-lock-face
+	  (:family "Material Icons" :height 1.44)
+	  display
+	  (raise -0.288)
+	  rear-nonsticky t))
        "Refresh" "Refresh packages"
        (lambda
 	 (&rest _)
 	 (package-refresh-contents t)))
       (#("" 0 1
-	 (rear-nonsticky t display
-			 (raise 0.0)
-			 font-lock-face
-			 (:family "FontAwesome" :height 1.44)
-			 face
-			 (:family "FontAwesome" :height 1.44)))
+	 (face
+	  (:family "FontAwesome" :height 1.44)
+	  font-lock-face
+	  (:family "FontAwesome" :height 1.44)
+	  display
+	  (raise 0.0)
+	  rear-nonsticky t))
        "Update" "Update emacs"
        (lambda
 	 (&rest _)
@@ -143,7 +152,7 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (jedi python-black docker tramp yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))
+    (typoscript-mode rjsx-mode prettier flycheck-pyflakes flycheck-mypy prettier-js jedi python-black docker tramp yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))
  '(show-week-agenda-p t t)
  '(tramp-remote-process-environment
    (quote

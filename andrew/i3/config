@@ -117,7 +117,7 @@ bindsym $mod+z focus child
 
 # Workspace Variables
 set $ws2 "2: "
-set $ws3 "3: 🐱"
+set $ws3 "3: "
 set $ws4 "4: 🐧"
 set $ws5 "5: 🐰"
 set $ws6 "6: 🐨"
@@ -128,7 +128,14 @@ set $ws10 "10: 🐹"
 set $ws11 "C: "
 set $ws12 "S: "
 set $ws13 "G: "
-set $ws14 "M: "
+set $ws14 "V: "
+set $ws15 "D: "
+set $ws16 "A: "
+set $ws17 "Z: "
+set $ws18 "I: "
+set $ws19 "T: "
+set $ws20 "M: "
+set $ws21 "W: "
 
 # switch to workspace
 bindsym $mod+2 workspace $ws2
@@ -147,8 +154,24 @@ mode "named" {
      bindsym c workspace $ws11; mode "default"
      bindsym s workspace $ws12; mode "default"
      bindsym g workspace $ws13; mode "default"
-     bindsym m workspace $ws14; mode "default"
+     bindsym v workspace $ws14; mode "default"
+     bindsym d workspace $ws15; mode "default"
+     bindsym a workspace $ws16; mode "default"
+     bindsym z workspace $ws17; mode "default"
+     bindsym i workspace $ws18; mode "default"
+     bindsym t workspace $ws19; mode "default"
+     bindsym m workspace $ws20; mode "default"
+     bindsym w workspace $ws21; mode "default"
      bindsym 1 exec i3-msg workspace $(rofi -dmenu -lines 0 -p 'Workspace: '); mode "default"
+     bindsym 2 workspace $ws2; mode "default"
+     bindsym 3 workspace $ws3; mode "default"
+     bindsym 4 workspace $ws4; mode "default"
+     bindsym 5 workspace $ws5; mode "default"
+     bindsym 6 workspace $ws6; mode "default"
+     bindsym 7 workspace $ws7; mode "default"
+     bindsym 8 workspace $ws8; mode "default"
+     bindsym 9 workspace $ws9; mode "default"
+     bindsym 0 workspace $ws0; mode "default"
      bindsym Return mode "default"
      bindsym Escape mode "default"
 }
@@ -170,8 +193,24 @@ mode "move-named" {
      bindsym c move container to workspace $ws11; mode "default"
      bindsym s move container to workspace $ws12; mode "default"
      bindsym g move container to workspace $ws13; mode "default"
-     bindsym m move container to workspace $ws14; mode "default"
+     bindsym v move container to workspace $ws14; mode "default"
+     bindsym d move container to workspace $ws15; mode "default"
+     bindsym a move container to workspace $ws16; mode "default"
+     bindsym z move container to workspace $ws17; mode "default"
+     bindsym i move container to workspace $ws18; mode "default"
+     bindsym t move container to workspace $ws19; mode "default"
+     bindsym m move container to workspace $ws20; mode "default"
+     bindsym w move container to workspace $ws21; mode "default"
      bindsym 1 exec i3-msg move container to workspace $(rofi -dmenu -lines 0 -p 'Move window to workspace: '); mode "default"
+     bindsym 2 move container to workspace $ws2; mode "default"
+     bindsym 3 move container to workspace $ws3; mode "default"
+     bindsym 4 move container to workspace $ws4; mode "default"
+     bindsym 5 move container to workspace $ws5; mode "default"
+     bindsym 6 move container to workspace $ws6; mode "default"
+     bindsym 7 move container to workspace $ws7; mode "default"
+     bindsym 8 move container to workspace $ws8; mode "default"
+     bindsym 9 move container to workspace $ws9; mode "default"
+     bindsym 0 move container to workspace $ws0; mode "default"
      bindsym Return mode "default"
      bindsym Escape mode "default"
 }
@@ -216,16 +255,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-# System volume controls
-bindsym XF86AudioMute         exec --no-startup-id pamixer -t     && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume  exec --no-startup-id pamixer -d 3   && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioRaiseVolume  exec --no-startup-id pamixer -i 3   && pkill -RTMIN+1 i3blocks
-
-# Sreen brightness controls
-# enable passwordless sudo for ybacklight. echo "koromicha ALL=NOPASSWD: /usr/bin/ybacklight" > /etc/sudoers.d/ybacklight
-bindsym XF86MonBrightnessUp exec sudo ybacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec sudo ybacklight -dec 5 # decrease screen brightness
 
 # i3blocks
 bar {
@@ -277,3 +306,10 @@ focus_on_window_activation focus
 # Application shortcuts
 bindsym $ms+e exec emacs
 bindsym $ms+w exec chromium-browser --incognito
+
+exec --no-startup-id ~/.config/i3/miniapps/start.sh
+
+# System volume controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 1%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 1%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse set Master toggle && pkill -RTMIN+10 i3blocks

@@ -4,6 +4,30 @@
   :ensure t
   )
 
+(use-package company
+  :custom
+  (company-dabbrev-downcase nil)
+  (company-dabbrev-ignore-case nil)
+  (company-idle-delay 0)
+  :config
+  (global-company-mode)
+  :general
+  (:keymaps 'company-active-map
+            "C-n" 'company-select-next
+            "C-p" 'company-select-previous
+            "C-f" 'company-filter-candidates))
+
+(use-package prettier
+  :hook
+  ((typescript-mode json-mode) . prettier-mode))
+
+(use-package typescript-mode
+  :mode "\\.tsx?$"
+  :hook
+  (typescript-mode . lsp)
+  :custom
+  (typescript-indent-level 2))
+
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
@@ -53,7 +77,7 @@
             (when (string-equal "tsx" (file-name-extension buffer-file-name))
               (setup-tide-mode))))
 
-    ;;(flycheck-add-mode 'typescript-tslint 'web-mode)
+    ;; (flycheck-add-mode 'typescript-tslint 'web-mode)
 
     )
   (setq web-mode-content-types-alist '(("jsx"  . "\\.js[x]?\\'")))
@@ -69,7 +93,7 @@
 (setq-default flycheck-disabled-checkers
               (append flycheck-disabled-checkers
                       '(javascript-jshint json-jsonlist)))
-;;(add-hook 'flycheck-mode-hook 'add-node-modules-path)
+;; (add-hook 'flycheck-mode-hook 'add-node-modules-path)
 ;; (eval-after-load
 ;;   'typescript-mode
 ;;   '(add-hook 'typescript-mode-hook #'add-node-modules-path))
