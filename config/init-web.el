@@ -19,3 +19,9 @@
 
 (use-package vue-mode
   :ensure t)
+
+;; (use-package prettier
+;;   :ensure t)
+(use-package prettier
+  :ensure t)
+(add-hook 'after-init-hook #'global-prettier-mode)

@@ -216,7 +216,9 @@ save it in `ffap-file-at-point-line-number' variable."
  '(dashboard-set-footer nil)
  '(dashboard-set-heading-icons t)
  '(dashboard-set-navigator t)
+ '(debug-on-error t)
  '(fci-rule-color "#62686E")
+ '(global-prettier-mode t)
  '(jdee-db-active-breakpoint-face-colors (cons "#1d2127" "#87ceeb"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1d2127" "#87875f"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#1d2127" "#686858"))
@@ -226,8 +228,11 @@ save it in `ffap-file-at-point-line-number' variable."
     ("/home/alec/org/homes.org" "/home/alec/org/projects/gtd.org" "/home/alec/Dropbox/org/blogging.org" "/home/alec/Dropbox/org/birthdays.org" "/home/alec/org/Kommetjie.org" "/home/alec/org/beer.org" "/home/alec/org/cEDH AI.org" "/home/alec/org/cubigama.org" "/home/alec/org/finance.org" "/home/alec/org/games.org" "/home/alec/org/interview.org" "/home/alec/org/journal.org" "/home/alec/org/kids.org" "/home/alec/org/kubigawa.org" "/home/alec/org/magic.org" "/home/alec/org/marisca.org" "/home/alec/org/meetings.org" "/home/alec/org/music.org" "/home/alec/org/oupa.org" "/home/alec/org/passwords.org" "/home/alec/org/project_management.org" "/home/alec/org/projects.org" "/home/alec/org/recipes.org" "/home/alec/org/social_work.org" "/home/alec/org/tattoo.org" "/home/alec/org/til.org" "/home/alec/org/todo.org" "/home/alec/org/vehicle.org")))
  '(package-selected-packages
    (quote
-    (which-key vue-mode ivy-prescient forge org-sync impatient-mode phps-mode php-mode mtg company docker transient docker-cli docker-compose org-rich-yank ansible-vault yaml-mode dockerfile-mode yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))
+    (prettier use-package rubocop which-key vue-mode ivy-prescient forge org-sync impatient-mode phps-mode php-mode mtg company docker transient docker-cli docker-compose org-rich-yank ansible-vault yaml-mode dockerfile-mode yasnippet-snippets ws-butler wgrep-ag web-mode vterm use-package-ensure-system-package solarized-theme so-long smartparens shx shader-mode rvm robe restclient rbenv rainbow-mode py-isort projectile-rails org omnisharp markdown-mode magit lv ioccur highlight-indent-guides helm git-timemachine git-time-metric flymake-ruby exec-path-from-shell enh-ruby-mode doom-themes doom-modeline diminish dashboard counsel-projectile company-tern company-jedi company-inf-ruby calmer-forest-theme bundler buffer-move blacken auto-package-update all-the-icons-dired ag)))
  '(pdf-view-midnight-colors (cons "#c2c2b0" "#222222"))
+ '(prettier-enabled-parsers
+   (quote
+    (babel babel-flow babel-ts css graphql json less html mdx meriyah scss typescript vue yaml)))
  '(rustic-ansi-faces
    ["#222222" "#aa4450" "#87875f" "#cc8800" "#87AFD7" "#8787AF" "#87ceeb" "#c2c2b0"])
  '(show-week-agenda-p t t)

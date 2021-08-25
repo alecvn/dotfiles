@@ -25,8 +25,8 @@
   :ensure t
   :config
   (ivy-prescient-mode)
-  (add-to-list 'ivy-prescient-sort-commands '(:not kill-ring))
-  )
+  (add-to-list 'ivy-prescient-sort-commands 'kill-ring t)
+  (add-to-list 'ivy-prescient-sort-commands 'counsel-yank-pop t))
 
 (use-package yasnippet
   :ensure t
