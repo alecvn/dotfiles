@@ -1,0 +1,93 @@
+#+TITLE Emacs config
+#+PROPERTY: header-args:emacs-lisp :tangle ../.emacs
+
+* Startup speed optimisations
+Make startup faster by reducing the frequency of garbage collection and then use a hook to measure Emacs startup time.
+
+#+begin_src emacs-lisp
+  ;; The default is 800 kilobytes.  Measured in bytes.
+  (setq gc-cons-threshold (* 50 1000 1000))
+  
+  ;; Profile emacs startup
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (message "*** Emacs loaded in %s with %d garbage collections."
+                       (format "%.2f seconds"
+                               (float-time
+                                (time-subtract after-init-time before-init-time)))
+                       gcs-done)))
+#+end_src
+
+* Window decorations
+#+begin_src emacs-lisp
+  (scroll-bar-mode -1)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (tooltip-mode -1)
+#+end_src
+
+* Buffer decorations
+#+begin_src emacs-lisp
+  (global-display-line-numbers-mode t)
+  
+  ;; Disable line numbers for some modes
+  (dolist (mode '(org-mode-hook
+                  term-mode-hook
+                  shell-mode-hook
+                  eshell-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+
+* Operational speed optimisations
+#+begin_src emacs-lisp
+  ;; Should help with Emacs slowing down on big one-liners
+  (setq bidi-paragraph-direction 'left-to-right)
+#+end_src
+
+* Packages
+#+begin_src emacs-lisp
+  (require 'package)
+  
+  (setq package-enable-at-startup nil)
+  (setq package-archives
+        '(("melpa" . "https://melpa.org/packages/")
+          ("gnu" . "https://elpa.gnu.org/packages/")
+          ("org" . "http://orgmode.org/elpa/")))
+  (package-initialize)
+  
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  
+  (eval-when-compile
+    (require 'use-package))
+  
+  (use-package diminish :ensure t)
+  
+  (use-package use-package-ensure-system-package :ensure t)
+#+end_src
+
+* OS integration
+#+begin_src emacs-lisp
+  ;; Enable copy/past-ing from clipboard
+  (setq select-enable-clipboard t)
+#+end_src
+
+* Buffer configuration
+#+begin_src emacs-lisp
+  ;; Always reload the file if it changed on disk, see also: auto-revert-tail-mode
+  (global-auto-revert-mode 1)
+  
+  ;; Auto update dired when files change
+  (add-hook 'dired-mode-hook 'auto-revert-mode)
+#+end_src
+
+* Keybinding visual aid
+#+begin_src emacs-lisp
+  (use-package which-key
+    :ensure t
+    :init (which-key-mode)
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 0.3))
+#+end_src

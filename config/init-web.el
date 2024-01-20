@@ -6,7 +6,8 @@
   "\\.as[cp]x\\'" "\\.erb\\'" "\\.mustache\\'" "\\.djhtml\\'" "\\.blade.php\\'"
   :config
   (setq web-mode-enable-current-element-highlight t)
-  (setq web-mode-markup-indent-offset 4)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
   (setq web-mode-indentation-params '("lineup-args" . t))
   (setq web-mode-engines-alist
         '(("erb" . "\\.html\\'")
