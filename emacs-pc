@@ -1,0 +1,431 @@
+;; The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+
+;; Profile emacs startup
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "*** Emacs loaded in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+
+(global-display-line-numbers-mode t)
+
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+;; Should help with Emacs slowing down on big one-liners
+(setq bidi-paragraph-direction 'left-to-right)
+
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file)
+
+(require 'package)
+
+(setq package-enable-at-startup nil)
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("gnu" . "https://elpa.gnu.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")))
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(use-package diminish :ensure t)
+
+(use-package use-package-ensure-system-package :ensure t)
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config (exec-path-from-shell-initialize))
+
+;; Enable copy/past-ing from clipboard
+(setq select-enable-clipboard t)
+
+;; Always reload the file if it changed on disk, see also: auto-revert-tail-mode
+(global-auto-revert-mode 1)
+
+;; Auto update dired when files change
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
+(use-package which-key
+  :ensure t
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.3))
+
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (setq doom-modeline-buffer-file-name-style 'relative-to-project))
+
+;; Show current function in modeline - via imenu
+(which-function-mode 1)
+
+(setq column-number-mode t)
+
+;; doom-modeline now uses nerd-icons
+(use-package nerd-icons
+  ;; :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
+  )
+
+(use-package all-the-icons
+  :ensure t
+  :init
+  (use-package all-the-icons-dired
+    :ensure t
+    :config
+    (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+    :after all-the-icons
+    )
+  :config
+  (when (not (member "all-the-icons" (font-family-list)))
+    (all-the-icons-install-fonts t))
+  )
+
+(use-package ido
+  :ensure t
+  :config
+  (ido-mode t)
+  (setq ido-separator "\n")
+  (setq ido-use-filename-at-point nil)
+  )
+
+(use-package ivy
+  :ensure t
+  :bind
+  (("C-c C-o" . ivy-occur))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-use-selectable-prompt t)
+  (setq ivy-initial-inputs-alist nil)
+  (setq ivy-re-builders-alist
+	;; allow input not in order
+	'((t   . ivy--regex-ignore-order)))
+  (setq search-default-mode #'char-fold-to-regexp)
+  (setq enable-recursive-minibuffers t))
+
+;; (use-package ivy-prescient
+;;   :ensure t
+;;   :config
+;;   (ivy-prescient-mode)
+;;   (add-to-list 'ivy-prescient-sort-commands 'kill-ring t)
+;;   (add-to-list 'ivy-prescient-sort-commands 'counsel-yank-pop t))
+
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-robe)
+    (global-set-key (kbd "M-SPC") 'company-complete)
+    )
+  (setq company-idle-delay 0))
+
+(global-set-key [f6] 'revert-buffer)
+(global-so-long-mode 1)
+
+(global-set-key (kbd "H-p") 'previous-buffer)
+(global-set-key (kbd "H-n") 'next-buffer)
+
+(defun split-and-follow-horizontally ()
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+(defun split-and-follow-vertically ()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+(global-set-key (kbd "H-j") 'windmove-left)
+(global-set-key (kbd "H-l") 'windmove-right)
+(global-set-key (kbd "H-i") 'windmove-up)
+(global-set-key (kbd "H-k") 'windmove-down)
+
+
+(use-package buffer-move
+  :ensure t
+  :config
+  (global-set-key (kbd "H-M-i") 'buf-move-up)
+  (global-set-key (kbd "H-M-k") 'buf-move-down)
+  (global-set-key (kbd "H-M-j") 'buf-move-left)
+  (global-set-key (kbd "H-M-l") 'buf-move-right)
+  )
+
+(global-set-key (kbd "M-i") 'imenu)
+
+(setq mouse-yank-at-point t)
+
+(use-package ag
+  :ensure t
+  :config
+  (setq ag-highlight-search t)
+  (add-hook 'ag-mode-hook 'toggle-truncate-lines))
+
+(use-package counsel
+  :ensure t
+  :init
+  (global-set-key (kbd "M-y") 'counsel-yank-pop))
+
+(use-package wgrep :ensure t)
+
+(use-package swiper
+  :ensure t
+  :init
+  (setq swiper-use-visual-line nil)
+  (setq swiper-use-visual-line-p (lambda (a) nil))
+  :bind (
+	 ("C-s" . swiper)
+	 ("C-M-s" . swiper-thing-at-point)
+	 )
+  )
+;;(global-set-key (kbd "C-s") (lambda () (interactive)
+;;			      (swiper (format "%s" (let ((sym (thing-at-point 'symbol))) (if sym sym ""))))))
+(global-set-key (kbd "C-z") 'isearch-forward)
+(define-key isearch-mode-map "\C-z" 'isearch-repeat-forward)
+
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-global-mode)
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p s") 'counsel-projectile-ag)
+  (define-key projectile-mode-map (kbd "C-c p e") 'projectile-run-shell)
+  (define-key projectile-mode-map (kbd "C-c p x") 'projectile-compile-project)
+  (define-key projectile-mode-map (kbd "C-c p c") 'counsel-projectile-org-capture)
+  (setq projectile-enable-caching t)
+  (setq projectile-indexing-method 'hybrid)
+  ;; (setq projectile-sort-order 'recently-active)
+  (setq projectile-globally-ignored-file-suffixes '("~" "#"))
+  (add-to-list 'projectile-globally-ignored-files "public/")
+  (setq projectile-globally-unignored-files '("gtd.org"))
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-switch-project-action 'projectile-commander)
+  (def-projectile-commander-method ?s
+    "Open a *shell* buffer for the project."
+    (projectile-run-shell))
+  (def-projectile-commander-method ?x
+    "Run `compile' in the project."
+    (projectile-compile-project nil))
+  (def-projectile-commander-method ?d
+    "Open project root in dired."
+    (projectile-dired))
+  (def-projectile-commander-method ?a
+    "Run ag on project."
+    (counsel-projectile-ag))
+  (def-projectile-commander-method ?g
+    "Run magit-status on project."
+    (magit-status))
+  (use-package counsel-projectile
+    :ensure t
+    :init
+    ))
+
+(use-package projectile-rails
+  :ensure t
+  :config
+  (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
+  (projectile-rails-global-mode)
+  (add-hook 'projectile-rails-mode-hook 'compilation-shell-minor-mode)
+  (setq projectile-rails-vanilla-command "bin/rails")
+  (setq projectile-rails-spring-command "bin/rails"))
+
+(use-package magit
+  :ensure t
+  :init
+  ;; (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  (global-set-key (kbd "C-x g") 'magit-status))
+
+(use-package git-timemachine :ensure t)
+
+(use-package forge
+  :after magit)
+
+(use-package dockerfile-mode
+  :ensure t)
+
+(use-package docker
+  :ensure t
+  :bind ("C-c d" . docker))
+
+(setq ruby-deep-indent-paren nil)
+
+(use-package rvm :ensure t)
+
+(use-package inf-ruby
+  :ensure t
+  :init
+  ;; hit C-x C-q when breakpoint is hit
+  (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+  (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
+    (rvm-activate-corresponding-ruby)))
+
+(use-package robe
+  :ensure t
+  :config
+  (global-robe-mode))
+
+(use-package company-inf-ruby
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-inf-ruby)
+  )
+
+(use-package web-mode
+  :ensure t
+  :mode (("\\.ts\\'" . web-mode)
+         ("\\.js\\'" . web-mode)
+         ("\\.mjs\\'" . web-mode)
+         ("\\.tsx\\'" . web-mode)
+         ("\\.jsx\\'" . web-mode)
+         ("\\.erb\\'" . web-mode)
+         ("\\.html?\\'" . web-mode))
+  :config
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-script-padding 2)
+  (setq web-mode-attr-indent-offset 2)
+  ;; (setq web-mode-indentation-params '("lineup-args" . t))
+  (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-quotes" . nil))
+  (add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
+  (add-to-list 'web-mode-indentation-params '("case-extra-offset" . nil))
+  (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+  (progn
+    (defun my-web-mode-erb-hook()
+      (if (equal web-mode-engine "erb")
+	  (setq web-mode-markup-indent-offset 2)
+	)
+      )
+    (add-hook 'web-mode-hook 'my-web-mode-erb-hook)
+    )
+  )
+
+(use-package flycheck
+  :ensure t
+  :init
+  (setq flycheck-ruby-rubocop-executable "~/.rvm/gems/ruby-3.1.2/wrappers/standardrb")
+  :config
+  ;; (with-eval-after-load 'flycheck
+  ;;   (setq-default flycheck-disabled-checkers
+  ;; 		  (append flycheck-disabled-checkers
+  ;; 			  '(javascript-jshint json-jsonlist)))
+  ;;   (push 'web-mode (flycheck-checker-get 'javascript-eslint 'modes)))
+  ;; (global-flycheck-mode))
+
+  ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
+  ;; (setq-default flycheck-disabled-checkers
+  ;;               (append flycheck-disabled-checkers
+  ;; 			'(javascript-jshint)))
+  ;; turn on flychecking globally
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  ;; (defun my/use-eslint-from-node-modules ()
+  ;;   (let* ((root (locate-dominating-file
+  ;;                 (or (buffer-file-name) default-directory)
+  ;;                 "node_modules"))
+  ;;          (eslint (and root
+  ;; 			(expand-file-name "node_modules/eslint/bin/eslint.js"
+  ;;                                         root))))
+  ;;     (when (and eslint (file-executable-p eslint))
+  ;; 	(setq-local flycheck-javascript-eslint-executable eslint))))
+  ;; (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+  )
+
+(use-package prettier-js
+  :ensure t
+  )
+
+(use-package direnv
+  :ensure t
+  :config
+  (direnv-mode))
+
+(use-package flycheck-posframe
+  :ensure t
+  :after flycheck
+  :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))
+
+(defun buffer-kill-path ()
+  "copy buffer's full path to kill ring"
+  (interactive)
+  (kill-new (buffer-file-name)))
+
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (prettier-js-mode 1)
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1)
+  )
+
+(use-package tide
+  :ensure t
+  :hook (
+         (typescript-mode . setup-tide-mode)
+         (rjsx-mode . setup-tide-mode)
+	 (web-mode . setup-tide-mode)
+         )
+  :config
+  (define-key tide-mode-map (kbd "C-c .") 'tide-jump-to-definition)
+  (define-key tide-mode-map (kbd "C-c ,") 'tide-jump-back)
+  ;; (define-key tide-mode-map (kbd "C-c r") 'tide-rename-symbol)
+  (setq-default indent-tabs-mode nil)
+  (setq js-indent-level 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq company-tooltip-align-annotations t)
+  )
+
+;; (use-package treesit-auto
+;;   :config
+;;   (setq treesit-auto-install 'prompt)
+;;   (global-treesit-auto-mode))
+
+(defun web-mode-init-prettier-hook ()
+  (add-node-modules-path)
+  (prettier-js-mode))
+
+(add-hook 'web-mode-hook  'web-mode-init-prettier-hook)
+
+(use-package apheleia
+  :ensure t
+  :hook ((ruby-mode . apheleia-mode))
+  :config
+  (add-to-list 'apheleia-mode-alist '(ruby-mode . ruby-standard))
+  )
+(put 'downcase-region 'disabled nil)
